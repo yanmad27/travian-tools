@@ -43,22 +43,31 @@ class Victim {
 
 class FarmList {
     constructor(id) {
+        this.id = id;
         this.farmList = document.querySelector(`[data-list="${id}"]`).parentNode;
     }
+    reInit() {
+        this.farmList = document.querySelector(`[data-list="${this.id}"]`).parentNode;
+    }
     getName() {
+        this.reInit();
         return this.farmList.querySelector('[class="farmListName"] [class="name"]').innerHTML;
     }
     triggerRaid() {
+        this.reInit();
         this.farmList.querySelector('[class="farmListName"] [class="name"]').click();
         this.farmList.querySelector('button').click();
     }
     isCollapsed() {
+        this.reInit();
         return this.farmList.parentNode.className.includes('collapsed');
     }
     toggleCollapse() {
+        this.reInit();
         this.farmList.querySelector('[class="expandCollapse"]').click();
     }
     getCurrentSelectedVictim() {
+        this.reInit();
         var text = this.farmList.querySelector('button div').innerHTML;
         var regex = /Bắt đầu&nbsp;\((\d+)\)/;
         var match = text.match(regex);
