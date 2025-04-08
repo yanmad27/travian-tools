@@ -79,45 +79,75 @@ async function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+var farmLists = [
+    {
+        id: 1817,
+        victimLength: 2,
+    },
+    {
+        id: 1732,
+        victimLength: 4,
+    },
+];
+
 var victims = [
     {
-        id: 51231,
+        id: 55465,
         name: 'Mei`s F (-68|-22)',
         interval: 45,
         active: true,
+        farmListId: 1817,
+    },
+    {
+        id: 55464,
+        name: 'An nghĩa đường (-72|-11)',
+        interval: 30,
+        active: true,
+        farmListId: 1817,
     },
     {
         id: 51232,
         name: 'Lalala`s F (-67|-27)',
         interval: 30,
         active: true,
+        farmListId: 1732,
     },
     {
         id: 51433,
         name: '02.Camap (-54|-30)',
         interval: 30,
         active: true,
+        farmListId: 1732,
     },
     {
         id: 51230,
         name: 'Làng của abcd (-59|-42)',
         interval: 30,
         active: true,
+        farmListId: 1732,
     },
     {
         id: 46845,
         name: 'Hopeful`s F (-54|-36)',
         interval: 30,
         active: true,
+        farmListId: 1732,
     },
 ];
 
-function main() {
-    var farmList = new FarmList(1732);
-    setInterval(() => {
-        if (farmList.isCollapsed()) farmList.toggleCollapse();
-        if (farmList.getCurrentSelectedVictim() <= victims.length) farmList.triggerRaid();
-    }, 5000);
+async function main() {
+    for (let i = 0; i < farmLists.length; i++) {
+        (async function () {
+            await sleep(i * 5000);
+            var farmList = new FarmList(farmLists[i].id);
+            if (farmList.isCollapsed()) farmList.toggleCollapse();
+            await sleep(5000);
+            setInterval(async () => {
+                if (farmList.isCollapsed()) farmList.toggleCollapse();
+                if (farmList.getCurrentSelectedVictim() <= farmLists[i].victimLength) farmList.triggerRaid();
+            }, 10000);
+        })();
+    }
 
     for (let i = 0; i < victims.length; i++) {
         if (!victims[i].active) continue;
@@ -125,7 +155,11 @@ function main() {
         (async function () {
             await sleep(i * 60 * 1 * 1000);
             let victim = new Victim(victims[i].id, victims[i].interval);
-            while (victim.isRaidding()) await sleep(5000);
+            let sleepTime = 0;
+            while (victim.isRaidding() && sleepTime < victim.getInterval() * 60 * 1000) {
+                await sleep(5000);
+                sleepTime += 5000;
+            }
             victim.select();
             setInterval(() => victim.select(), victim.getInterval() * 60 * 1000);
         })();
