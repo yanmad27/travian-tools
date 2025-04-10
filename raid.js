@@ -13,7 +13,7 @@ class Victim {
     select() {
         this.reInit();
         this.victim.querySelector('[class="selection"] input').click();
-        console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ', this.getName());
+        console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ', `%c${this.getName()}`, 'color: #5a9a0a; font-weight: bold;');
     }
     getName() {
         this.reInit();
@@ -38,6 +38,19 @@ class Victim {
     isLastRaidHalf() {
         this.reInit();
         return this.victim.querySelector('[class="lastRaidBounty"] i').className.includes('bounty_half_small');
+    }
+    lastRaidFromNow() {
+        this.reInit();
+        try {
+            const time = this.victim.querySelector('[class="lastRaidReport "] span').innerHTML;
+            const regex = /(\d+):(\d+):(\d+)/;
+            const match = time.match(regex);
+            const now = new Date();
+            const lastRaid = new Date(now.getFullYear(), now.getMonth(), now.getDate(), match[1], match[2], match[3]);
+            return Math.floor((now.getTime() - lastRaid.getTime()) / 1000 / 60);
+        } catch {
+            return 10000;
+        }
     }
 }
 
@@ -82,59 +95,77 @@ async function sleep(ms) {
 var farmLists = [
     {
         id: 1817,
-        victimLength: 2,
+        victims: [
+            {
+                id: 59457,
+                name: 'Mocho`s village',
+                active: true,
+                interval: 30,
+            },
+            {
+                id: 55465,
+                name: 'Mei`s F (-68|-22)',
+                interval: 45,
+                active: true,
+            },
+            {
+                id: 55464,
+                name: 'An nghĩa đường (-72|-11)',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 48393,
+                name: 'Ly ly',
+                interval: 45,
+                active: true,
+            },
+            {
+                id: 43830,
+                name: 'ab1` F',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 40478,
+                name: 'Athena`s village',
+                interval: 30,
+                active: false,
+            },
+        ],
     },
     {
         id: 1732,
-        victimLength: 4,
+        victims: [
+            {
+                id: 51232,
+                name: 'Lalala`s F (-67|-27)',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 51433,
+                name: '02.Camap (-54|-30)',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 51230,
+                name: 'Làng của abcd (-59|-42)',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 46845,
+                name: 'Hopeful`s F (-54|-36)',
+                interval: 30,
+                active: true,
+            },
+        ],
     },
 ];
 
-var victims = [
-    {
-        id: 55465,
-        name: 'Mei`s F (-68|-22)',
-        interval: 45,
-        active: true,
-        farmListId: 1817,
-    },
-    {
-        id: 55464,
-        name: 'An nghĩa đường (-72|-11)',
-        interval: 30,
-        active: true,
-        farmListId: 1817,
-    },
-    {
-        id: 51232,
-        name: 'Lalala`s F (-67|-27)',
-        interval: 30,
-        active: true,
-        farmListId: 1732,
-    },
-    {
-        id: 51433,
-        name: '02.Camap (-54|-30)',
-        interval: 30,
-        active: true,
-        farmListId: 1732,
-    },
-    {
-        id: 51230,
-        name: 'Làng của abcd (-59|-42)',
-        interval: 30,
-        active: true,
-        farmListId: 1732,
-    },
-    {
-        id: 46845,
-        name: 'Hopeful`s F (-54|-36)',
-        interval: 30,
-        active: true,
-        farmListId: 1732,
-    },
-];
-
+var victims = farmLists.flatMap((farmList) => farmList.victims);
 async function main() {
     for (let i = 0; i < farmLists.length; i++) {
         (async function () {
@@ -144,19 +175,27 @@ async function main() {
             await sleep(5000);
             setInterval(async () => {
                 if (farmList.isCollapsed()) farmList.toggleCollapse();
-                if (farmList.getCurrentSelectedVictim() <= farmLists[i].victimLength) farmList.triggerRaid();
+                if (farmList.getCurrentSelectedVictim() <= farmLists[i].victims.length) farmList.triggerRaid();
             }, 10000);
         })();
     }
 
     for (let i = 0; i < victims.length; i++) {
         if (!victims[i].active) continue;
-        console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ start victim: ', victims[i].name, ', after: ', i, ' minutes');
+        console.log(
+            'LOG ~ ' + new Date().toLocaleString() + ' ~ start victim: ' + `%c${victims[i].name.padEnd(25)}` + '%c ~ after: ' + i + ' minutes',
+            'color: #5a9a0a; font-weight: bold;',
+            '',
+        );
         (async function () {
-            await sleep(i * 60 * 1 * 1000);
+            await sleep(i * 60 * 1000);
             let victim = new Victim(victims[i].id, victims[i].interval);
             let sleepTime = 0;
             while (victim.isRaidding() && sleepTime < victim.getInterval() * 60 * 1000) {
+                await sleep(5000);
+                sleepTime += 5000;
+            }
+            while (victim.lastRaidFromNow() < victim.getInterval()) {
                 await sleep(5000);
                 sleepTime += 5000;
             }
