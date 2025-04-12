@@ -13,7 +13,7 @@ class Victim {
     select() {
         this.reInit();
         this.victim.querySelector('[class="selection"] input').click();
-        console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ', `%c${this.getName()}`, 'color: #5a9a0a; font-weight: bold;');
+        console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ' + `%c${this.getName()}`, 'color: #5a9a0a; font-weight: bold;');
     }
     getName() {
         this.reInit();
@@ -97,15 +97,27 @@ var farmLists = [
         id: 1817,
         victims: [
             {
-                id: 59457,
-                name: 'Mocho`s village',
-                active: true,
+                id: 62034,
+                name: 'Azamat`s village',
                 interval: 30,
+                active: true,
             },
             {
                 id: 55465,
                 name: 'Mei`s F (-68|-22)',
-                interval: 45,
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 61851,
+                name: 'Lalala`s F (-67|-27)',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 59457,
+                name: 'Mocho`s village',
+                interval: 15,
                 active: true,
             },
             {
@@ -115,9 +127,9 @@ var farmLists = [
                 active: true,
             },
             {
-                id: 48393,
-                name: 'Ly ly',
-                interval: 45,
+                id: 62318,
+                name: 'shoes19944116',
+                interval: 30,
                 active: true,
             },
             {
@@ -127,10 +139,34 @@ var farmLists = [
                 active: true,
             },
             {
-                id: 40478,
-                name: 'Athena`s village',
+                id: 62443,
+                name: 'Mr.Piet 01',
                 interval: 30,
-                active: false,
+                active: true,
+            },
+            {
+                id: 62444,
+                name: 'Mr.Piet 00',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 62319,
+                name: 'Làng mới',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 62317,
+                name: 'Draktallar`s village',
+                interval: 45,
+                active: true,
+            },
+            {
+                id: 48393,
+                name: 'Ly ly',
+                interval: 45,
+                active: true,
             },
         ],
     },
@@ -138,14 +174,8 @@ var farmLists = [
         id: 1732,
         victims: [
             {
-                id: 51232,
-                name: 'Lalala`s F (-67|-27)',
-                interval: 30,
-                active: true,
-            },
-            {
-                id: 51433,
-                name: '02.Camap (-54|-30)',
+                id: 61858,
+                name: '02Camap (-54|-30)',
                 interval: 30,
                 active: true,
             },
@@ -195,10 +225,6 @@ async function main() {
                 await sleep(5000);
                 sleepTime += 5000;
             }
-            while (victim.lastRaidFromNow() < victim.getInterval()) {
-                await sleep(5000);
-                sleepTime += 5000;
-            }
             victim.select();
             setInterval(() => victim.select(), victim.getInterval() * 60 * 1000);
         })();
@@ -206,3 +232,4 @@ async function main() {
 }
 
 main();
+
