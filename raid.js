@@ -99,7 +99,7 @@ var farmLists = [
             {
                 id: 62034,
                 name: 'Azamat`s village',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
@@ -111,13 +111,13 @@ var farmLists = [
             {
                 id: 61851,
                 name: 'Lalala`s F (-67|-27)',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
                 id: 59457,
                 name: 'Mocho`s village',
-                interval: 15,
+                interval: 10,
                 active: true,
             },
             {
@@ -135,7 +135,7 @@ var farmLists = [
             {
                 id: 43830,
                 name: 'ab1` F',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
@@ -176,19 +176,19 @@ var farmLists = [
             {
                 id: 61858,
                 name: '02Camap (-54|-30)',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
                 id: 51230,
                 name: 'Làng của abcd (-59|-42)',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
                 id: 46845,
                 name: 'Hopeful`s F (-54|-36)',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
         ],
@@ -196,6 +196,7 @@ var farmLists = [
 ];
 
 var victims = farmLists.flatMap((farmList) => farmList.victims);
+
 async function main() {
     for (let i = 0; i < farmLists.length; i++) {
         (async function () {
@@ -232,4 +233,3 @@ async function main() {
 }
 
 main();
-
