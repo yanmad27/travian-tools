@@ -13,9 +13,15 @@ class Victim {
     async select() {
         this.reInit();
         var checkBox = this.victim.querySelector('[class="selection"] input');
+        let count = 0;
         while (!checkBox.checked) {
             checkBox.click();
             await sleep(1000);
+            count++;
+            if (count > 10) {
+                console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ' + `%c${this.getName()}`, 'color: red; font-weight: bold;');
+                return;
+            }
         }
         console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ' + `%c${this.getName()}`, 'color: #5a9a0a; font-weight: bold;');
     }
