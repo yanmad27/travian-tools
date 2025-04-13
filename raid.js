@@ -146,6 +146,12 @@ var farmLists = [
                 active: true,
             },
             {
+                id: 65832,
+                name: 'Dorf von Djimmy98',
+                interval: 10,
+                active: true,
+            },
+            {
                 id: 62443,
                 name: 'Mr.Piet 01',
                 interval: 30,
