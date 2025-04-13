@@ -86,6 +86,13 @@ class FarmList {
         var match = text.match(regex);
         return parseInt(match[1]);
     }
+    hasAtLeastOneActiveVictim() {
+        var victims = document.querySelectorAll(`tbody [data-farm-list-id="${this.id}"]`);
+        for (let i = 0; i < victims.length; i++) {
+            if (victims[i].checked) return true;
+        }
+        return false;
+    }
 }
 
 async function sleep(ms) {
@@ -200,7 +207,7 @@ async function main() {
             await sleep(5000);
             setInterval(async () => {
                 if (farmList.isCollapsed()) farmList.toggleCollapse();
-                if (farmList.getCurrentSelectedVictim() <= farmLists[i].victims.length) farmList.triggerRaid();
+                if (farmList.hasAtLeastOneActiveVictim()) farmList.triggerRaid();
             }, 10000);
         })();
     }
