@@ -12,7 +12,8 @@ class Victim {
     }
     select() {
         this.reInit();
-        this.victim.querySelector('[class="selection"] input').click();
+        var checkBox = this.victim.querySelector('[class="selection"] input');
+        if (!checkBox.checked) checkBox.click();
         console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ' + `%c${this.getName()}`, 'color: #5a9a0a; font-weight: bold;');
     }
     getName() {
