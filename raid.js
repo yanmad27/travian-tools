@@ -179,6 +179,12 @@ var farmLists = [
                 interval: 45,
                 active: true,
             },
+            {
+                id: 66572,
+                name: 'Spartacus',
+                interval: 45,
+                active: true,
+            },
         ],
     },
     {
