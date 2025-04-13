@@ -148,7 +148,7 @@ var farmLists = [
             {
                 id: 65832,
                 name: 'Dorf von Djimmy98',
-                interval: 10,
+                interval: 45,
                 active: true,
             },
             {
