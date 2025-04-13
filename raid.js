@@ -10,10 +10,13 @@ class Victim {
     getInterval() {
         return this.interval;
     }
-    select() {
+    async select() {
         this.reInit();
         var checkBox = this.victim.querySelector('[class="selection"] input');
-        if (!checkBox.checked) checkBox.click();
+        while (!checkBox.checked) {
+            checkBox.click();
+            await sleep(1000);
+        }
         console.log('LOG ~ ' + new Date().toLocaleString() + ' ~ select victim: ' + `%c${this.getName()}`, 'color: #5a9a0a; font-weight: bold;');
     }
     getName() {
@@ -234,8 +237,8 @@ async function main() {
                 await sleep(5000);
                 sleepTime += 5000;
             }
-            victim.select();
-            setInterval(() => victim.select(), victim.getInterval() * 60 * 1000);
+            await victim.select();
+            setInterval(async () => await victim.select(), victim.getInterval() * 60 * 1000);
         })();
     }
 }
