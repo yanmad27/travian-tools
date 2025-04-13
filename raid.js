@@ -151,12 +151,6 @@ var farmLists = [
                 active: true,
             },
             {
-                id: 62319,
-                name: 'Làng mới',
-                interval: 30,
-                active: true,
-            },
-            {
                 id: 62317,
                 name: 'Draktallar`s village',
                 interval: 45,
