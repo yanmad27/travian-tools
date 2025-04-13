@@ -242,7 +242,7 @@ async function main() {
             '',
         );
         (async function () {
-            await sleep(i * 60 * 1000);
+            await sleep(i * 5 * 1000);
             let victim = new Victim(victims[i].id, victims[i].interval);
             let sleepTime = 0;
             while (victim.isRaidding() && sleepTime < victim.getInterval() * 60 * 1000) {
