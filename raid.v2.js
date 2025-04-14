@@ -53,6 +53,7 @@ class Victim {
 
     async select() {
         try {
+            await sleep(Math.floor(Math.random()*5000));
             this.attempts++;
             if (this.attempts >= this.maxAttempts) throw new Error('Max attempts reached');
 
