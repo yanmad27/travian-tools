@@ -65,11 +65,11 @@ class Victim {
             if (!checkBox.checked) {
                 checkBox.click();
 
-                // if (!checkBox.checked && this.attempts < this.maxAttempts) {
-                //     logWarning(`Retrying to select victim ${this.getName()} (${this.attempts}/${this.maxAttempts})`);
-                //     await sleep(10000);
-                //     return await this.select(); // Retry
-                // }
+                if (!checkBox.checked && this.attempts < this.maxAttempts) {
+                    logWarning(`Retrying to select victim ${this.getName()} (${this.attempts}/${this.maxAttempts})`);
+                    await sleep(12345);
+                    return await this.select(); // Retry
+                }
             }
 
             this.attempts = 0;
