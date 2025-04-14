@@ -65,11 +65,11 @@ class Victim {
             if (!checkBox.checked) {
                 checkBox.click();
 
-                if (!checkBox.checked && this.attempts < this.maxAttempts) {
-                    logWarning(`Retrying to select victim ${this.getName()} (${this.attempts}/${this.maxAttempts})`);
-                    await sleep(10000);
-                    return await this.select(); // Retry
-                }
+                // if (!checkBox.checked && this.attempts < this.maxAttempts) {
+                //     logWarning(`Retrying to select victim ${this.getName()} (${this.attempts}/${this.maxAttempts})`);
+                //     await sleep(10000);
+                //     return await this.select(); // Retry
+                // }
             }
 
             this.attempts = 0;
@@ -296,7 +296,7 @@ const farmLists = [
             {
                 id: 55465,
                 name: 'Mei`s F',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
@@ -314,7 +314,7 @@ const farmLists = [
             {
                 id: 55464,
                 name: 'An nghĩa đường',
-                interval: 30,
+                interval: 15,
                 active: true,
             },
             {
@@ -338,13 +338,13 @@ const farmLists = [
             {
                 id: 62443,
                 name: 'Mr.Piet 01',
-                interval: 30,
+                interval: 15,
                 active: true,
             },
             {
                 id: 62444,
                 name: 'Mr.Piet 00',
-                interval: 30,
+                interval: 15,
                 active: true,
             },
             {
