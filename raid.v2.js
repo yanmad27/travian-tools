@@ -3,19 +3,19 @@ function sleep(ms) {
 }
 
 function logError(message) {
-    console.log(`${new Date().toLocaleString()} ~ ${message}`, 'color: red; font-weight: bold;');
+    console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: red; font-weight: bold;');
 }
 
 function logSuccess(message) {
-    console.log(`${new Date().toLocaleString()} ~ ${message}`, 'color: #5a9a0a; font-weight: bold;');
+    console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: bold;');
 }
 
 function logWarning(message) {
-    console.log(`${new Date().toLocaleString()} ~ ${message}`, 'color: orange; font-weight: bold;');
+    console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: orange; font-weight: bold;');
 }
 
 function logInfo(message) {
-    console.log(`${new Date().toLocaleString()} ~ ${message}`, 'color: blue; font-weight: bold;');
+    console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;');
 }
 
 class DOMElementHandler {
@@ -64,19 +64,19 @@ class Victim {
 
             if (!checkBox.checked) {
                 checkBox.click();
-                await sleep(2000);
 
                 if (!checkBox.checked && this.attempts < this.maxAttempts) {
-                    logWarning(`Retrying to select victim %c${this.getName()} (${this.attempts}/${this.maxAttempts})`);
+                    logWarning(`Retrying to select victim ${this.getName()} (${this.attempts}/${this.maxAttempts})`);
+                    await sleep(10000);
                     return await this.select(); // Retry
                 }
             }
 
             this.attempts = 0;
-            logSuccess(`Selected victim %c${this.getName()}`);
+            logSuccess(`Selected victim ${this.getName()}`);
             return true;
         } catch (error) {
-            logError(`Error selecting victim %c${this.getName()}:`, error);
+            logError(`Error selecting victim ${this.getName()}:`, error);
             if (this.attempts >= this.maxAttempts) {
                 this.attempts = 0;
                 this.stop();
@@ -154,7 +154,7 @@ class FarmList {
             const list = this.getListElement();
             list?.querySelector('[class="expandCollapse"]')?.click();
         } catch (error) {
-            logError(`Error toggling farm list %c${this.getName()}:`, error);
+            logError(`Error toggling farm list ${this.getName()}:`, error);
         }
     }
 
@@ -173,7 +173,7 @@ class FarmList {
             list?.querySelector('[class="farmListName"] [class="name"]')?.click();
             list?.querySelector('button')?.click();
         } catch (error) {
-            logError(`Error triggering raid for farm list %c${this.id}-${this.getName()}:`, error);
+            logError(`Error triggering raid for farm list ${this.id}-${this.getName()}:`, error);
         }
     }
 
@@ -251,7 +251,7 @@ class FarmBot {
             // Check farm lists
             this.activeFarmLists.forEach((farmList) => {
                 if (!farmList.baseElement.exists()) {
-                    logWarning(`Farm list %c${farmList.id} element missing, restarting...`);
+                    logWarning(`Farm list ${farmList.id} element missing, restarting...`);
                     farmList.stop();
                     farmList.start();
                 }
@@ -260,7 +260,7 @@ class FarmBot {
             // Check victims
             this.activeVictims.forEach((victim) => {
                 if (!victim.baseElement.exists()) {
-                    logWarning(`Victim %c${victim.id} element missing, restarting...`);
+                    logWarning(`Victim ${victim.id} element missing, restarting...`);
                     victim.stop();
                     victim.start();
                 }
