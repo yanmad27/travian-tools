@@ -53,7 +53,7 @@ class Victim {
 
     async select() {
         try {
-            await sleep(Math.floor(Math.random()*5000));
+            await sleep(Math.floor(Math.random() * 5000));
             this.attempts++;
             if (this.attempts >= this.maxAttempts) throw new Error('Max attempts reached');
 
@@ -245,6 +245,34 @@ class FarmBot {
         this.startHealthCheck();
     }
 
+    async activateVictim(id) {
+        if (this.activeVictims.get(id)) return;
+
+        const victimData = this.victims.find((v) => v.id === id);
+        if (!victimData) return;
+
+        const victim = new Victim(victimData.id, victimData.interval);
+        this.activeVictims.set(victimData.id, victim);
+
+        // Wait if currently raiding
+        let waitTime = 0;
+        while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+            await sleep(5000);
+            waitTime += 5000;
+        }
+
+        await victim.select();
+        victim.start();
+    }
+
+    async deactivateVictim(id) {
+        const victim = this.activeVictims.get(id);
+        if (!victim) return;
+
+        victim.stop();
+        this.activeVictims.delete(id);
+    }
+
     startHealthCheck() {
         this.healthCheckInterval = setInterval(() => {
             logInfo('Running health check...');
@@ -375,7 +403,7 @@ const farmLists = [
                 id: 61858,
                 name: '02Camap',
                 interval: 10,
-                active: true,
+                active: false,
             },
             {
                 id: 51230,
