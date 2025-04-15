@@ -245,14 +245,11 @@ class FarmBot {
         this.startHealthCheck();
     }
 
-    async activateVictim(id) {
+    async activateVictim(id, interval) {
         if (this.activeVictims.get(id)) return;
 
-        const victimData = this.victims.find((v) => v.id === id);
-        if (!victimData) return;
-
-        const victim = new Victim(victimData.id, victimData.interval);
-        this.activeVictims.set(victimData.id, victim);
+        const victim = new Victim(id, interval);
+        this.activeVictims.set(id, victim);
 
         // Wait if currently raiding
         let waitTime = 0;
