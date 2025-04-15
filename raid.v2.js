@@ -386,9 +386,15 @@ const farmLists = [
                 active: true,
             },
             {
-                id: 66572,
-                name: 'Spartacus',
-                interval: 45,
+                id: 69810,
+                name: '.',
+                interval: 30,
+                active: true,
+            },
+            {
+                id: 69807,
+                name: 'A',
+                interval: 30,
                 active: true,
             },
         ],
