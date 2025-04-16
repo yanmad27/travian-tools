@@ -89,10 +89,10 @@ function highlightTroops() {
 
 // Add event listener when the popup loads
 document.addEventListener('DOMContentLoaded', function () {
-    getSumRes();
     const calculateButton = document.getElementById('calculateButton');
     calculateButton.addEventListener('click', getSumRes);
 
+    highlightTroops();
     const highlightTroopsButton = document.getElementById('highlightTroops');
     highlightTroopsButton.addEventListener('click', highlightTroops);
 
