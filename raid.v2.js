@@ -340,7 +340,7 @@ const farmLists = [
             {
                 id: 70221,
                 name: 'Baki',
-                interval: 15,
+                interval: 10,
                 active: true,
             },
             {
@@ -438,5 +438,3 @@ const farmLists = [
 
 const bot = new FarmBot(farmLists);
 bot.initialize();
-
-bot.activateVictim(70233, 10);
