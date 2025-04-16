@@ -2,11 +2,38 @@
 function saveSumToStorage(sum) {
     chrome.storage.local.get(['raidHistory'], function (result) {
         const history = result.raidHistory || [];
-        const newEntry = {
-            sum: sum,
-            timestamp: new Date().toLocaleString(),
-        };
-        history.unshift(newEntry); // Add new entry to beginning of array
+        const now = new Date();
+
+        // Adjust date to consider 6 AM as start of day
+        const adjustedDate = new Date(now);
+        if (now.getHours() < 6) {
+            adjustedDate.setDate(adjustedDate.getDate() - 1);
+        }
+        const today = adjustedDate.toLocaleDateString();
+
+        // Check if there's an entry for today
+        const todayEntryIndex = history.findIndex((entry) => {
+            const entryDate = new Date(entry.timestamp);
+            // Adjust entry date to consider 6 AM as start of day
+            if (entryDate.getHours() < 6) {
+                entryDate.setDate(entryDate.getDate() - 1);
+            }
+            return entryDate.toLocaleDateString() === today;
+        });
+
+        if (todayEntryIndex !== -1) {
+            // Update today's entry
+            history[todayEntryIndex].sum = sum;
+            history[todayEntryIndex].timestamp = now.toLocaleString();
+        } else {
+            // Create new entry for today
+            const newEntry = {
+                sum: sum,
+                timestamp: now.toLocaleString(),
+            };
+            history.unshift(newEntry);
+        }
+
         // Keep only last 10 entries
         const trimmedHistory = history.slice(0, 10);
         chrome.storage.local.set({ raidHistory: trimmedHistory }, function () {
@@ -91,10 +118,11 @@ function highlightTroops() {
 document.addEventListener('DOMContentLoaded', function () {
     const calculateButton = document.getElementById('calculateButton');
     calculateButton.addEventListener('click', getSumRes);
+    getSumRes();
 
-    highlightTroops();
     const highlightTroopsButton = document.getElementById('highlightTroops');
     highlightTroopsButton.addEventListener('click', highlightTroops);
+    highlightTroops();
 
     // Load and display history when popup opens
     chrome.storage.local.get(['raidHistory'], function (result) {

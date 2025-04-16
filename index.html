@@ -42,15 +42,22 @@
                 gap: 10px;
             }
             button {
-                background-color: #007bff;
+                background-color: #60b5ff;
                 color: white;
                 border: none;
-                padding: 10px 20px;
+                padding: 8px;
                 border-radius: 4px;
                 cursor: pointer;
+                transition: background-color 0.3s ease;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 24px;
+                min-width: 24px;
+                gap: 8px;
             }
             button:hover {
-                background-color: #0056b3;
+                background-color: #afddff;
             }
             .history-section {
                 padding: 15px;
@@ -86,13 +93,96 @@
                 <h1>Travian Farm v1.0</h1>
             </div>
             <div class="quick-action">
-                <button id="highlightTroops">Highlight Troops</button>
+                <button id="highlightTroops">
+                    <svg
+                        version="1.1"
+                        id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 512.001 512.001"
+                        xml:space="preserve"
+                        width="18px"
+                        height="18px"
+                        fill="#000000"
+                    >
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                style="fill: #ffffff"
+                                d="M238.55,133.611L82.258,289.901l-8.225,8.227l-24.679,24.677 c31.802,31.8,31.802,83.362,0.001,115.161L0,487.322l98.711,0.001c31.802-31.804,83.363-31.804,115.162,0l24.677-24.68l8.226-8.225 l156.292-156.291L238.55,133.611z"
+                            ></path>
+                            <path
+                                style="fill: #ffffff"
+                                d="M320.809,215.868L49.356,487.322l49.355,0.001c31.802-31.804,83.363-31.804,115.162,0l24.677-24.68 l8.226-8.225l156.292-156.291L320.809,215.868z"
+                            ></path>
+                            <path
+                                style="fill: #88888f"
+                                d="M394.843,306.353l106.936-106.936c13.629-13.628,13.628-35.727,0-49.355L386.616,34.899 c-13.629-13.628-35.727-13.628-49.356,0L230.323,141.835"
+                            ></path>
+                            <g>
+                                <path
+                                    style="fill: #797781"
+                                    d="M501.778,199.417c13.629-13.628,13.628-35.727,0-49.355L444.197,92.48L312.584,224.094 l82.259,82.259L501.778,199.417z"
+                                ></path>
+                                <rect
+                                    x="368.159"
+                                    y="75.439"
+                                    transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 593.5906 513.0825)"
+                                    style="fill: #797781"
+                                    width="69.798"
+                                    height="116.33"
+                                ></rect>
+                            </g>
+                            <rect
+                                x="397.941"
+                                y="87.786"
+                                transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 605.9136 542.8799)"
+                                style="fill: #58575d"
+                                width="34.899"
+                                height="116.33"
+                            ></rect>
+                            <path
+                                style="fill: #88888f"
+                                d="M213.873,487.323l32.903-32.904L82.258,289.901l-32.903,32.904 c26.084,26.082,30.757,65.449,14.054,96.312l54.151,54.151C148.423,456.566,187.791,461.237,213.873,487.323z"
+                            ></path>
+                            <path
+                                style="fill: #797781"
+                                d="M164.517,372.16l-74.033,74.034l27.075,27.074c30.863-16.702,70.232-12.031,96.313,14.055 l32.903-32.904L164.517,372.16z"
+                            ></path>
+                        </g>
+                    </svg>
+                    <span>Highlight Troops</span>
+                </button>
             </div>
 
             <div class="result-section">
                 <h3>Raid Bounty Calculator</h3>
                 <div style="display: flex; align-items: center; gap: 10px">
-                    <button id="calculateButton">Calculate Sum</button>
+                    <button id="calculateButton">
+                        <svg
+                            fill="#ffffff"
+                            version="1.1"
+                            id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            width="18px"
+                            height="18px"
+                            viewBox="0 0 484.21 484.21"
+                            xml:space="preserve"
+                            stroke="#ffffff"
+                        >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <g>
+                                    <path
+                                        d="M395.527,97.043V55.352H124.537l159.46,171.507c9.983,10.749,9.848,27.458-0.319,38.026L126.017,428.861h269.504v-25.18 c0-15.256,12.413-27.668,27.674-27.668c15.256,0,27.681,12.412,27.681,27.668v52.848c0,15.262-12.419,27.681-27.681,27.681H61.014 c-11.106,0-21.107-6.603-25.464-16.834c-4.359-10.226-2.189-22.012,5.509-30.026l184.584-191.964L40.743,46.521 c-7.492-8.068-9.496-19.798-5.101-29.899C40.042,6.525,50.005,0,61.014,0h362.188c15.255,0,27.68,12.413,27.68,27.68v69.363 c0,15.259-12.419,27.677-27.68,27.677C407.94,124.72,395.527,112.308,395.527,97.043z"
+                                    ></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </button>
                     <div id="result"></div>
                 </div>
                 <div class="history-section">
