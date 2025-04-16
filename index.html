@@ -17,6 +17,9 @@
                 padding: 20px;
                 border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
             }
             .header {
                 text-align: center;
@@ -30,10 +33,13 @@
                 border-radius: 4px;
             }
             .result-section {
-                margin-top: 20px;
+                margin-top: 4px;
                 padding: 15px;
                 background-color: #e9ecef;
                 border-radius: 4px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
             }
             button {
                 background-color: #007bff;
@@ -42,13 +48,11 @@
                 padding: 10px 20px;
                 border-radius: 4px;
                 cursor: pointer;
-                margin-top: 10px;
             }
             button:hover {
                 background-color: #0056b3;
             }
             .history-section {
-                margin-top: 20px;
                 padding: 15px;
                 background-color: #f8f9fa;
                 border-radius: 4px;
@@ -70,25 +74,31 @@
                 color: #6c757d;
                 font-size: 0.9em;
             }
+            h1,
+            h3 {
+                margin: 0px;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
-                <h1>Travian Auto v1.0</h1>
+                <h1>Travian Farm v1.0</h1>
             </div>
+            <div class="quick-action">
+                <button id="highlightTroops">Highlight Troops</button>
+            </div>
+
             <div class="result-section">
                 <h3>Raid Bounty Calculator</h3>
                 <div style="display: flex; align-items: center; gap: 10px">
                     <button id="calculateButton">Calculate Sum</button>
                     <div id="result"></div>
                 </div>
-            </div>
-
-            <div class="history-section">
-                <h3>Calculation History</h3>
-                <div id="history">
-                    <p>No history yet</p>
+                <div class="history-section">
+                    <div id="history">
+                        <p>No history yet</p>
+                    </div>
                 </div>
             </div>
         </div>

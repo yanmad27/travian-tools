@@ -60,12 +60,6 @@ function getSumRes() {
                     if (sum > 0) {
                         saveSumToStorage(sum);
                     }
-
-                    // Add the raid to the raid manager
-                    window.raidManager.addRaid({
-                        name: `Raid ${new Date().toLocaleTimeString()}`,
-                        sum: sum,
-                    });
                 },
             );
         });
@@ -75,10 +69,31 @@ function getSumRes() {
     }
 }
 
+function highlightTroops() {
+    try {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.scripting.executeScript({
+                target: { tabId: tabs[0].id },
+                function: function () {
+                    document.querySelectorAll('[class="unit"]').forEach((el) => {
+                        el.style.background = 'green';
+                        el.style.color = 'white';
+                    });
+                },
+            });
+        });
+    } catch (error) {
+        console.error('Error in highlightTroops:', error);
+    }
+}
+
 // Add event listener when the popup loads
 document.addEventListener('DOMContentLoaded', function () {
     const calculateButton = document.getElementById('calculateButton');
     calculateButton.addEventListener('click', getSumRes);
+
+    const highlightTroopsButton = document.getElementById('highlightTroops');
+    highlightTroopsButton.addEventListener('click', highlightTroops);
 
     // Load and display history when popup opens
     chrome.storage.local.get(['raidHistory'], function (result) {
