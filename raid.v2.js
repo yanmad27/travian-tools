@@ -338,6 +338,12 @@ const farmLists = [
                 active: true,
             },
             {
+                id: 70221,
+                name: 'Baki',
+                interval: 15,
+                active: true,
+            },
+            {
                 id: 55464,
                 name: 'An nghĩa đường',
                 interval: 15,
@@ -376,13 +382,19 @@ const farmLists = [
             {
                 id: 62317,
                 name: 'Draktallar`s village',
-                interval: 45,
+                interval: 15,
                 active: true,
             },
             {
                 id: 48393,
                 name: 'Ly ly',
                 interval: 45,
+                active: true,
+            },
+            {
+                id: 70233,
+                name: 'harry83820`s village',
+                interval: 10,
                 active: true,
             },
             {
@@ -426,3 +438,5 @@ const farmLists = [
 
 const bot = new FarmBot(farmLists);
 bot.initialize();
+
+bot.activateVictim(70233, 10);

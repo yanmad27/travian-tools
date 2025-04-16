@@ -48,7 +48,7 @@ function getSumRes() {
                         var res = document.querySelectorAll('[class="averageRaidBounty"] [class="value"]');
                         var sum = 0;
                         res.forEach((cur) => {
-                            const value = cur.innerText.replace(/\.|\u202D|\u202C/g, '');
+                            const value = cur.innerText.replace(/\.|\,|\u202D|\u202C/g, '');
                             sum += Number(value);
                         });
                         return sum;
@@ -57,7 +57,9 @@ function getSumRes() {
                 (results) => {
                     const sum = results[0].result;
                     document.getElementById('result').innerHTML = `Total Sum: ${sum.toLocaleString()}`;
-                    saveSumToStorage(sum);
+                    if (sum > 0) {
+                        saveSumToStorage(sum);
+                    }
 
                     // Add the raid to the raid manager
                     window.raidManager.addRaid({
