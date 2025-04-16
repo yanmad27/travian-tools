@@ -364,7 +364,7 @@ const farmLists = [
             {
                 id: 65832,
                 name: 'Dorf von Djimmy98',
-                interval: 45,
+                interval: 10,
                 active: true,
             },
             {
