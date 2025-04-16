@@ -352,7 +352,7 @@ const farmLists = [
             {
                 id: 62318,
                 name: 'shoes19944116',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
