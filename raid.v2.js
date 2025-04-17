@@ -365,6 +365,12 @@ const farmLists = [
                 active: true,
             },
             {
+                id: 74871,
+                name: 'Victor`s village',
+                interval: 30,
+                active: true,
+            },
+            {
                 id: 43830,
                 name: 'ab1` F',
                 interval: 10,
