@@ -105,6 +105,15 @@ class Victim {
         }
     }
 
+    isError() {
+        try {
+            const victim = this.getVictimElement();
+            return victim?.querySelector('[class="state"]')?.children?.length === 2;
+        } catch {
+            return false;
+        }
+    }
+
     start() {
         this.stop();
         this.intervalId = setInterval(async () => {
@@ -291,7 +300,7 @@ class FarmBot {
                     victim.start();
                 }
             });
-        }, 300000); // Every 5 minutes
+        }, 600000); // Every 10 minutes
     }
 
     stop() {
