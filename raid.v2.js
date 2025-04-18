@@ -367,7 +367,7 @@ const farmLists = [
             {
                 id: 74871,
                 name: 'Victor`s village',
-                interval: 30,
+                interval: 10,
                 active: true,
             },
             {
@@ -416,13 +416,13 @@ const farmLists = [
                 id: 69810,
                 name: '.',
                 interval: 30,
-                active: true,
+                active: false,
             },
             {
                 id: 69807,
                 name: 'A',
                 interval: 30,
-                active: true,
+                active: false,
             },
         ],
     },
