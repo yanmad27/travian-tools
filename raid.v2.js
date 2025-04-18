@@ -240,11 +240,11 @@ class FarmBot {
             this.activeVictims.set(victimData.id, victim);
 
             // Wait if currently raiding
-            let waitTime = 0;
-            while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-                await sleep(5000);
-                waitTime += 5000;
-            }
+            // let waitTime = 0;
+            // while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+            //     await sleep(5000);
+            //     waitTime += 5000;
+            // }
 
             await victim.select();
             victim.start();
@@ -422,7 +422,7 @@ const farmLists = [
                 id: 69807,
                 name: 'A',
                 interval: 30,
-                active: false,
+                active: true,
             },
         ],
     },
