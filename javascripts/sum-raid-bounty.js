@@ -37,7 +37,7 @@ function saveSumToStorage(sum) {
 function updateHistoryDisplay(history) {
 	const historyElement = document.getElementById("history");
 	if (history.length === 0) {
-		historyElement.innerHTML = "<p>No history yet</p>";
+		historyElement.innerHTML = "<p class='no-history'>No history yet</p>";
 		return;
 	}
 
