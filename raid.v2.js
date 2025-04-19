@@ -17,6 +17,7 @@ class DOMElementHandler {
 class Victim {
 	constructor(id, interval) {
 		this.id = id
+		this.name = ''
 		this.interval = interval
 		this.intervalId = null
 		this.attempts = 0
@@ -65,7 +66,8 @@ class Victim {
 	getName() {
 		try {
 			const victim = this.getVictimElement()
-			return victim?.querySelector('[class="target"] a span')?.innerHTML || 'Unknown'
+			this.name = victim?.querySelector('[class="target"] a span')?.innerHTML || 'Unknown'
+			return this.name
 		} catch {
 			return 'Unknown'
 		}
@@ -290,6 +292,12 @@ const farmLists = [
 		id: 1817,
 		victims: [
 			{
+				id: 77022,
+				name: 'Deli`s village',
+				interval: 10,
+				active: true,
+			},
+			{
 				id: 62034,
 				name: 'Azamat`s village',
 				interval: 10,
@@ -314,8 +322,32 @@ const farmLists = [
 				active: true,
 			},
 			{
+				id: 77969,
+				name: 'KOR1 | Kennametal',
+				interval: 10,
+				active: true,
+			},
+			{
 				id: 62318,
 				name: 'shoes19944116',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77828,
+				name: '01.SharkTank',
+				interlval: 60,
+				active: false,
+			},
+			{
+				id: 77952,
+				name: 'GunDummm`s village',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77019,
+				name: 'Athena`s village',
 				interval: 10,
 				active: true,
 			},
@@ -345,13 +377,19 @@ const farmLists = [
 			},
 			{
 				id: 77006,
-				name: 'Vu Thanh',
+				name: 'vuthanh16`s village',
 				interval: 10,
 				active: true,
 			},
 			{
 				id: 48393,
-				name: 'Ly ly',
+				name: 'Lyly 01',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77012,
+				name: '00',
 				interval: 10,
 				active: true,
 			},
@@ -361,6 +399,31 @@ const farmLists = [
 				interval: 10,
 				active: true,
 			},
+			{
+				id: 77024,
+				name: '01. Em ne',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77912,
+				name: '1',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77023,
+				name: 'İNEK',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77016,
+				name: 'Làng của SkyOne',
+				interval: 10,
+				active: true,
+			},
+
 			{
 				id: 69810,
 				name: '.',
