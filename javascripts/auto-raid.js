@@ -162,7 +162,7 @@ function autoRaidImplementation() {
 			try {
 				const list = this.getListElement()
 				list?.querySelector('[class="farmListName"] [class="name"]')?.click()
-				// list?.querySelector('button')?.click()
+				list?.querySelector('button')?.click()
 			} catch (error) {
 				logError(`Error triggering raid for farm list ${this.id}-${this.getName()}:`, error)
 			}
@@ -211,11 +211,11 @@ function autoRaidImplementation() {
 				this.activeVictims.set(victimData.id, victim)
 
 				// Wait if currently raiding
-				// let waitTime = 0;
-				// while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-				//     await sleep(5000);
-				//     waitTime += 5000;
-				// }
+				let waitTime = 0
+				while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+					await sleep(5000)
+					waitTime += 5000
+				}
 
 				await victim.select()
 				victim.start()
@@ -302,12 +302,6 @@ function autoRaidImplementation() {
 				{
 					id: 61851,
 					name: 'Lalala`s F',
-					interval: 10,
-					active: true,
-				},
-				{
-					id: 59457,
-					name: 'Mocho`s village',
 					interval: 10,
 					active: true,
 				},
