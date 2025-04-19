@@ -1,11 +1,11 @@
-const activeVictims = new Map([
+const webVictims = new Map([
 	[
 		77022,
 		{
 			id: 77022,
-			name: '',
+			name: 'Deli`s village',
 			interval: 10,
-			intervalId: null,
+			intervalId: 2835,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -17,9 +17,9 @@ const activeVictims = new Map([
 		62034,
 		{
 			id: 62034,
-			name: '',
+			name: 'Azamat`s village',
 			interval: 10,
-			intervalId: null,
+			intervalId: 4952,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -31,9 +31,9 @@ const activeVictims = new Map([
 		61851,
 		{
 			id: 61851,
-			name: '',
+			name: 'Lalala`s F',
 			interval: 10,
-			intervalId: null,
+			intervalId: 4985,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -45,9 +45,9 @@ const activeVictims = new Map([
 		70221,
 		{
 			id: 70221,
-			name: '',
+			name: 'หมู่บ้านของBAKI',
 			interval: 10,
-			intervalId: null,
+			intervalId: 5029,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -59,9 +59,9 @@ const activeVictims = new Map([
 		55464,
 		{
 			id: 55464,
-			name: '',
+			name: 'An Nghĩa Đường',
 			interval: 15,
-			intervalId: null,
+			intervalId: 6745,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -87,9 +87,9 @@ const activeVictims = new Map([
 		62318,
 		{
 			id: 62318,
-			name: '',
+			name: 'shoes19944116的村莊',
 			interval: 10,
-			intervalId: null,
+			intervalId: 5153,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -115,13 +115,237 @@ const activeVictims = new Map([
 		77019,
 		{
 			id: 77019,
-			name: '',
+			name: 'Athena`s village',
 			interval: 10,
-			intervalId: null,
+			intervalId: 5260,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
 				selector: '[data-slot-id="77019"]',
+			},
+		},
+	],
+	[
+		43830,
+		{
+			id: 43830,
+			name: 'ab1` F',
+			interval: 10,
+			intervalId: 5320,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="43830"]',
+			},
+		},
+	],
+	[
+		65832,
+		{
+			id: 65832,
+			name: 'Dorf von Djimmy98',
+			interval: 10,
+			intervalId: 5338,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="65832"]',
+			},
+		},
+	],
+	[
+		62443,
+		{
+			id: 62443,
+			name: '',
+			interval: 15,
+			intervalId: null,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="62443"]',
+			},
+		},
+	],
+	[
+		62444,
+		{
+			id: 62444,
+			name: '',
+			interval: 15,
+			intervalId: null,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="62444"]',
+			},
+		},
+	],
+	[
+		77006,
+		{
+			id: 77006,
+			name: 'vuthanh16`s village',
+			interval: 10,
+			intervalId: 5442,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77006"]',
+			},
+		},
+	],
+	[
+		48393,
+		{
+			id: 48393,
+			name: 'Lyly 01',
+			interval: 10,
+			intervalId: 5474,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="48393"]',
+			},
+		},
+	],
+	[
+		77012,
+		{
+			id: 77012,
+			name: '00',
+			interval: 10,
+			intervalId: 5510,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77012"]',
+			},
+		},
+	],
+	[
+		70233,
+		{
+			id: 70233,
+			name: 'harry83820`s village',
+			interval: 10,
+			intervalId: 5541,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="70233"]',
+			},
+		},
+	],
+	[
+		77024,
+		{
+			id: 77024,
+			name: '01. Em ne',
+			interval: 10,
+			intervalId: 5570,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77024"]',
+			},
+		},
+	],
+	[
+		77912,
+		{
+			id: 77912,
+			name: '1',
+			interval: 10,
+			intervalId: 757,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77912"]',
+			},
+		},
+	],
+	[
+		77023,
+		{
+			id: 77023,
+			name: 'İNEK',
+			interval: 10,
+			intervalId: 5639,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77023"]',
+			},
+		},
+	],
+	[
+		77016,
+		{
+			id: 77016,
+			name: 'Làng của SkyOne',
+			interval: 10,
+			intervalId: 5668,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77016"]',
+			},
+		},
+	],
+	[
+		69810,
+		{
+			id: 69810,
+			name: '',
+			interval: 30,
+			intervalId: null,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="69810"]',
+			},
+		},
+	],
+	[
+		69807,
+		{
+			id: 69807,
+			name: '',
+			interval: 30,
+			intervalId: null,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="69807"]',
+			},
+		},
+	],
+	[
+		51230,
+		{
+			id: 51230,
+			name: 'Làng của abcd',
+			interval: 10,
+			intervalId: 5779,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="51230"]',
+			},
+		},
+	],
+	[
+		46845,
+		{
+			id: 46845,
+			name: 'Hopeful`s F',
+			interval: 10,
+			intervalId: 5818,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="46845"]',
 			},
 		},
 	],
@@ -130,6 +354,12 @@ const farmLists = [
 	{
 		id: 1817,
 		victims: [
+			{
+				id: 77022,
+				name: 'Deli`s village',
+				interval: 10,
+				active: true,
+			},
 			{
 				id: 62034,
 				name: 'Azamat`s village',
@@ -155,8 +385,32 @@ const farmLists = [
 				active: true,
 			},
 			{
+				id: 77969,
+				name: 'KOR1 | Kennametal',
+				interval: 10,
+				active: true,
+			},
+			{
 				id: 62318,
 				name: 'shoes19944116',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77828,
+				name: '01.SharkTank',
+				interval: 60,
+				active: false,
+			},
+			{
+				id: 77952,
+				name: 'GunDummm`s village',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77019,
+				name: 'Athena`s village',
 				interval: 10,
 				active: true,
 			},
@@ -186,13 +440,19 @@ const farmLists = [
 			},
 			{
 				id: 77006,
-				name: 'Vu Thanh',
+				name: 'vuthanh16`s village',
 				interval: 10,
 				active: true,
 			},
 			{
 				id: 48393,
-				name: 'Ly ly',
+				name: 'Lyly 01',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77012,
+				name: '00',
 				interval: 10,
 				active: true,
 			},
@@ -202,6 +462,31 @@ const farmLists = [
 				interval: 10,
 				active: true,
 			},
+			{
+				id: 77024,
+				name: '01. Em ne',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77912,
+				name: '1',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77023,
+				name: 'İNEK',
+				interval: 10,
+				active: true,
+			},
+			{
+				id: 77016,
+				name: 'Làng của SkyOne',
+				interval: 10,
+				active: true,
+			},
+
 			{
 				id: 69810,
 				name: '.',
@@ -241,23 +526,23 @@ const farmLists = [
 	},
 ]
 
-const victims = farmLists.flatMap((fl) => fl.victims)
+const fileVictims = farmLists.flatMap((fl) => fl.victims)
 
-console.log('ID'.padEnd(5), 'Name'.padEnd(40), 'RealityInterval'.padEnd(15), 'FileInterval'.padEnd(12), 'Valid'.padEnd(2))
-victims.forEach((v) => {
-	const baseInterval = activeVictims?.get(v.id)?.interval || 0
-	console.log(
-		v.id,
-		v.name.padEnd(40),
-		`${v.interval}`.padStart(15),
-		`${baseInterval}`.padStart(12),
-		`${baseInterval === v.interval ? '✅' : '❌'}`.padStart(4),
-	)
+const log = (id, name, web, file) => {
+	console.log(id, name.padEnd(40), `${web}`.padStart(3), `${file}`.padStart(4), `${web === file ? '✅' : '❌'}`.padStart(4))
+}
+
+console.log('ID'.padEnd(5), 'Name'.padEnd(40), 'Web', 'File', 'Valid')
+
+fileVictims.forEach((fileVictim) => {
+	const webInterval = webVictims?.get(fileVictim.id)?.interval || 0
+	log(fileVictim.id, fileVictim.name, webInterval, fileVictim.interval)
 })
 
-activeVictims.forEach((v) => {
-	const victim = victims.find((victim) => victim.id === v.id)
+console.log('Missing in file:')
+webVictims.forEach((webVictim) => {
+	const victim = fileVictims.find((victim) => victim.id === webVictim.id)
 	if (!victim) {
-		console.log(v.id, v.name.padEnd(40), `${v.interval}`.padStart(15), '0'.padStart(12), '❌'.padStart(4))
+		log(webVictim.id, webVictim.name, webVictim.interval, '-')
 	}
 })
