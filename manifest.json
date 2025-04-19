@@ -6,7 +6,7 @@
 	"permissions": ["activeTab", "scripting", "storage"],
 	"action": {
 		"default_popup": "index.html",
-		"default_icon": "image/icon.png"
+		"default_icon": "images/icon.png"
 	},
 	"content_security_policy": {
 		"extension_pages": "script-src 'self'; object-src 'self'"
