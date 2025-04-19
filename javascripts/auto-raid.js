@@ -145,7 +145,7 @@ function autoRaidImplementation() {
 				const list = this.getListElement()
 				list?.querySelector('[class="expandCollapse"]')?.click()
 			} catch (error) {
-				logError(`Error toggling farm list ${this.getName()}:`, error)
+				logError(`Error toggling farm list ${this.getName()}`, error)
 			}
 		}
 
@@ -162,7 +162,7 @@ function autoRaidImplementation() {
 			try {
 				const list = this.getListElement()
 				list?.querySelector('[class="farmListName"] [class="name"]')?.click()
-				list?.querySelector('button')?.click()
+				// list?.querySelector('button')?.click()
 			} catch (error) {
 				logError(`Error triggering raid for farm list ${this.id}-${this.getName()}:`, error)
 			}
@@ -300,12 +300,6 @@ function autoRaidImplementation() {
 					active: true,
 				},
 				{
-					id: 55465,
-					name: 'Mei`s F',
-					interval: 10,
-					active: true,
-				},
-				{
 					id: 61851,
 					name: 'Lalala`s F',
 					interval: 10,
@@ -336,12 +330,6 @@ function autoRaidImplementation() {
 					active: true,
 				},
 				{
-					id: 74871,
-					name: 'Victor`s village',
-					interval: 10,
-					active: true,
-				},
-				{
 					id: 43830,
 					name: 'ab1` F',
 					interval: 10,
@@ -366,12 +354,6 @@ function autoRaidImplementation() {
 					active: true,
 				},
 				{
-					id: 62317,
-					name: 'Draktallar`s village',
-					interval: 15,
-					active: true,
-				},
-				{
 					id: 48393,
 					name: 'Ly ly',
 					interval: 45,
@@ -387,7 +369,7 @@ function autoRaidImplementation() {
 					id: 69810,
 					name: '.',
 					interval: 30,
-					active: false,
+					active: true,
 				},
 				{
 					id: 69807,

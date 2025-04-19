@@ -1,64 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Travian Extension</title>
-        <link rel="stylesheet" href="styles/style.css" />
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h1>Travian Tools</h1>
-            </div>
-            <div class="quick-action">
-                <button id="highlightTroops">
-                    <img src="images/highlight.svg" alt="Highlight Troops" />
-                    <span>Highlight Troops</span>
-                </button>
-                <button id="autoRaid">
-                    <img src="images/auto-raid.svg" alt="Auto Raid" />
-                    <span>Auto Raid</span>
-                </button>
-            </div>
-            <div class="feature-section sum-raid-bounty">
-                <h3>Sum Raid Bounty</h3>
-                <div style="display: flex; align-items: center; gap: 10px">
-                    <button id="calculateButton">
-                        <img src="images/sum.svg" alt="Sum" />
-                    </button>
-                    <div id="result"></div>
-                </div>
-                <div class="histories">
-                    <div id="history">
-                        <p class="no-history">No history yet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="feature-section estimate-production">
-                <h3>Estimate Production</h3>
-                <div style="display: flex; align-items: center; flex-direction: column">
-                    <div class="row">
-                        <div id="report1-datetime">dd.mm.yy, hh:mm:ss</div>
-                        <div id="report1-production">0</div>
-                        <button id="reportButton1">
-                            <img src="images/report.png" alt="Report1" />
-                        </button>
-                    </div>
-                    <div class="row">
-                        <div id="report2-datetime">dd.mm.yy, hh:mm:ss</div>
-                        <div id="report2-production">0</div>
-                        <button id="reportButton2">
-                            <img src="images/report.png" alt="Report2" />
-                        </button>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 4px; font-weight: bold; align-self: baseline">
-                        <span id="report-result">0</span>
-                        <span id="unit">/h</span>
-                    </div>
-                </div>
-            </div>
+  <head>
+    <title>Travian Extension</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Travian Tools</h1>
+      </div>
+      <div class="quick-action">
+        <button id="highlightTroops">
+          <img src="images/highlight.svg" alt="Highlight Troops" />
+          <span>Highlight Troops</span>
+        </button>
+        <button id="autoRaid">
+          <img src="images/farmlist.png" alt="Auto Raid" />
+          <span>Auto Raid</span>
+        </button>
+      </div>
+      <div class="feature-section sum-raid-bounty">
+        <h3>Sum Raid Bounty</h3>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <button id="calculateButton">
+            <img src="images/sum.svg" alt="Sum" />
+          </button>
+          <div id="result"></div>
         </div>
-        <script src="javascripts/sum-raid-bounty.js"></script>
-        <script src="javascripts/estimate-production.js"></script>
-        <script src="javascripts/highlight-troops.js"></script>
-    </body>
+        <div class="histories">
+          <div id="history">
+            <p class="no-history">No history yet</p>
+          </div>
+        </div>
+      </div>
+      <div class="feature-section estimate-production">
+        <h3>Estimate Production</h3>
+        <div style="display: flex; align-items: center; flex-direction: column">
+          <div class="row">
+            <div id="report1-datetime">dd.mm.yy, hh:mm:ss</div>
+            <div id="report1-production">0</div>
+            <button id="reportButton1">
+              <img src="images/report.png" alt="Report1" />
+            </button>
+          </div>
+          <div class="row">
+            <div id="report2-datetime">dd.mm.yy, hh:mm:ss</div>
+            <div id="report2-production">0</div>
+            <button id="reportButton2">
+              <img src="images/report.png" alt="Report2" />
+            </button>
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              font-weight: bold;
+              align-self: baseline;
+            "
+          >
+            <span id="report-result">0</span>
+            <span id="unit">/h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="javascripts/sum-raid-bounty.js"></script>
+    <script src="javascripts/estimate-production.js"></script>
+    <script src="javascripts/highlight-troops.js"></script>
+    <script src="javascripts/auto-raid.js"></script>
+  </body>
 </html>
