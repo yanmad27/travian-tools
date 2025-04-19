@@ -1,38 +1,16 @@
-function sleep(ms) {
-	return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-function logError(message) {
-	console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: red; font-weight: bold;')
-}
-
-function logSuccess(message) {
-	console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: bold;')
-}
-
-function logWarning(message) {
-	console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: orange; font-weight: bold;')
-}
-
-function logInfo(message) {
-	console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;')
-}
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const random = (min, max) => min + Math.floor(Math.random() * max)
+const logInfo = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;')
+const logError = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: red; font-weight: bold;')
+const logSuccess = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: bold;')
+const logWarning = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: orange; font-weight: bold;')
 
 class DOMElementHandler {
 	constructor(selector) {
 		this.selector = selector
-	}
-
-	getElement() {
-		return document.querySelector(this.selector)
-	}
-
-	getFreshElement() {
-		return document.querySelector(this.selector)
-	}
-
-	exists() {
-		return this.getFreshElement() !== null
+		this.getElement = () => document.querySelector(this.selector)
+		this.getFreshElement = () => document.querySelector(this.selector)
+		this.exists = () => this.getFreshElement() !== null
 	}
 }
 
@@ -53,7 +31,7 @@ class Victim {
 
 	async select() {
 		try {
-			await sleep(Math.floor(Math.random() * 5000))
+			await sleep(random(1000, 5000))
 			this.attempts++
 			if (this.attempts >= this.maxAttempts) throw new Error('Max attempts reached')
 
@@ -68,22 +46,19 @@ class Victim {
 
 				if (!checkBox.checked && this.attempts < this.maxAttempts) {
 					logWarning(`Retrying to select victim ${this.getName()} (${this.attempts}/${this.maxAttempts})`)
-					await sleep(12345)
-					return await this.select() // Retry
+					await sleep(random(1000, 5000))
+					return await this.select()
 				}
 			}
 
 			this.attempts = 0
 			logSuccess(`Selected victim ${this.getName()}`)
-			return true
 		} catch (error) {
 			logError(`Error selecting victim ${this.getName()}:`, error)
 			if (this.attempts >= this.maxAttempts) {
 				this.attempts = 0
 				this.stop()
-				this.start()
 			}
-			return false
 		}
 	}
 
@@ -105,7 +80,7 @@ class Victim {
 		}
 	}
 
-	isError() {
+	isNotEnoughTroops() {
 		try {
 			const victim = this.getVictimElement()
 			return victim?.querySelector('[class="state"]')?.children?.length === 2
@@ -167,7 +142,7 @@ class FarmList {
 			const list = this.getListElement()
 			list?.querySelector('[class="expandCollapse"]')?.click()
 		} catch (error) {
-			logError(`Error toggling farm list ${this.getName()}:`, error)
+			logError(`Error toggling farm list ${this.getName()}`, error)
 		}
 	}
 
@@ -193,12 +168,8 @@ class FarmList {
 	start() {
 		this.stop()
 		this.intervalId = setInterval(() => {
-			if (this.isCollapsed()) {
-				this.toggleCollapse()
-			}
-			if (this.hasAtLeastOneActiveVictim()) {
-				this.triggerRaid()
-			}
+			if (this.isCollapsed()) this.toggleCollapse()
+			if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
 		}, 10000)
 	}
 
@@ -221,72 +192,70 @@ class FarmBot {
 
 	initialize() {
 		logInfo('Initializing farm bot...')
-		// Initialize farm lists
 		this.farmLists.forEach(async (farmListData, i) => {
 			await sleep(i * 5000)
 			const farmList = new FarmList(farmListData.id)
 			this.activeFarmLists.set(farmListData.id, farmList)
-
-			if (farmList.isCollapsed()) {
-				farmList.toggleCollapse()
-			}
+			if (farmList.isCollapsed()) farmList.toggleCollapse()
 			await sleep(5000)
 			farmList.start()
 		})
 
-		// Initialize victims
 		this.victims.forEach(async (victimData, i) => {
 			if (!victimData.active) return
-
 			await sleep(i * 5 * 1000)
 			const victim = new Victim(victimData.id, victimData.interval)
 			this.activeVictims.set(victimData.id, victim)
 
 			// Wait if currently raiding
-			// let waitTime = 0;
-			// while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-			//     await sleep(5000);
-			//     waitTime += 5000;
-			// }
+			let waitTime = 0
+			while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+				await sleep(5000)
+				waitTime += 5000
+			}
 
 			await victim.select()
 			victim.start()
 		})
 
-		// Start health check
 		this.startHealthCheck()
 	}
 
 	async activateVictim(id, interval) {
-		if (this.activeVictims.get(id)) return
+		try {
+			const victim = new Victim(id, interval)
+			this.activeVictims.set(id, victim)
 
-		const victim = new Victim(id, interval)
-		this.activeVictims.set(id, victim)
+			let waitTime = 0
+			while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+				await sleep(5000)
+				waitTime += 5000
+			}
 
-		// Wait if currently raiding
-		let waitTime = 0
-		while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-			await sleep(5000)
-			waitTime += 5000
+			logInfo(`Activated victim ${id} ${victim.getName()}`)
+			await victim.select()
+			victim.start()
+		} catch (error) {
+			logError(`Error activating victim ${id}:`, error)
 		}
-
-		await victim.select()
-		victim.start()
 	}
 
 	async deactivateVictim(id) {
-		const victim = this.activeVictims.get(id)
-		if (!victim) return
-
-		victim.stop()
-		this.activeVictims.delete(id)
+		try {
+			const victim = this.activeVictims.get(id)
+			if (!victim) throw new Error('Victim not found')
+			victim.stop()
+			this.activeVictims.delete(id)
+			logInfo(`Deactivated victim ${id} ${victim.getName()}`)
+		} catch (error) {
+			logError(`Error deactivating victim ${id}:`, error)
+		}
 	}
 
 	startHealthCheck() {
 		this.healthCheckInterval = setInterval(() => {
 			logInfo('Running health check...')
 
-			// Check farm lists
 			this.activeFarmLists.forEach((farmList) => {
 				if (!farmList.baseElement.exists()) {
 					logWarning(`Farm list ${farmList.id} element missing, restarting...`)
@@ -295,7 +264,6 @@ class FarmBot {
 				}
 			})
 
-			// Check victims
 			this.activeVictims.forEach((victim) => {
 				if (!victim.baseElement.exists()) {
 					logWarning(`Victim ${victim.id} element missing, restarting...`)
@@ -303,24 +271,20 @@ class FarmBot {
 					victim.start()
 				}
 			})
-		}, 600000) // Every 10 minutes
+		}, 600000)
 	}
 
 	stop() {
-		// Clean up all intervals
 		this.activeFarmLists.forEach((farmList) => farmList.stop())
 		this.activeVictims.forEach((victim) => victim.stop())
 
-		if (this.healthCheckInterval) {
-			clearInterval(this.healthCheckInterval)
-		}
+		if (this.healthCheckInterval) clearInterval(this.healthCheckInterval)
 
 		this.activeFarmLists.clear()
 		this.activeVictims.clear()
 	}
 }
 
-// Usage
 const farmLists = [
 	{
 		id: 1817,
@@ -331,16 +295,9 @@ const farmLists = [
 				interval: 10,
 				active: true,
 			},
-
 			{
 				id: 61851,
 				name: 'Lalala`s F',
-				interval: 10,
-				active: true,
-			},
-			{
-				id: 59457,
-				name: 'Mocho`s village',
 				interval: 10,
 				active: true,
 			},
@@ -362,7 +319,6 @@ const farmLists = [
 				interval: 10,
 				active: true,
 			},
-
 			{
 				id: 43830,
 				name: 'ab1` F',
@@ -388,9 +344,15 @@ const farmLists = [
 				active: true,
 			},
 			{
+				id: 77006,
+				name: 'Vu Thanh',
+				interval: 10,
+				active: true,
+			},
+			{
 				id: 48393,
 				name: 'Ly ly',
-				interval: 45,
+				interval: 10,
 				active: true,
 			},
 			{
@@ -403,7 +365,7 @@ const farmLists = [
 				id: 69810,
 				name: '.',
 				interval: 30,
-				active: false,
+				active: true,
 			},
 			{
 				id: 69807,
