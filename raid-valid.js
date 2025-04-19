@@ -1,10 +1,25 @@
 const activeVictims = new Map([
 	[
+		77022,
+		{
+			id: 77022,
+			name: '',
+			interval: 10,
+			intervalId: null,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77022"]',
+			},
+		},
+	],
+	[
 		62034,
 		{
 			id: 62034,
+			name: '',
 			interval: 10,
-			intervalId: 3953,
+			intervalId: null,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -16,8 +31,9 @@ const activeVictims = new Map([
 		61851,
 		{
 			id: 61851,
+			name: '',
 			interval: 10,
-			intervalId: 3993,
+			intervalId: null,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -29,8 +45,9 @@ const activeVictims = new Map([
 		70221,
 		{
 			id: 70221,
+			name: '',
 			interval: 10,
-			intervalId: 214,
+			intervalId: null,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -42,8 +59,9 @@ const activeVictims = new Map([
 		55464,
 		{
 			id: 55464,
+			name: '',
 			interval: 15,
-			intervalId: 1121,
+			intervalId: null,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -52,11 +70,26 @@ const activeVictims = new Map([
 		},
 	],
 	[
+		77969,
+		{
+			id: 77969,
+			name: 'KOR1 | Kennametal',
+			interval: 10,
+			intervalId: 303,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77969"]',
+			},
+		},
+	],
+	[
 		62318,
 		{
 			id: 62318,
+			name: '',
 			interval: 10,
-			intervalId: 4116,
+			intervalId: null,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -65,158 +98,16 @@ const activeVictims = new Map([
 		},
 	],
 	[
-		43830,
+		77952,
 		{
-			id: 43830,
+			id: 77952,
+			name: 'GunDummm`s village',
 			interval: 10,
-			intervalId: 4126,
+			intervalId: 380,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
-				selector: '[data-slot-id="43830"]',
-			},
-		},
-	],
-	[
-		65832,
-		{
-			id: 65832,
-			interval: 10,
-			intervalId: 4163,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="65832"]',
-			},
-		},
-	],
-	[
-		62443,
-		{
-			id: 62443,
-			interval: 15,
-			intervalId: 5686,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="62443"]',
-			},
-		},
-	],
-	[
-		62444,
-		{
-			id: 62444,
-			interval: 15,
-			intervalId: 5721,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="62444"]',
-			},
-		},
-	],
-	[
-		70233,
-		{
-			id: 70233,
-			interval: 10,
-			intervalId: 4272,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="70233"]',
-			},
-		},
-	],
-	[
-		69810,
-		{
-			id: 69810,
-			interval: 30,
-			intervalId: 9853,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="69810"]',
-			},
-		},
-	],
-	[
-		69807,
-		{
-			id: 69807,
-			interval: 30,
-			intervalId: 9881,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="69807"]',
-			},
-		},
-	],
-	[
-		51230,
-		{
-			id: 51230,
-			interval: 10,
-			intervalId: 4379,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="51230"]',
-			},
-		},
-	],
-	[
-		46845,
-		{
-			id: 46845,
-			interval: 10,
-			intervalId: 4406,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="46845"]',
-			},
-		},
-	],
-	[
-		77006,
-		{
-			id: 77006,
-			interval: 10,
-			intervalId: 5624,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77006"]',
-			},
-		},
-	],
-	[
-		77012,
-		{
-			id: 77012,
-			interval: 10,
-			intervalId: 9655,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77012"]',
-			},
-		},
-	],
-	[
-		77016,
-		{
-			id: 77016,
-			interval: 10,
-			intervalId: 10243,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77016"]',
+				selector: '[data-slot-id="77952"]',
 			},
 		},
 	],
@@ -224,64 +115,13 @@ const activeVictims = new Map([
 		77019,
 		{
 			id: 77019,
+			name: '',
 			interval: 10,
-			intervalId: 10853,
+			intervalId: null,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
 				selector: '[data-slot-id="77019"]',
-			},
-		},
-	],
-	[
-		77022,
-		{
-			id: 77022,
-			interval: 10,
-			intervalId: 11104,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77022"]',
-			},
-		},
-	],
-	[
-		77023,
-		{
-			id: 77023,
-			interval: 10,
-			intervalId: 12038,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77023"]',
-			},
-		},
-	],
-	[
-		77024,
-		{
-			id: 77024,
-			interval: 10,
-			intervalId: 12415,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77024"]',
-			},
-		},
-	],
-	[
-		48393,
-		{
-			id: 48393,
-			interval: 10,
-			intervalId: 64641,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="48393"]',
 			},
 		},
 	],
@@ -403,14 +243,21 @@ const farmLists = [
 
 const victims = farmLists.flatMap((fl) => fl.victims)
 
+console.log('ID'.padEnd(5), 'Name'.padEnd(40), 'RealityInterval'.padEnd(15), 'FileInterval'.padEnd(12), 'Valid'.padEnd(2))
 victims.forEach((v) => {
 	const baseInterval = activeVictims?.get(v.id)?.interval || 0
-	console.log(v.id, v.name.padEnd(40), `${v.interval}`.padStart(2), `${baseInterval}`.padStart(2), `${baseInterval === v.interval ? '✅' : '❌'}`)
+	console.log(
+		v.id,
+		v.name.padEnd(40),
+		`${v.interval}`.padStart(15),
+		`${baseInterval}`.padStart(12),
+		`${baseInterval === v.interval ? '✅' : '❌'}`.padStart(4),
+	)
 })
 
 activeVictims.forEach((v) => {
 	const victim = victims.find((victim) => victim.id === v.id)
 	if (!victim) {
-		console.log(v.id, v.interval, '❌')
+		console.log(v.id, v.name.padEnd(40), `${v.interval}`.padStart(15), '0'.padStart(12), '❌'.padStart(4))
 	}
 })
