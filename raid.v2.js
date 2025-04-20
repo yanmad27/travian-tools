@@ -336,7 +336,7 @@ const farmLists = [
 			{
 				id: 77828,
 				name: '01.SharkTank',
-				interlval: 60,
+				interval: 60,
 				active: false,
 			},
 			{
@@ -427,13 +427,13 @@ const farmLists = [
 			{
 				id: 69810,
 				name: '.',
-				interval: 30,
+				interval: 10,
 				active: true,
 			},
 			{
 				id: 69807,
 				name: 'A',
-				interval: 30,
+				interval: 10,
 				active: true,
 			},
 		],

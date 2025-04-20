@@ -157,9 +157,9 @@ const webVictims = new Map([
 		62443,
 		{
 			id: 62443,
-			name: '',
+			name: 'Mr.Piet 01',
 			interval: 15,
-			intervalId: null,
+			intervalId: 6936,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -171,9 +171,9 @@ const webVictims = new Map([
 		62444,
 		{
 			id: 62444,
-			name: '',
+			name: 'Mr.Piet 00',
 			interval: 15,
-			intervalId: null,
+			intervalId: 6961,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -252,20 +252,6 @@ const webVictims = new Map([
 		},
 	],
 	[
-		77912,
-		{
-			id: 77912,
-			name: '1',
-			interval: 10,
-			intervalId: 757,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77912"]',
-			},
-		},
-	],
-	[
 		77023,
 		{
 			id: 77023,
@@ -294,34 +280,6 @@ const webVictims = new Map([
 		},
 	],
 	[
-		69810,
-		{
-			id: 69810,
-			name: '',
-			interval: 30,
-			intervalId: null,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="69810"]',
-			},
-		},
-	],
-	[
-		69807,
-		{
-			id: 69807,
-			name: '',
-			interval: 30,
-			intervalId: null,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="69807"]',
-			},
-		},
-	],
-	[
 		51230,
 		{
 			id: 51230,
@@ -346,6 +304,62 @@ const webVictims = new Map([
 			maxAttempts: 5,
 			baseElement: {
 				selector: '[data-slot-id="46845"]',
+			},
+		},
+	],
+	[
+		69807,
+		{
+			id: 69807,
+			name: 'A',
+			interval: 10,
+			intervalId: 145924,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="69807"]',
+			},
+		},
+	],
+	[
+		69810,
+		{
+			id: 69810,
+			name: '.',
+			interval: 10,
+			intervalId: 146204,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="69810"]',
+			},
+		},
+	],
+	[
+		77912,
+		{
+			id: 77912,
+			name: '1',
+			interval: 10,
+			intervalId: 190364,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="77912"]',
+			},
+		},
+	],
+	[
+		61858,
+		{
+			id: 61858,
+			name: '02.Camap',
+			interval: 10,
+			intervalId: 235182,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="61858"]',
 			},
 		},
 	],
@@ -399,7 +413,7 @@ const farmLists = [
 			{
 				id: 77828,
 				name: '01.SharkTank',
-				interval: 60,
+				interlval: 60,
 				active: false,
 			},
 			{
