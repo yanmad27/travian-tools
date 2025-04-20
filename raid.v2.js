@@ -295,7 +295,7 @@ const farmLists = [
 			{ id: 62034, interval: 10, active: true, name: 'Azamat`s village' },
 			{ id: 61851, interval: 10, active: true, name: 'Lalala`s F' },
 			{ id: 70221, interval: 10, active: true, name: 'Baki' },
-			{ id: 55464, interval: 15, active: true, name: 'An nghĩa đường' },
+			{ id: 55464, interval: 10, active: true, name: 'An nghĩa đường' },
 			{ id: 77969, interval: 10, active: true, name: 'KOR1 | Kennametal' },
 			{ id: 62318, interval: 10, active: true, name: 'shoes19944116' },
 			{ id: 77952, interval: 10, active: true, name: 'GunDummm`s village' },
