@@ -363,6 +363,20 @@ const webVictims = new Map([
 			},
 		},
 	],
+	[
+		62081,
+		{
+			id: 62081,
+			name: '01.Caheo',
+			interval: 10,
+			intervalId: 251428,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="62081"]',
+			},
+		},
+	],
 ])
 const farmLists = [
 	{
