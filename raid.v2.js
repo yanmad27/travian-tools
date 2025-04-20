@@ -334,12 +334,6 @@ const farmLists = [
 				active: true,
 			},
 			{
-				id: 77828,
-				name: '01.SharkTank',
-				interval: 60,
-				active: false,
-			},
-			{
 				id: 77952,
 				name: 'GunDummm`s village',
 				interval: 10,
@@ -350,6 +344,12 @@ const farmLists = [
 				name: 'Athena`s village',
 				interval: 10,
 				active: true,
+			},
+			{
+				id: 78863,
+				name: 'New village',
+				interval: 10,
+				active: false,
 			},
 			{
 				id: 43830,
@@ -379,6 +379,7 @@ const farmLists = [
 				id: 62081,
 				name: '01.Caheo',
 				interval: 10,
+				active: true,
 			},
 			{
 				id: 77006,
@@ -435,6 +436,7 @@ const farmLists = [
 				interval: 10,
 				active: true,
 			},
+			{ id: 78862, name: 'TEA', interval: 10, active: false },
 			{
 				id: 69807,
 				name: 'A',
@@ -450,7 +452,7 @@ const farmLists = [
 				id: 61858,
 				name: '02Camap',
 				interval: 10,
-				active: false,
+				active: true,
 			},
 			{
 				id: 51230,
