@@ -110,8 +110,9 @@ class Victim {
 }
 
 class FarmList {
-	constructor(id) {
+	constructor(id, interval) {
 		this.id = id
+		this.interval = interval
 		this.intervalId = null
 		this.baseElement = new DOMElementHandler(`[data-list="${id}"]`)
 	}
@@ -169,10 +170,13 @@ class FarmList {
 
 	start() {
 		this.stop()
-		this.intervalId = setInterval(() => {
-			if (this.isCollapsed()) this.toggleCollapse()
-			if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
-		}, 10000)
+		this.intervalId = setInterval(
+			() => {
+				if (this.isCollapsed()) this.toggleCollapse()
+				if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
+			},
+			this.interval * 60 * 1000,
+		)
 	}
 
 	stop() {
@@ -196,7 +200,7 @@ class FarmBot {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
 			await sleep(i * 5000)
-			const farmList = new FarmList(farmListData.id)
+			const farmList = new FarmList(farmListData.id, 15)
 			this.activeFarmLists.set(farmListData.id, farmList)
 			if (farmList.isCollapsed()) farmList.toggleCollapse()
 			await sleep(5000)
@@ -298,7 +302,7 @@ const farmLists = [
 			{ id: 55464, interval: 10, active: true, name: 'An nghĩa đường' },
 			{ id: 77969, interval: 10, active: true, name: 'KOR1 | Kennametal' },
 			{ id: 62318, interval: 10, active: true, name: 'shoes19944116' },
-			{ id: 79225, interval: 10, active: false, name: '01.SharkTank' },
+			{ id: 79225, interval: 10, active: true, name: '01.SharkTank' },
 			{ id: 77952, interval: 10, active: true, name: 'GunDummm`s village' },
 			{ id: 77019, interval: 10, active: true, name: 'Athena`s village' },
 			{ id: 78863, interval: 10, active: true, name: 'New village' },
@@ -329,6 +333,10 @@ const farmLists = [
 			{ id: 51230, interval: 10, active: true, name: 'Làng của abcd' },
 			{ id: 46845, interval: 10, active: true, name: 'Hopeful`s F' },
 		],
+	},
+	{
+		id: 2291,
+		victims: [],
 	},
 ]
 
