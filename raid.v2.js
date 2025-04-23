@@ -323,6 +323,7 @@ const farmLists = [
 			{ id: 77016, interval: 10, active: true, name: 'Làng của SkyOne' },
 			{ id: 69810, interval: 10, active: true, name: '.' },
 			{ id: 78862, interval: 10, active: true, name: 'TEA' },
+			{ id: 80220, interval: 10, active: true, name: 'Desa binbin' },
 			{ id: 69807, interval: 10, active: true, name: 'A' },
 		],
 	},
