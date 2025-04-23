@@ -170,13 +170,10 @@ class FarmList {
 
 	start() {
 		this.stop()
-		this.intervalId = setInterval(
-			() => {
-				if (this.isCollapsed()) this.toggleCollapse()
-				if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
-			},
-			this.interval * 60 * 1000,
-		)
+		this.intervalId = setInterval(() => {
+			if (this.isCollapsed()) this.toggleCollapse()
+			if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
+		}, this.interval * 1000)
 	}
 
 	stop() {
