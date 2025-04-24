@@ -292,11 +292,6 @@ const farmLists = [
 	{
 		id: 1817,
 		victims: [
-			{ id: 77022, interval: 10, active: true, name: 'Deli`s village' },
-			{ id: 62034, interval: 10, active: true, name: 'Azamat`s village' },
-			{ id: 61851, interval: 10, active: true, name: 'Lalala`s F' },
-			{ id: 70221, interval: 10, active: true, name: 'Baki' },
-			{ id: 55464, interval: 10, active: true, name: 'An nghĩa đường' },
 			{ id: 77969, interval: 10, active: true, name: 'KOR1 | Kennametal' },
 			{ id: 62318, interval: 10, active: true, name: 'shoes19944116' },
 			{ id: 79225, interval: 10, active: true, name: '01.SharkTank' },
@@ -314,11 +309,14 @@ const farmLists = [
 			{ id: 80219, interval: 10, active: true, name: 'ngentod' },
 			{ id: 77012, interval: 10, active: true, name: '00' },
 			{ id: 70233, interval: 10, active: true, name: 'harry83820`s village' },
+			{ id: 87903, interval: 10, active: true, name: 'Ruacon`s village' },
 			{ id: 77024, interval: 10, active: true, name: '01. Em ne' },
 			{ id: 77912, interval: 10, active: true, name: '1' },
 			{ id: 77023, interval: 10, active: true, name: 'İNEK' },
+			{ id: 87892, interval: 10, active: true, name: 'Eragon' },
 			{ id: 77016, interval: 10, active: true, name: 'Làng của SkyOne' },
 			{ id: 69810, interval: 10, active: true, name: '.' },
+			{ id: 87899, interval: 10, active: true, name: 'Centras' },
 			{ id: 78862, interval: 10, active: true, name: 'TEA' },
 			{ id: 80220, interval: 10, active: true, name: 'Desa binbin' },
 			{ id: 69807, interval: 10, active: true, name: 'A' },
@@ -334,7 +332,14 @@ const farmLists = [
 	},
 	{
 		id: 2291,
-		victims: [],
+		victims: [
+			{ id: 87914, interval: 10, active: true, name: 'Deli`s village' },
+			{ id: 87915, interval: 10, active: true, name: 'Azamat`s village' },
+			{ id: 87916, interval: 10, active: true, name: 'Lalala`s F' },
+			{ id: 87918, interval: 10, active: true, name: 'An nghĩa đường' },
+			{ id: 87917, interval: 10, active: true, name: 'Baki' },
+			{ id: 80221, interval: 10, active: true, name: '123' },
+		],
 	},
 ]
 
