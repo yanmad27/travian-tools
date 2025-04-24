@@ -1,3 +1,33 @@
+const style = document.createElement('style')
+document.head.appendChild(style)
+
+style.sheet.insertRule(
+	`
+ #rallyPointFarmList {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 129px;
+    left: 0;
+    background: #f4efe4;
+    z-index: 10000000000000000;
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+`,
+	style.sheet.cssRules.length,
+)
+
+style.sheet.insertRule(
+	`
+  .villageWrapper  {
+    margin: 0 !important;
+  }
+`,
+	style.sheet.cssRules.length,
+)
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
 const logInfo = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;')
@@ -211,11 +241,11 @@ class FarmBot {
 			this.activeVictims.set(victimData.id, victim)
 
 			// Wait if currently raiding
-			// let waitTime = 0
-			// while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-			// 	await sleep(5000)
-			// 	waitTime += 5000
-			// }
+			let waitTime = 0
+			while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+				await sleep(5000)
+				waitTime += 5000
+			}
 
 			await victim.select()
 			victim.start()
