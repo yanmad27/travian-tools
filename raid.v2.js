@@ -7,7 +7,7 @@ style.sheet.insertRule(
     width: 100vw;
     height: 100vh;
     position: fixed;
-    top: 129px;
+    top: 0;
     left: 0;
     background: #f4efe4;
     z-index: 10000000000000000;
@@ -28,6 +28,14 @@ style.sheet.insertRule(
 	style.sheet.cssRules.length,
 )
 
+style.sheet.insertRule(
+	`
+  #topBar, #topBarHeroWrapper  {
+    display: none !important;
+  }
+`,
+	style.sheet.cssRules.length,
+)
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
 const logInfo = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;')
@@ -223,7 +231,7 @@ class FarmBot {
 		this.healthCheckInterval = null
 	}
 
-	initialize() {
+	initialize(isWaiting = false) {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
 			await sleep(i * 5000)
@@ -241,11 +249,13 @@ class FarmBot {
 			this.activeVictims.set(victimData.id, victim)
 
 			// Wait if currently raiding
-			// let waitTime = 0
-			// while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-			// 	await sleep(5000)
-			// 	waitTime += 5000
-			// }
+			if (isWaiting) {
+				let waitTime = 0
+				while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+					await sleep(5000)
+					waitTime += 5000
+				}
+			}
 
 			await victim.select()
 			victim.start()
@@ -254,15 +264,17 @@ class FarmBot {
 		this.startHealthCheck()
 	}
 
-	async activateVictim(id, interval) {
+	async activateVictim(id, interval, isWaiting = false) {
 		try {
 			const victim = new Victim(id, interval)
 			this.activeVictims.set(id, victim)
 
-			let waitTime = 0
-			while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-				await sleep(5000)
-				waitTime += 5000
+			if (isWaiting) {
+				let waitTime = 0
+				while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
+					await sleep(5000)
+					waitTime += 5000
+				}
 			}
 
 			logInfo(`Activated victim ${id} ${victim.getName()}`)
@@ -370,6 +382,7 @@ const farmLists = [
 			{ id: 87917, interval: 10, active: true, name: 'Baki' },
 			{ id: 80221, interval: 10, active: true, name: '123' },
 			{ id: 89961, interval: 10, active: true, name: 'Suri`s village' },
+			{ id: 90253, interval: 10, active: true, name: '3алупа' },
 		],
 	},
 ]
