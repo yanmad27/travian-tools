@@ -382,7 +382,8 @@ const farmLists = [
 			{ id: 87917, interval: 10, active: true, name: 'Baki' },
 			{ id: 80221, interval: 10, active: true, name: '123' },
 			{ id: 89961, interval: 10, active: true, name: 'Suri`s village' },
-			{ id: 90253, interval: 10, active: true, name: '3алупа' },
+			{ id: 90253, interval: 10, active: true, name: '3anyna' },
+			{ id: 91725, interval: 10, active: true, name: 'Lim Han Byul' },
 		],
 	},
 ]
