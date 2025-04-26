@@ -264,7 +264,7 @@ class FarmBot {
 		this.startHealthCheck()
 	}
 
-	async activateVictim(id, interval, isWaiting = false) {
+	async activateVictim(id, interval = 10, isWaiting = false) {
 		try {
 			const victim = new Victim(id, interval)
 			this.activeVictims.set(id, victim)
@@ -359,6 +359,8 @@ const farmLists = [
 			{ id: 78862, interval: 10, active: true, name: 'TEA' },
 			{ id: 80220, interval: 10, active: true, name: 'Desa binbin' },
 			{ id: 69807, interval: 10, active: true, name: 'A' },
+			{ id: 92376, interval: 10, active: true, name: '01 - Galadriel' },
+			{ id: 80226, interval: 10, active: true, name: '32' },
 		],
 	},
 	{
