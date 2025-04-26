@@ -336,11 +336,9 @@ const farmLists = [
 		victims: [
 			{ id: 77969, interval: 10, active: true, name: 'KOR1 | Kennametal' },
 			{ id: 62318, interval: 10, active: true, name: 'shoes19944116' },
-			{ id: 79225, interval: 10, active: true, name: '01.SharkTank' },
 			{ id: 77952, interval: 10, active: true, name: 'GunDummm`s village' },
 			{ id: 77019, interval: 10, active: true, name: 'Athena`s village' },
 			{ id: 78863, interval: 10, active: true, name: 'New village' },
-			{ id: 81112, interval: 10, active: true, name: '02.SharkTank' },
 			{ id: 43830, interval: 10, active: true, name: 'ab1` F' },
 			{ id: 65832, interval: 10, active: true, name: 'Dorf von Djimmy98' },
 			{ id: 62443, interval: 10, active: true, name: 'Mr.Piet 01' },
