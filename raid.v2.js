@@ -343,7 +343,6 @@ const farmLists = [
 			{ id: 65832, interval: 10, active: true, name: 'Dorf von Djimmy98' },
 			{ id: 62443, interval: 10, active: true, name: 'Mr.Piet 01' },
 			{ id: 62444, interval: 10, active: true, name: 'Mr.Piet 00' },
-			{ id: 62081, interval: 10, active: true, name: '01.Caheo' },
 			{ id: 77006, interval: 10, active: true, name: 'vuthanh16`s village' },
 			{ id: 48393, interval: 10, active: true, name: 'Lyly 01' },
 			{ id: 80219, interval: 10, active: true, name: 'ngentod' },
@@ -363,14 +362,6 @@ const farmLists = [
 		],
 	},
 	{
-		id: 1732,
-		victims: [
-			{ id: 61858, interval: 10, active: true, name: '02Camap' },
-			{ id: 51230, interval: 10, active: true, name: 'Làng của abcd' },
-			{ id: 46845, interval: 10, active: true, name: 'Hopeful`s F' },
-		],
-	},
-	{
 		id: 2291,
 		victims: [
 			{ id: 87914, interval: 10, active: true, name: 'Deli`s village' },
@@ -380,8 +371,11 @@ const farmLists = [
 			{ id: 87918, interval: 10, active: true, name: 'An nghĩa đường' },
 			{ id: 87917, interval: 10, active: true, name: 'Baki' },
 			{ id: 80221, interval: 10, active: true, name: '123' },
+			{ id: 92374, interval: 10, active: true, name: 'Làng của abcd' },
 			{ id: 89961, interval: 10, active: true, name: 'Suri`s village' },
-			{ id: 90253, interval: 10, active: true, name: '3anyna' },
+			{ id: 91958, interval: 10, active: false, name: '❤⚽❤' },
+			{ id: 92367, interval: 10, active: true, name: 'Стол' },
+			{ id: 90253, interval: 10, active: true, name: '3алупа' },
 			{ id: 91725, interval: 10, active: true, name: 'Lim Han Byul' },
 		],
 	},
