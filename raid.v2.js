@@ -376,6 +376,7 @@ const farmLists = [
 		id: 2291,
 		victims: [
 			{ id: 87914, interval: 10, active: true, name: 'Deli`s village' },
+			{ id: 91945, interval: 10, active: true, name: 'EazyJJ' },
 			{ id: 87915, interval: 10, active: true, name: 'Azamat`s village' },
 			{ id: 87916, interval: 10, active: true, name: 'Lalala`s F' },
 			{ id: 87918, interval: 10, active: true, name: 'An nghĩa đường' },
