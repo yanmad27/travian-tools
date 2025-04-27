@@ -375,7 +375,7 @@ const farmLists = [
 			{ id: 80221, interval: 10, active: true, name: '123' },
 			{ id: 92374, interval: 10, active: true, name: 'Làng của abcd' },
 			{ id: 89961, interval: 10, active: true, name: 'Suri`s village' },
-			{ id: 91958, interval: 10, active: false, name: '❤⚽❤' },
+			{ id: 91958, interval: 10, active: true, name: '❤⚽❤' },
 			{ id: 92367, interval: 10, active: true, name: 'Стол' },
 			{ id: 90253, interval: 10, active: true, name: '3алупа' },
 			{ id: 91725, interval: 10, active: true, name: 'Lim Han Byul' },
@@ -385,3 +385,7 @@ const farmLists = [
 
 const bot = new FarmBot(farmLists)
 bot.initialize()
+bot.activateVictim(93755,90)
+bot.activateVictim(93770,90)
+bot.activateVictim(93787,90)
+bot.activateVictim(93033,90)
