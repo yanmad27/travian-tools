@@ -337,18 +337,24 @@ const farmLists = [
 			{ id: 77969, interval: 10, active: true, name: 'KOR1 | Kennametal' },
 			{ id: 62318, interval: 10, active: true, name: 'shoes19944116' },
 			{ id: 77019, interval: 10, active: true, name: 'Athena`s village' },
+			{ id: 95559, interval: 30, active: true, name: '01' },
 			{ id: 78863, interval: 10, active: true, name: 'New village' },
 			{ id: 43830, interval: 10, active: true, name: 'ab1` F' },
 			{ id: 65832, interval: 10, active: true, name: 'Dorf von Djimmy98' },
 			{ id: 62443, interval: 10, active: true, name: 'Mr.Piet 01' },
 			{ id: 62444, interval: 10, active: true, name: 'Mr.Piet 00' },
 			{ id: 77006, interval: 10, active: true, name: 'vuthanh16`s village' },
+			{ id: 96619, interval: 30, active: true, name: 'Occupied oasis (-42|-5)' },
+			{ id: 93755, interval: 30, active: true, name: 'Occupied oasis (-51|7)' },
+			{ id: 96620, interval: 30, active: true, name: 'Occupied oasis (-43|-3)' },
 			{ id: 48393, interval: 10, active: true, name: 'Lyly 01' },
 			{ id: 80219, interval: 10, active: true, name: 'ngentod' },
 			{ id: 77012, interval: 10, active: true, name: '00' },
 			{ id: 70233, interval: 10, active: true, name: 'harry83820`s village' },
 			{ id: 87903, interval: 10, active: true, name: 'Ruacon`s village' },
+			{ id: 97026, interval: 30, active: true, name: 'Occupied oasis (-58|-78)' },
 			{ id: 77024, interval: 10, active: true, name: '01. Em ne' },
+			{ id: 97025, interval: 30, active: true, name: 'Occupied oasis (-56|-84)' },
 			{ id: 77912, interval: 10, active: true, name: '1' },
 			{ id: 77023, interval: 10, active: true, name: 'İNEK' },
 			{ id: 87892, interval: 10, active: true, name: 'Eragon' },
@@ -375,9 +381,14 @@ const farmLists = [
 			{ id: 92374, interval: 10, active: true, name: 'Làng của abcd' },
 			{ id: 89961, interval: 10, active: true, name: 'Suri`s village' },
 			{ id: 91958, interval: 10, active: true, name: '❤⚽❤' },
+			{ id: 96621, interval: 30, active: true, name: 'Occupied oasis (-51|6)' },
+			{ id: 93033, interval: 30, active: true, name: 'Occupied oasis (-35|-6)' },
+			{ id: 97081, interval: 30, active: true, name: 'Occupied oasis (-59|-80)' },
+			{ id: 93770, interval: 30, active: true, name: 'Occupied oasis (-39|-67)' },
 			{ id: 92367, interval: 10, active: true, name: 'Стол' },
 			{ id: 90253, interval: 10, active: true, name: '3алупа' },
 			{ id: 91725, interval: 10, active: true, name: 'Lim Han Byul' },
+			{ id: 97082, interval: 10, active: true, name: '00' },
 			{ id: 93022, interval: 10, active: true, name: 'Shin Yong Jae' },
 		],
 	},
@@ -385,7 +396,3 @@ const farmLists = [
 
 const bot = new FarmBot(farmLists)
 bot.initialize()
-bot.activateVictim(93755,90)
-bot.activateVictim(93770,90)
-bot.activateVictim(93787,90)
-bot.activateVictim(93033,90)
