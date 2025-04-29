@@ -105,7 +105,12 @@ class Victim {
 		try {
 			const victim = this.getVictimElement()
 			this.name = victim?.querySelector('[class="target"] a span')?.innerHTML || 'Unknown'
-			return this.name
+			if (this.name.includes('coordinate')) {
+				const coordX = victim.querySelector('[class="target"] [class="coordinateX"]').innerHTML
+				const coordY = victim.querySelector('[class="target"] [class="coordinateY"]').innerHTML
+				this.name = `Oasis ${coordX}|${coordY}`
+			}
+			return this.name || 'Unknown'
 		} catch {
 			return 'Unknown'
 		}
@@ -334,26 +339,20 @@ const farmLists = [
 	{
 		id: 1817,
 		victims: [
-			{ id: 77969, interval: 10, active: true, name: 'KOR1 | Kennametal' },
-			{ id: 62318, interval: 10, active: true, name: 'shoes19944116' },
-			{ id: 77019, interval: 10, active: true, name: 'Athena`s village' },
-			{ id: 95559, interval: 30, active: true, name: '01' },
-			{ id: 78863, interval: 10, active: true, name: 'New village' },
-			{ id: 43830, interval: 10, active: true, name: 'ab1` F' },
-			{ id: 65832, interval: 10, active: true, name: 'Dorf von Djimmy98' },
+			{ id: 95559, interval: 10, active: true, name: '01' },
 			{ id: 62443, interval: 10, active: true, name: 'Mr.Piet 01' },
 			{ id: 62444, interval: 10, active: true, name: 'Mr.Piet 00' },
 			{ id: 77006, interval: 10, active: true, name: 'vuthanh16`s village' },
-			{ id: 96619, interval: 30, active: true, name: 'Occupied oasis (-42|-5)' },
-			{ id: 93755, interval: 30, active: true, name: 'Occupied oasis (-51|7)' },
-			{ id: 96620, interval: 30, active: true, name: 'Occupied oasis (-43|-3)' },
+			{ id: 96619, interval: 10, active: true, name: 'Oasis (‭−‭42‬‬|‭−‭5‬‬)' },
+			{ id: 93755, interval: 10, active: true, name: 'Oasis (‭−‭51‬‬|‭7‬)' },
+			{ id: 96620, interval: 10, active: true, name: 'Oasis (‭−‭43‬‬|‭−‭3‬‬)' },
 			{ id: 48393, interval: 10, active: true, name: 'Lyly 01' },
 			{ id: 80219, interval: 10, active: true, name: 'ngentod' },
 			{ id: 77012, interval: 10, active: true, name: '00' },
 			{ id: 70233, interval: 10, active: true, name: 'harry83820`s village' },
 			{ id: 87903, interval: 10, active: true, name: 'Ruacon`s village' },
+			{ id: 97871, interval: 10, active: true, name: '02' },
 			{ id: 77024, interval: 10, active: true, name: '01. Em ne' },
-			{ id: 97025, interval: 30, active: true, name: 'Occupied oasis (-56|-84)' },
 			{ id: 77912, interval: 10, active: true, name: '1' },
 			{ id: 77023, interval: 10, active: true, name: 'İNEK' },
 			{ id: 87892, interval: 10, active: true, name: 'Eragon' },
@@ -370,18 +369,24 @@ const farmLists = [
 		id: 2291,
 		victims: [
 			{ id: 87914, interval: 10, active: true, name: 'Deli`s village' },
-			{ id: 91945, interval: 10, active: true, name: 'EazyJJ' },
+			{ id: 91945, interval: 10, active: true, name: 'EazyJJ的村莊' },
 			{ id: 87915, interval: 10, active: true, name: 'Azamat`s village' },
 			{ id: 87916, interval: 10, active: true, name: 'Lalala`s F' },
-			{ id: 87918, interval: 10, active: true, name: 'An nghĩa đường' },
-			{ id: 87917, interval: 10, active: true, name: 'Baki' },
+			{ id: 87918, interval: 10, active: true, name: 'An Nghĩa Đường' },
+			{ id: 87917, interval: 10, active: true, name: 'หมู่บ้านของBAKI' },
 			{ id: 80221, interval: 10, active: true, name: '123' },
+			{ id: 99371, interval: 10, active: true, name: 'KOR1 | Kennametal' },
+			{ id: 99372, interval: 10, active: true, name: 'shoes19944116的村莊' },
 			{ id: 92374, interval: 10, active: true, name: 'Làng của abcd' },
 			{ id: 89961, interval: 10, active: true, name: 'Suri`s village' },
-			{ id: 96621, interval: 30, active: true, name: 'Occupied oasis (-51|6)' },
-			{ id: 93033, interval: 30, active: true, name: 'Occupied oasis (-35|-6)' },
-			{ id: 97081, interval: 30, active: true, name: 'Occupied oasis (-59|-80)' },
-			{ id: 93770, interval: 30, active: false, name: 'Occupied oasis (-39|-67)' },
+			{ id: 99373, interval: 10, active: true, name: 'Athena`s village' },
+			{ id: 99374, interval: 10, active: true, name: 'New village' },
+			{ id: 99376, interval: 10, active: true, name: 'Dorf von Djimmy98' },
+			{ id: 99375, interval: 10, active: true, name: 'ab1` F' },
+			{ id: 99370, interval: 10, active: true, name: 'Badwolf`s village' },
+			{ id: 96621, interval: 10, active: true, name: 'Oasis (‭−‭51‬‬|‭6‬)' },
+			{ id: 93033, interval: 10, active: true, name: 'Oasis (‭−‭35‬‬|‭−‭6‬‬)' },
+			{ id: 97081, interval: 10, active: true, name: 'Oasis (‭−‭59‬‬|‭−‭80‬‬)' },
 			{ id: 92367, interval: 10, active: true, name: 'Стол' },
 			{ id: 90253, interval: 10, active: true, name: '3алупа' },
 			{ id: 91725, interval: 10, active: true, name: 'Lim Han Byul' },
