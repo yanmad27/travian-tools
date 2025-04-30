@@ -230,7 +230,7 @@ class FarmList {
 class FarmBot {
 	constructor(farmLists) {
 		this.farmLists = farmLists
-		this.victims = farmLists.flatMap((fl) => fl.victims)
+		this.victims = farmLists.filter((fl) => fl.active).flatMap((fl) => fl.victims)
 		this.activeFarmLists = new Map()
 		this.activeVictims = new Map()
 		this.healthCheckInterval = null
@@ -338,6 +338,7 @@ class FarmBot {
 const farmLists = [
 	{
 		id: 1817,
+		active: false,
 		victims: [
 			{ id: 95559, interval: 10, active: true, name: '01' },
 			{ id: 62443, interval: 10, active: true, name: 'Mr.Piet 01' },
@@ -367,6 +368,7 @@ const farmLists = [
 	},
 	{
 		id: 2291,
+		active: true,
 		victims: [
 			{ id: 87914, interval: 10, active: true, name: 'Deli`s village' },
 			{ id: 91945, interval: 10, active: true, name: 'EazyJJ的村莊' },
