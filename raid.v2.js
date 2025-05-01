@@ -364,6 +364,7 @@ const farmLists = [
 			{ _no: 21, active: true, id: 69807, interval: 10, name: 'A' },
 			{ _no: 22, active: true, id: 92376, interval: 10, name: '01 - Galadriel' },
 			{ _no: 23, active: true, id: 80226, interval: 10, name: '32' },
+			{ _no: 24, active: true, id: 103136, interval: 10, name: 'Oasis (−43|64)' },
 		],
 	},
 	{
