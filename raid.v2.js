@@ -337,8 +337,8 @@ class FarmBot {
 
 const farmLists = [
 	{
+		_id: 1817,
 		active: true,
-		id: 1817,
 		victims: [
 			{ _no: 1, active: true, id: 62443, interval: 10, name: 'Mr.Piet 01' },
 			{ _no: 2, active: true, id: 62444, interval: 10, name: 'Mr.Piet 00' },
@@ -366,8 +366,8 @@ const farmLists = [
 		],
 	},
 	{
+		_id: 2291,
 		active: true,
-		id: 2291,
 		victims: [
 			{ _no: 1, active: true, id: 87914, interval: 10, name: 'Deli`s village' },
 			{ _no: 2, active: true, id: 91945, interval: 10, name: 'EazyJJ的村莊' },
@@ -396,7 +396,7 @@ const farmLists = [
 			{ _no: 25, active: true, id: 93022, interval: 10, name: 'Shin Yong Jae' },
 		],
 	},
-	{ active: true, id: 2541, victims: [] },
+	{ _id: 2541, active: true, victims: [] },
 ]
 
 const bot = new FarmBot(farmLists)
