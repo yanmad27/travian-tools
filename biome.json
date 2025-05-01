@@ -5,11 +5,14 @@
 		"clientKind": "git",
 		"useIgnoreFile": false
 	},
-	"files": { "ignoreUnknown": false, "ignore": [] },
+	"files": {
+		"ignoreUnknown": false,
+		"ignore": ["./raid.sync.js"]
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-		"lineWidth": 150
+		"lineWidth": 320
 	},
 	"organizeImports": { "enabled": true },
 	"linter": {
@@ -24,7 +27,7 @@
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
-			"lineWidth": 150,
+			"lineWidth": 320,
 			"arrowParentheses": "always",
 			"bracketSpacing": true,
 			"indentStyle": "tab",

@@ -1,4 +1,5 @@
-var farmlist = document.querySelector('#rallyPointFarmList > div:nth-child(1) > div.dropContainer > div > div.slotsWrapper.formV2 > table > tbody')
+var id = 2291
+var farmlist = document.querySelector(`[data-list="${id}"]`).parentElement.parentElement.querySelector('tbody')
 
 var farms = []
 farmlist.childNodes.forEach((child, index) => {
@@ -11,9 +12,8 @@ farmlist.childNodes.forEach((child, index) => {
 			'|' +
 			child.querySelector('[class="target"] [class="coordinateY"]').innerHTML 
 	}
-	console.log(x, y)
 	var item = {
-    no:index+1
+    no:index+1,
 		id: Number(child.querySelector('[class="selection"] input').getAttribute('data-slot-id')),
 		interval: 10,
 		active: true,

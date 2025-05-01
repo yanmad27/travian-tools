@@ -1,22 +1,22 @@
 {
-  "name": "travian-tools",
-  "version": "1.0.0",
-  "description": "",
-  "main": "popup.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yanmad27/travian-tools.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yanmad27/travian-tools/issues"
-  },
-  "homepage": "https://github.com/yanmad27/travian-tools#readme",
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
-  }
+	"name": "travian-tools",
+	"version": "1.0.0",
+	"description": "",
+	"main": "popup.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/yanmad27/travian-tools.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/yanmad27/travian-tools/issues"
+	},
+	"homepage": "https://github.com/yanmad27/travian-tools#readme",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4"
+	}
 }
