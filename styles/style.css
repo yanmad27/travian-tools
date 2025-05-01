@@ -40,6 +40,14 @@ button {
 button:hover {
 	background-color: #afddff;
 }
+button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+button img {
+	width: 18px;
+	height: 18px;
+}
 h1,
 h3 {
 	margin: 0px;
