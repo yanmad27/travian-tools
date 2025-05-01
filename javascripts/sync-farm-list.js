@@ -37,7 +37,8 @@ function syncFarmList() {
 						const farmList = []
 						for (const id of farmListIds) {
 							farmList.push({
-								_id: id,
+								_no: farmList.length + 1,
+								id: id,
 								active: true,
 								victims: getVictims(id),
 							})
