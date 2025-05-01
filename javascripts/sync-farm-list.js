@@ -20,6 +20,7 @@ function syncFarmList() {
 								let name = child.querySelector('[class="target"] span').innerHTML
 								if (name.includes('coordinate')) {
 									name = `Oasis ${child.querySelector('[class="target"] [class="coordinateX"]').innerHTML}|${child.querySelector('[class="target"] [class="coordinateY"]').innerHTML}`
+									name = name.replace(/\.|\,|\u202D|\u202C/g, '')
 								}
 								const item = {
 									_no: index + 1,

@@ -1,95 +1,11 @@
 const webVictims = new Map([
 	[
-		77969,
-		{
-			id: 77969,
-			name: 'KOR1 | Kennametal',
-			interval: 10,
-			intervalId: 174,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77969"]',
-			},
-		},
-	],
-	[
-		62318,
-		{
-			id: 62318,
-			name: 'shoes19944116的村莊',
-			interval: 10,
-			intervalId: 216,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="62318"]',
-			},
-		},
-	],
-	[
-		77019,
-		{
-			id: 77019,
-			name: 'Athena`s village',
-			interval: 10,
-			intervalId: 257,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="77019"]',
-			},
-		},
-	],
-	[
-		78863,
-		{
-			id: 78863,
-			name: 'New village',
-			interval: 10,
-			intervalId: 334,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="78863"]',
-			},
-		},
-	],
-	[
-		43830,
-		{
-			id: 43830,
-			name: 'ab1` F',
-			interval: 10,
-			intervalId: 361,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="43830"]',
-			},
-		},
-	],
-	[
-		65832,
-		{
-			id: 65832,
-			name: 'Dorf von Djimmy98',
-			interval: 10,
-			intervalId: 394,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="65832"]',
-			},
-		},
-	],
-	[
 		62443,
 		{
 			id: 62443,
 			name: 'Mr.Piet 01',
 			interval: 10,
-			intervalId: 429,
+			intervalId: 285,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -103,7 +19,7 @@ const webVictims = new Map([
 			id: 62444,
 			name: 'Mr.Piet 00',
 			interval: 10,
-			intervalId: 437,
+			intervalId: 306,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -117,7 +33,7 @@ const webVictims = new Map([
 			id: 77006,
 			name: 'vuthanh16`s village',
 			interval: 10,
-			intervalId: 487,
+			intervalId: 331,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -129,9 +45,9 @@ const webVictims = new Map([
 		96619,
 		{
 			id: 96619,
-			name: '<span class="coordinateX">(‭−‭42‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭−‭5‬‬)</span>',
-			interval: 30,
-			intervalId: 532,
+			name: 'Oasis (‭−‭42‬‬|‭−‭5‬‬)',
+			interval: 10,
+			intervalId: 366,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -143,9 +59,9 @@ const webVictims = new Map([
 		93755,
 		{
 			id: 93755,
-			name: '<span class="coordinateX">(‭−‭51‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭7‬)</span>',
-			interval: 30,
-			intervalId: 543,
+			name: 'Oasis (‭−‭51‬‬|‭7‬)',
+			interval: 10,
+			intervalId: 381,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -157,9 +73,9 @@ const webVictims = new Map([
 		96620,
 		{
 			id: 96620,
-			name: '<span class="coordinateX">(‭−‭43‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭−‭3‬‬)</span>',
-			interval: 30,
-			intervalId: 597,
+			name: 'Oasis (‭−‭43‬‬|‭−‭3‬‬)',
+			interval: 10,
+			intervalId: 399,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -173,7 +89,7 @@ const webVictims = new Map([
 			id: 48393,
 			name: 'Lyly 01',
 			interval: 10,
-			intervalId: 618,
+			intervalId: 438,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -187,7 +103,7 @@ const webVictims = new Map([
 			id: 80219,
 			name: 'ngentod',
 			interval: 10,
-			intervalId: 654,
+			intervalId: 470,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -201,7 +117,7 @@ const webVictims = new Map([
 			id: 77012,
 			name: '00',
 			interval: 10,
-			intervalId: 690,
+			intervalId: 494,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -215,7 +131,7 @@ const webVictims = new Map([
 			id: 70233,
 			name: 'harry83820`s village',
 			interval: 10,
-			intervalId: 729,
+			intervalId: 541,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -229,7 +145,7 @@ const webVictims = new Map([
 			id: 87903,
 			name: 'Ruacon`s village',
 			interval: 10,
-			intervalId: 782,
+			intervalId: 558,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -238,16 +154,16 @@ const webVictims = new Map([
 		},
 	],
 	[
-		97026,
+		97871,
 		{
-			id: 97026,
-			name: '<span class="coordinateX">(‭−‭58‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭−‭78‬‬)</span>',
-			interval: 30,
-			intervalId: 804,
+			id: 97871,
+			name: '02',
+			interval: 10,
+			intervalId: 601,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
-				selector: '[data-slot-id="97026"]',
+				selector: '[data-slot-id="97871"]',
 			},
 		},
 	],
@@ -257,25 +173,11 @@ const webVictims = new Map([
 			id: 77024,
 			name: '01. Em ne',
 			interval: 10,
-			intervalId: 826,
+			intervalId: 623,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
 				selector: '[data-slot-id="77024"]',
-			},
-		},
-	],
-	[
-		97025,
-		{
-			id: 97025,
-			name: '<span class="coordinateX">(‭−‭56‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭−‭84‬‬)</span>',
-			interval: 30,
-			intervalId: 877,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="97025"]',
 			},
 		},
 	],
@@ -285,7 +187,7 @@ const webVictims = new Map([
 			id: 77912,
 			name: '1',
 			interval: 10,
-			intervalId: 892,
+			intervalId: 663,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -299,7 +201,7 @@ const webVictims = new Map([
 			id: 77023,
 			name: 'İNEK',
 			interval: 10,
-			intervalId: 953,
+			intervalId: 666,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -313,7 +215,7 @@ const webVictims = new Map([
 			id: 87892,
 			name: 'Eragon',
 			interval: 10,
-			intervalId: 984,
+			intervalId: 696,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -327,7 +229,7 @@ const webVictims = new Map([
 			id: 77016,
 			name: 'Làng của SkyOne',
 			interval: 10,
-			intervalId: 1004,
+			intervalId: 745,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -341,7 +243,7 @@ const webVictims = new Map([
 			id: 69810,
 			name: '.',
 			interval: 10,
-			intervalId: 1063,
+			intervalId: 777,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -355,7 +257,7 @@ const webVictims = new Map([
 			id: 87899,
 			name: 'Centras',
 			interval: 10,
-			intervalId: 1088,
+			intervalId: 798,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -369,25 +271,11 @@ const webVictims = new Map([
 			id: 78862,
 			name: 'TEA',
 			interval: 10,
-			intervalId: 1106,
+			intervalId: 817,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
 				selector: '[data-slot-id="78862"]',
-			},
-		},
-	],
-	[
-		80220,
-		{
-			id: 80220,
-			name: 'Desa binbin',
-			interval: 10,
-			intervalId: 1151,
-			attempts: 0,
-			maxAttempts: 5,
-			baseElement: {
-				selector: '[data-slot-id="80220"]',
 			},
 		},
 	],
@@ -397,7 +285,7 @@ const webVictims = new Map([
 			id: 69807,
 			name: 'A',
 			interval: 10,
-			intervalId: 1186,
+			intervalId: 852,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -411,7 +299,7 @@ const webVictims = new Map([
 			id: 92376,
 			name: '01 - Galadriel',
 			interval: 10,
-			intervalId: 1233,
+			intervalId: 873,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -425,7 +313,7 @@ const webVictims = new Map([
 			id: 80226,
 			name: '32',
 			interval: 10,
-			intervalId: 1241,
+			intervalId: 924,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -439,7 +327,7 @@ const webVictims = new Map([
 			id: 87914,
 			name: 'Deli`s village',
 			interval: 10,
-			intervalId: 1289,
+			intervalId: 944,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -453,7 +341,7 @@ const webVictims = new Map([
 			id: 91945,
 			name: 'EazyJJ的村莊',
 			interval: 10,
-			intervalId: 1320,
+			intervalId: 992,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -467,7 +355,7 @@ const webVictims = new Map([
 			id: 87915,
 			name: 'Azamat`s village',
 			interval: 10,
-			intervalId: 1358,
+			intervalId: 1008,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -481,7 +369,7 @@ const webVictims = new Map([
 			id: 87916,
 			name: 'Lalala`s F',
 			interval: 10,
-			intervalId: 1406,
+			intervalId: 1041,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -495,7 +383,7 @@ const webVictims = new Map([
 			id: 87918,
 			name: 'An Nghĩa Đường',
 			interval: 10,
-			intervalId: 1430,
+			intervalId: 1081,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -509,7 +397,7 @@ const webVictims = new Map([
 			id: 87917,
 			name: 'หมู่บ้านของBAKI',
 			interval: 10,
-			intervalId: 1459,
+			intervalId: 1115,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -523,11 +411,39 @@ const webVictims = new Map([
 			id: 80221,
 			name: '123',
 			interval: 10,
-			intervalId: 1501,
+			intervalId: 1141,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
 				selector: '[data-slot-id="80221"]',
+			},
+		},
+	],
+	[
+		99371,
+		{
+			id: 99371,
+			name: 'KOR1 | Kennametal',
+			interval: 10,
+			intervalId: 1153,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="99371"]',
+			},
+		},
+	],
+	[
+		99372,
+		{
+			id: 99372,
+			name: 'shoes19944116的村莊',
+			interval: 10,
+			intervalId: 1176,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="99372"]',
 			},
 		},
 	],
@@ -537,7 +453,7 @@ const webVictims = new Map([
 			id: 92374,
 			name: 'Làng của abcd',
 			interval: 10,
-			intervalId: 1507,
+			intervalId: 1207,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -551,7 +467,7 @@ const webVictims = new Map([
 			id: 89961,
 			name: 'Suri`s village',
 			interval: 10,
-			intervalId: 1553,
+			intervalId: 1231,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -560,12 +476,82 @@ const webVictims = new Map([
 		},
 	],
 	[
+		99373,
+		{
+			id: 99373,
+			name: 'Athena`s village',
+			interval: 10,
+			intervalId: 1276,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="99373"]',
+			},
+		},
+	],
+	[
+		99374,
+		{
+			id: 99374,
+			name: 'New village',
+			interval: 10,
+			intervalId: 1293,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="99374"]',
+			},
+		},
+	],
+	[
+		99376,
+		{
+			id: 99376,
+			name: 'Dorf von Djimmy98',
+			interval: 10,
+			intervalId: 1329,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="99376"]',
+			},
+		},
+	],
+	[
+		99375,
+		{
+			id: 99375,
+			name: 'ab1` F',
+			interval: 10,
+			intervalId: 1346,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="99375"]',
+			},
+		},
+	],
+	[
+		99370,
+		{
+			id: 99370,
+			name: 'Badwolf`s village',
+			interval: 10,
+			intervalId: 1384,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="99370"]',
+			},
+		},
+	],
+	[
 		96621,
 		{
 			id: 96621,
-			name: '<span class="coordinateX">(‭−‭51‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭6‬)</span>',
-			interval: 30,
-			intervalId: 1613,
+			name: 'Oasis (‭−‭51‬‬|‭6‬)',
+			interval: 10,
+			intervalId: 1418,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -577,9 +563,9 @@ const webVictims = new Map([
 		93033,
 		{
 			id: 93033,
-			name: '<span class="coordinateX">(‭−‭35‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭−‭6‬‬)</span>',
-			interval: 30,
-			intervalId: 1650,
+			name: 'Oasis (‭−‭35‬‬|‭−‭6‬‬)',
+			interval: 10,
+			intervalId: 1446,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -591,9 +577,9 @@ const webVictims = new Map([
 		97081,
 		{
 			id: 97081,
-			name: '<span class="coordinateX">(‭−‭59‬‬</span><span class="coordinatePipe">|</span><span class="coordinateY">‭−‭80‬‬)</span>',
-			interval: 30,
-			intervalId: 1701,
+			name: 'Oasis (‭−‭59‬‬|‭−‭80‬‬)',
+			interval: 10,
+			intervalId: 1467,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -607,7 +593,7 @@ const webVictims = new Map([
 			id: 92367,
 			name: 'Стол',
 			interval: 10,
-			intervalId: 1771,
+			intervalId: 1485,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -621,7 +607,7 @@ const webVictims = new Map([
 			id: 90253,
 			name: '3алупа',
 			interval: 10,
-			intervalId: 1798,
+			intervalId: 1524,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -635,7 +621,7 @@ const webVictims = new Map([
 			id: 91725,
 			name: 'Lim Han Byul',
 			interval: 10,
-			intervalId: 1832,
+			intervalId: 1576,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -649,7 +635,7 @@ const webVictims = new Map([
 			id: 93022,
 			name: 'Shin Yong Jae',
 			interval: 10,
-			intervalId: 1900,
+			intervalId: 1634,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
@@ -658,95 +644,120 @@ const webVictims = new Map([
 		},
 	],
 	[
-		97082,
+		101908,
 		{
-			id: 97082,
-			name: '00',
-			interval: 60,
-			intervalId: 95677,
+			id: 101908,
+			name: '01',
+			interval: 10,
+			intervalId: 271309,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
-				selector: '[data-slot-id="97082"]',
+				selector: '[data-slot-id="101908"]',
 			},
 		},
 	],
 	[
-		95559,
+		101541,
 		{
-			id: 95559,
-			name: '01',
-			interval: 60,
-			intervalId: 96300,
+			id: 101541,
+			name: 'Buffalo',
+			interval: 30,
+			intervalId: 342411,
 			attempts: 0,
 			maxAttempts: 5,
 			baseElement: {
-				selector: '[data-slot-id="95559"]',
+				selector: '[data-slot-id="101541"]',
+			},
+		},
+	],
+	[
+		102050,
+		{
+			id: 102050,
+			name: '03',
+			interval: 10,
+			intervalId: 355183,
+			attempts: 0,
+			maxAttempts: 5,
+			baseElement: {
+				selector: '[data-slot-id="102050"]',
 			},
 		},
 	],
 ])
 const farmLists = [
 	{
-		id: 1817,
+		_id: 1817,
+		active: true,
 		victims: [
-			{ no: 1, id: 62443, interval: 10, active: true, name: 'Mr.Piet 01' },
-			{ no: 2, id: 62444, interval: 10, active: true, name: 'Mr.Piet 00' },
-			{ no: 3, id: 77006, interval: 10, active: true, name: 'vuthanh16`s village' },
-			{ no: 4, id: 96619, interval: 10, active: true, name: 'Oasis (‭−‭42‬‬|‭−‭5‬‬)' },
-			{ no: 5, id: 93755, interval: 10, active: true, name: 'Oasis (‭−‭51‬‬|‭7‬)' },
-			{ no: 6, id: 96620, interval: 10, active: true, name: 'Oasis (‭−‭43‬‬|‭−‭3‬‬)' },
-			{ no: 7, id: 48393, interval: 10, active: true, name: 'Lyly 01' },
-			{ no: 8, id: 80219, interval: 10, active: true, name: 'ngentod' },
-			{ no: 9, id: 77012, interval: 10, active: true, name: '00' },
-			{ no: 10, id: 70233, interval: 10, active: true, name: 'harry83820`s village' },
-			{ no: 11, id: 87903, interval: 10, active: true, name: 'Ruacon`s village' },
-			{ no: 12, id: 97871, interval: 10, active: true, name: '02' },
-			{ no: 13, id: 77024, interval: 10, active: true, name: '01. Em ne' },
-			{ no: 14, id: 77912, interval: 10, active: true, name: '1' },
-			{ no: 15, id: 77023, interval: 10, active: true, name: 'İNEK' },
-			{ no: 16, id: 87892, interval: 10, active: true, name: 'Eragon' },
-			{ no: 17, id: 77016, interval: 10, active: true, name: 'Làng của SkyOne' },
-			{ no: 18, id: 69810, interval: 10, active: true, name: '.' },
-			{ no: 19, id: 87899, interval: 10, active: true, name: 'Centras' },
-			{ no: 20, id: 78862, interval: 10, active: true, name: 'TEA' },
-			{ no: 21, id: 69807, interval: 10, active: true, name: 'A' },
-			{ no: 22, id: 92376, interval: 10, active: true, name: '01 - Galadriel' },
-			{ no: 23, id: 80226, interval: 10, active: true, name: '32' },
+			{ _no: 1, active: true, id: 102050, interval: 10, name: '03' },
+			{ _no: 2, active: true, id: 62443, interval: 10, name: 'Mr.Piet 01' },
+			{ _no: 3, active: true, id: 62444, interval: 10, name: 'Mr.Piet 00' },
+			{ _no: 4, active: true, id: 77006, interval: 10, name: 'vuthanh16`s village' },
+			{ _no: 5, active: true, id: 96619, interval: 10, name: 'Oasis (−42|−5)' },
+			{ _no: 6, active: true, id: 93755, interval: 10, name: 'Oasis (−51|7)' },
+			{ _no: 7, active: true, id: 96620, interval: 10, name: 'Oasis (−43|−3)' },
+			{ _no: 8, active: true, id: 48393, interval: 10, name: 'Lyly 01' },
+			{ _no: 9, active: true, id: 80219, interval: 10, name: 'ngentod' },
+			{ _no: 10, active: true, id: 77012, interval: 10, name: '00' },
+			{ _no: 11, active: true, id: 70233, interval: 10, name: 'harry83820`s village' },
+			{ _no: 12, active: true, id: 87903, interval: 10, name: 'Ruacon`s village' },
+			{ _no: 13, active: true, id: 97871, interval: 10, name: '02' },
+			{ _no: 14, active: true, id: 77024, interval: 10, name: '01. Em ne' },
+			{ _no: 15, active: true, id: 77912, interval: 10, name: '1' },
+			{ _no: 16, active: true, id: 77023, interval: 10, name: 'İNEK' },
+			{ _no: 17, active: true, id: 87892, interval: 10, name: 'Eragon' },
+			{ _no: 18, active: true, id: 77016, interval: 10, name: 'Làng của SkyOne' },
+			{ _no: 19, active: true, id: 69810, interval: 10, name: '.' },
+			{ _no: 20, active: true, id: 87899, interval: 10, name: 'Centras' },
+			{ _no: 21, active: true, id: 78862, interval: 10, name: 'TEA' },
+			{ _no: 22, active: true, id: 69807, interval: 10, name: 'A' },
+			{ _no: 23, active: true, id: 92376, interval: 10, name: '01 - Galadriel' },
+			{ _no: 24, active: true, id: 80226, interval: 10, name: '32' },
 		],
 	},
 	{
-		id: 2291,
+		_id: 2291,
+		active: true,
 		victims: [
-			{ id: 87914, interval: 10, active: true, name: 'Deli`s village' },
-			{ id: 91945, interval: 10, active: true, name: 'EazyJJ' },
-			{ id: 87915, interval: 10, active: true, name: 'Azamat`s village' },
-			{ id: 87916, interval: 10, active: true, name: 'Lalala`s F' },
-			{ id: 87918, interval: 10, active: true, name: 'An nghĩa đường' },
-			{ id: 87917, interval: 10, active: true, name: 'Baki' },
-			{ id: 80221, interval: 10, active: true, name: '123' },
-			{ id: 92374, interval: 10, active: true, name: 'Làng của abcd' },
-			{ id: 89961, interval: 10, active: true, name: 'Suri`s village' },
-			{ id: 96621, interval: 30, active: true, name: 'Occupied oasis (-51|6)' },
-			{ id: 93033, interval: 30, active: true, name: 'Occupied oasis (-35|-6)' },
-			{ id: 97081, interval: 30, active: true, name: 'Occupied oasis (-59|-80)' },
-			{ id: 93770, interval: 30, active: false, name: 'Occupied oasis (-39|-67)' },
-			{ id: 92367, interval: 10, active: true, name: 'Стол' },
-			{ id: 90253, interval: 10, active: true, name: '3алупа' },
-			{ id: 91725, interval: 10, active: true, name: 'Lim Han Byul' },
-			{ id: 97082, interval: 10, active: true, name: '00' },
-			{ id: 93022, interval: 10, active: true, name: 'Shin Yong Jae' },
+			{ _no: 1, active: true, id: 87914, interval: 10, name: 'Deli`s village' },
+			{ _no: 2, active: true, id: 91945, interval: 10, name: 'EazyJJ的村莊' },
+			{ _no: 3, active: true, id: 87915, interval: 10, name: 'Azamat`s village' },
+			{ _no: 4, active: true, id: 87916, interval: 10, name: 'Lalala`s F' },
+			{ _no: 5, active: true, id: 87918, interval: 10, name: 'An Nghĩa Đường' },
+			{ _no: 6, active: true, id: 87917, interval: 10, name: 'หมู่บ้านของBAKI' },
+			{ _no: 7, active: true, id: 80221, interval: 10, name: '123' },
+			{ _no: 8, active: true, id: 99371, interval: 10, name: 'KOR1 | Kennametal' },
+			{ _no: 9, active: true, id: 99372, interval: 10, name: 'shoes19944116的村莊' },
+			{ _no: 10, active: true, id: 92374, interval: 10, name: 'Làng của abcd' },
+			{ _no: 11, active: true, id: 89961, interval: 10, name: 'Suri`s village' },
+			{ _no: 12, active: true, id: 99373, interval: 10, name: 'Athena`s village' },
+			{ _no: 13, active: true, id: 101908, interval: 10, name: '01' },
+			{ _no: 14, active: true, id: 99374, interval: 10, name: 'New village' },
+			{ _no: 15, active: true, id: 99376, interval: 10, name: 'Dorf von Djimmy98' },
+			{ _no: 16, active: true, id: 99375, interval: 10, name: 'ab1` F' },
+			{ _no: 17, active: true, id: 99370, interval: 10, name: 'Badwolf`s village' },
+			{ _no: 18, active: true, id: 96621, interval: 10, name: 'Oasis (−51|6)' },
+			{ _no: 19, active: true, id: 93033, interval: 10, name: 'Oasis (−35|−6)' },
+			{ _no: 20, active: true, id: 101541, interval: 10, name: 'Buffalo' },
+			{ _no: 21, active: true, id: 97081, interval: 10, name: 'Oasis (−59|−80)' },
+			{ _no: 22, active: true, id: 92367, interval: 10, name: 'Стол' },
+			{ _no: 23, active: true, id: 90253, interval: 10, name: '3алупа' },
+			{ _no: 24, active: true, id: 91725, interval: 10, name: 'Lim Han Byul' },
+			{ _no: 25, active: true, id: 93022, interval: 10, name: 'Shin Yong Jae' },
 		],
 	},
+	{ _id: 2541, active: true, victims: [] },
 ]
 
 const fileVictims = farmLists.flatMap((fl) => fl.victims)
 
 const log = (id, name, web, file) => {
-	console.log(id, name.padEnd(40), `${web}`.padStart(3), `${file}`.padStart(4), `${web === file ? '✅' : '❌'}`.padStart(4))
+	console.log(id.toString().padEnd(8), name.padEnd(40), `${web}`.padStart(3), `${file}`.padStart(4), `${web === file ? '✅' : '❌'}`.padStart(4))
 }
 
-console.log('ID'.padEnd(5), 'Name'.padEnd(40), 'Web', 'File', 'Valid')
+console.log('ID'.padEnd(8), 'Name'.padEnd(40), 'Web', 'File', 'Valid')
 
 fileVictims.forEach((fileVictim) => {
 	const webInterval = webVictims?.get(fileVictim.id)?.interval || 0
