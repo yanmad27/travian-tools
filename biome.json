@@ -33,7 +33,8 @@
 			"indentStyle": "tab",
 			"indentWidth": 4,
 			"jsxQuoteStyle": "single",
-			"semicolons": "asNeeded"
+			"semicolons": "asNeeded",
+			"bracketSameLine": true
 		}
 	}
 }
