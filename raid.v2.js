@@ -385,7 +385,7 @@ const farmLists = [
 			{ _no: 8, active: true, attackTroops: 3, id: 87917, interval: 5, name: 'หมู่บ้านของBAKI' },
 			{ _no: 9, active: true, attackTroops: 3, id: 80221, interval: 5, name: '123' },
 			{ _no: 10, active: true, attackTroops: 1, id: 99371, interval: 5, name: 'KOR1 | Kennametal' },
-			{ _no: 11, active: false, attackTroops: 100, id: 106334, interval: 5, name: 'CmoTz`s village' },
+			{ _no: 11, active: true, attackTroops: 5, id: 106334, interval: 5, name: 'CmoTz`s village' },
 			{ _no: 12, active: true, attackTroops: 2, id: 99372, interval: 5, name: 'shoes19944116的村莊' },
 			{ _no: 13, active: true, attackTroops: 7, id: 92374, interval: 5, name: 'Làng của abcd' },
 			{ _no: 14, active: true, attackTroops: 7, id: 103425, interval: 5, name: 'Natars -52|-22' },
@@ -419,7 +419,7 @@ const farmLists = [
 		active: true,
 		id: 2573,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 2, id: 104744, interval: 5, name: 'prof 2' },
+			{ _no: 1, active: true, attackTroops: 5, id: 104744, interval: 5, name: 'prof 2' },
 			{ _no: 2, active: true, attackTroops: 30, id: 104745, interval: 5, name: 'prof 3' },
 		],
 	},
