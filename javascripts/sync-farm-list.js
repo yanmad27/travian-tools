@@ -25,7 +25,7 @@ function syncFarmList() {
 								const item = {
 									_no: index + 1,
 									id: Number(child.querySelector('[class="selection"] input').getAttribute('data-slot-id')),
-									interval: 10,
+									interval: 5,
 									active: true,
 									name: name,
 								}
