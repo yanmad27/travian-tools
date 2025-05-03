@@ -22,11 +22,13 @@ function syncFarmList() {
 									name = `Oasis ${child.querySelector('[class="target"] [class="coordinateX"]').innerHTML}|${child.querySelector('[class="target"] [class="coordinateY"]').innerHTML}`
 									name = name.replace(/\.|\,|\u202D|\u202C/g, '')
 								}
+								const troops = Number(child.querySelector('[class="troops"] [class="value"]').innerHTML)
 								const item = {
 									_no: index + 1,
 									id: Number(child.querySelector('[class="selection"] input').getAttribute('data-slot-id')),
 									interval: 5,
-									active: true,
+									active: troops < 100,
+									attackTroops: troops,
 									name: name,
 								}
 								farms.push(item)
