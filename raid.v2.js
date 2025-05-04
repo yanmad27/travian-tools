@@ -341,7 +341,7 @@ const farmLists = [
 		active: true,
 		id: 1817,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 8, id: 104725, interval: 5, name: '01. ThienTuCutHeo' },
+			{ _no: 1, active: true, attackTroops: 6, id: 104725, interval: 5, name: '01. ThienTuCutHeo' },
 			{ _no: 2, active: false, attackTroops: 100, id: 106622, interval: 5, name: 'UTOPIA KUTA RAJA' },
 			{ _no: 3, active: true, attackTroops: 4, id: 62443, interval: 5, name: 'Mr.Piet 01' },
 			{ _no: 4, active: true, attackTroops: 2, id: 62444, interval: 5, name: 'Mr.Piet 00' },
@@ -406,7 +406,7 @@ const farmLists = [
 			{ _no: 28, active: true, attackTroops: 6, id: 103410, interval: 5, name: 'jasebaketravi`s village' },
 			{ _no: 29, active: true, attackTroops: 5, id: 97081, interval: 5, name: 'Oasis (−59|−80)' },
 			{ _no: 30, active: true, attackTroops: 5, id: 103134, interval: 5, name: 'Oasis (−38|−68)' },
-			{ _no: 31, active: false, attackTroops: 10, id: 107543, interval: 5, name: 'Oasis (−21|−47)' },
+			{ _no: 31, active: false, attackTroops: 100, id: 107543, interval: 5, name: 'Oasis (−21|−47)' },
 			{ _no: 32, active: true, attackTroops: 15, id: 104342, interval: 5, name: 'Oasis (−56|37)' },
 			{ _no: 33, active: true, attackTroops: 2, id: 106495, interval: 5, name: 'Oasis (−76|44)' },
 			{ _no: 34, active: true, attackTroops: 2, id: 105961, interval: 5, name: 'taukiss Köyü' },
@@ -423,7 +423,7 @@ const farmLists = [
 			{ _no: 2, active: true, attackTroops: 1, id: 107733, interval: 5, name: 'La comarca' },
 			{ _no: 3, active: true, attackTroops: 2, id: 107734, interval: 5, name: 'GB I' },
 			{ _no: 4, active: true, attackTroops: 3, id: 87899, interval: 5, name: 'Centras' },
-			{ _no: 5, active: false, attackTroops: 30, id: 104745, interval: 5, name: 'prof 3' },
+			{ _no: 5, active: false, attackTroops: 100, id: 104745, interval: 5, name: 'prof 3' },
 		],
 	},
 ]
