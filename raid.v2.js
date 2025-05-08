@@ -213,7 +213,8 @@ class FarmList {
 
 	start() {
 		this.stop()
-		this.intervalId = setInterval(() => {
+		this.intervalId = setInterval(async () => {
+			await sleep(random(0, 2000))
 			if (this.isCollapsed()) this.toggleCollapse()
 			if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
 		}, this.interval * 1000)
@@ -240,7 +241,7 @@ class FarmBot {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
 			await sleep(i * 5000)
-			const farmList = new FarmList(farmListData.id, 15)
+			const farmList = new FarmList(farmListData.id, this.farmLists.length * 5)
 			this.activeFarmLists.set(farmListData.id, farmList)
 			if (farmList.isCollapsed()) farmList.toggleCollapse()
 			await sleep(5000)
@@ -249,7 +250,7 @@ class FarmBot {
 
 		this.victims.forEach(async (victimData, i) => {
 			if (!victimData.active) return
-			await sleep(i * 5 * 1000)
+			await sleep(i * 1000)
 			const victim = new Victim(victimData.id, victimData.interval)
 			this.activeVictims.set(victimData.id, victim)
 
