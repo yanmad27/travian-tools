@@ -70,6 +70,11 @@ class Victim {
 
 	async select() {
 		try {
+			if (this.isRaiding()) {
+				logWarning(`Victim ${this.getName()} is already raiding, skipping...`)
+				return
+			}
+
 			await sleep(random(1000, 5000))
 			this.attempts++
 			if (this.attempts >= this.maxAttempts) throw new Error('Max attempts reached')
@@ -136,12 +141,9 @@ class Victim {
 
 	start() {
 		this.stop()
-		this.intervalId = setInterval(
-			async () => {
-				await this.select()
-			},
-			this.interval * 60 * 1000,
-		)
+		this.intervalId = setInterval(async () => {
+			await this.select()
+		}, this.interval * 60_000)
 	}
 
 	stop() {
