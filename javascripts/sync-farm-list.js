@@ -26,8 +26,8 @@ function syncFarmList() {
 								const item = {
 									_no: index + 1,
 									id: Number(child.querySelector('[class="selection"] input').getAttribute('data-slot-id')),
-									interval: troops < 20 ? 5 : 30,
-									active: troops !== 50,
+									interval: 30,
+									active: !child.getAttribute('class').includes('disabled'),
 									attackTroops: troops,
 									name: name,
 								}

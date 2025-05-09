@@ -240,17 +240,17 @@ class FarmBot {
 	initialize(isWaiting = false) {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
-			await sleep(i * 5000)
+			await sleep(i * 5_000)
 			const farmList = new FarmList(farmListData.id, this.farmLists.length * 5)
 			this.activeFarmLists.set(farmListData.id, farmList)
 			if (farmList.isCollapsed()) farmList.toggleCollapse()
-			await sleep(5000)
+			await sleep(5_000)
 			farmList.start()
 		})
 
 		this.victims.forEach(async (victimData, i) => {
 			if (!victimData.active) return
-			await sleep(i * 1000)
+			await sleep(i * 10_000)
 			const victim = new Victim(victimData.id, victimData.interval)
 			this.activeVictims.set(victimData.id, victim)
 
@@ -258,8 +258,8 @@ class FarmBot {
 			if (isWaiting) {
 				let waitTime = 0
 				while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-					await sleep(5000)
-					waitTime += 5000
+					await sleep(5_000)
+					waitTime += 5_000
 				}
 			}
 
@@ -278,8 +278,8 @@ class FarmBot {
 			if (isWaiting) {
 				let waitTime = 0
 				while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-					await sleep(5000)
-					waitTime += 5000
+					await sleep(5_000)
+					waitTime += 5_000
 				}
 			}
 
@@ -340,136 +340,35 @@ const farmLists = [
 	{
 		_no: 1,
 		active: true,
-		id: 1817,
+		id: 76,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 2, id: 110490, interval: 5, name: '新村莊' },
-			{ _no: 2, active: true, attackTroops: 4, id: 62443, interval: 5, name: 'Mr.Piet 01' },
-			{ _no: 3, active: true, attackTroops: 2, id: 62444, interval: 5, name: 'Mr.Piet 00' },
-			{ _no: 4, active: true, attackTroops: 4, id: 77006, interval: 5, name: 'vuthanh16`s village' },
-			{ _no: 5, active: true, attackTroops: 6, id: 107757, interval: 5, name: 'HaMBa002_15C' },
-			{ _no: 6, active: true, attackTroops: 6, id: 110886, interval: 5, name: 'HaMBa004_09C' },
-			{ _no: 7, active: true, attackTroops: 4, id: 48393, interval: 5, name: 'Lyly 01' },
-			{ _no: 8, active: true, attackTroops: 1, id: 77012, interval: 5, name: '00' },
-			{ _no: 9, active: true, attackTroops: 3, id: 70233, interval: 5, name: 'harry83820`s village' },
-			{ _no: 10, active: true, attackTroops: 55, id: 111665, interval: 30, name: '0.B' },
-			{ _no: 11, active: true, attackTroops: 2, id: 87903, interval: 5, name: 'Ruacon`s village' },
-			{ _no: 12, active: true, attackTroops: 3, id: 108067, interval: 5, name: 'Làng mới' },
-			{ _no: 13, active: true, attackTroops: 25, id: 116807, interval: 30, name: '1.' },
-			{ _no: 14, active: true, attackTroops: 2, id: 77024, interval: 5, name: '01. Em ne' },
-			{ _no: 15, active: true, attackTroops: 1, id: 110504, interval: 5, name: 'Oasis (−21|−47)' },
-			{ _no: 16, active: true, attackTroops: 2, id: 77912, interval: 5, name: '1' },
-			{ _no: 17, active: true, attackTroops: 2, id: 111200, interval: 5, name: 'Oasis (−22|−51)' },
-			{ _no: 18, active: true, attackTroops: 1, id: 116832, interval: 5, name: '3. С' },
-			{ _no: 19, active: true, attackTroops: 2, id: 77023, interval: 5, name: 'İNEK' },
-			{ _no: 20, active: true, attackTroops: 4, id: 87892, interval: 5, name: 'Eragon' },
-			{ _no: 21, active: true, attackTroops: 3, id: 77016, interval: 5, name: 'Làng của SkyOne' },
-			{ _no: 22, active: true, attackTroops: 5, id: 69810, interval: 5, name: '.' },
-			{ _no: 23, active: true, attackTroops: 5, id: 78862, interval: 5, name: 'TEA' },
-			{ _no: 24, active: true, attackTroops: 1, id: 110513, interval: 5, name: '01' },
-			{ _no: 25, active: true, attackTroops: 1, id: 110512, interval: 5, name: 'Làng của Giang' },
-			{ _no: 26, active: true, attackTroops: 7, id: 110514, interval: 5, name: 'Chonxanhle' },
-			{ _no: 27, active: true, attackTroops: 7, id: 69807, interval: 5, name: 'A' },
-			{ _no: 28, active: true, attackTroops: 1, id: 116844, interval: 5, name: '02' },
-			{ _no: 29, active: true, attackTroops: 3, id: 106630, interval: 5, name: 'Ardea' },
-			{ _no: 30, active: true, attackTroops: 5, id: 80226, interval: 5, name: '32' },
-			{ _no: 31, active: true, attackTroops: 12, id: 116846, interval: 5, name: 'Конь' },
-			{ _no: 32, active: true, attackTroops: 8, id: 103136, interval: 5, name: 'Oasis (−43|64)' },
-		],
-	},
-	{
-		_no: 2,
-		active: true,
-		id: 2291,
-		victims: [
-			{ _no: 1, active: true, attackTroops: 2, id: 87914, interval: 5, name: 'Deli`s village' },
-			{ _no: 2, active: true, attackTroops: 3, id: 91945, interval: 5, name: 'EazyJJ的村莊' },
-			{ _no: 3, active: true, attackTroops: 5, id: 87915, interval: 5, name: 'Azamat`s village' },
-			{ _no: 4, active: true, attackTroops: 7, id: 103452, interval: 5, name: 'Natars -68|-20' },
-			{ _no: 5, active: true, attackTroops: 7, id: 102592, interval: 5, name: 'Let的村莊' },
-			{ _no: 6, active: true, attackTroops: 6, id: 87916, interval: 5, name: 'Lalala`s F' },
-			{ _no: 7, active: true, attackTroops: 7, id: 87918, interval: 5, name: 'An Nghĩa Đường' },
-			{ _no: 8, active: true, attackTroops: 4, id: 87917, interval: 5, name: 'หมู่บ้านของBAKI' },
-			{ _no: 9, active: true, attackTroops: 5, id: 80221, interval: 5, name: '123' },
-			{ _no: 10, active: true, attackTroops: 2, id: 99371, interval: 5, name: 'KOR1 | Kennametal' },
-			{ _no: 11, active: true, attackTroops: 2, id: 99372, interval: 5, name: 'shoes19944116的村莊' },
-			{ _no: 12, active: true, attackTroops: 8, id: 92374, interval: 5, name: 'Làng của abcd' },
-			{ _no: 13, active: true, attackTroops: 5, id: 103425, interval: 5, name: 'Natars -52|-22' },
-			{ _no: 14, active: true, attackTroops: 3, id: 89961, interval: 5, name: 'Suri`s village' },
-			{ _no: 15, active: true, attackTroops: 2, id: 105962, interval: 5, name: '風のAPiau的村莊' },
-			{ _no: 16, active: true, attackTroops: 2, id: 99373, interval: 5, name: 'Athena`s village' },
-			{ _no: 17, active: true, attackTroops: 12, id: 101908, interval: 5, name: 'Natars -84|-59' },
-			{ _no: 18, active: true, attackTroops: 3, id: 99374, interval: 5, name: 'New village' },
-			{ _no: 19, active: true, attackTroops: 5, id: 99376, interval: 5, name: 'Dorf von Djimmy98' },
-			{ _no: 20, active: true, attackTroops: 7, id: 99375, interval: 5, name: 'ab1` F' },
-			{ _no: 21, active: true, attackTroops: 3, id: 99370, interval: 5, name: 'Badwolf`s village' },
-			{ _no: 22, active: true, attackTroops: 2, id: 105960, interval: 5, name: 'Moon`s village' },
-			{ _no: 23, active: true, attackTroops: 2, id: 104059, interval: 5, name: 'Natars -41|7' },
-			{ _no: 24, active: true, attackTroops: 2, id: 105959, interval: 5, name: 'Làng của Gái già' },
-			{ _no: 25, active: true, attackTroops: 6, id: 101541, interval: 5, name: 'Buffalo' },
-			{ _no: 26, active: true, attackTroops: 100, id: 113527, interval: 30, name: '0.B' },
-			{ _no: 27, active: true, attackTroops: 5, id: 97081, interval: 5, name: 'Oasis (−59|−80)' },
-			{ _no: 28, active: true, attackTroops: 6, id: 107547, interval: 5, name: '2.B' },
-			{ _no: 29, active: true, attackTroops: 6, id: 103134, interval: 5, name: 'Oasis (−38|−68)' },
-			{ _no: 30, active: true, attackTroops: 51, id: 111661, interval: 30, name: '1.B' },
-			{ _no: 31, active: true, attackTroops: 7, id: 110890, interval: 5, name: 'Деревня Auka' },
-			{ _no: 32, active: true, attackTroops: 2, id: 106495, interval: 5, name: 'Oasis (−76|44)' },
-			{ _no: 33, active: true, attackTroops: 6, id: 110511, interval: 5, name: '1' },
-			{ _no: 34, active: true, attackTroops: 5, id: 116823, interval: 5, name: '2.' },
-			{ _no: 35, active: true, attackTroops: 2, id: 91725, interval: 5, name: 'Lim Han Byul' },
-			{ _no: 36, active: true, attackTroops: 25, id: 116839, interval: 30, name: 'Trai`s village' },
-			{ _no: 37, active: true, attackTroops: 7, id: 93022, interval: 5, name: 'Shin Yong Jae' },
-			{ _no: 38, active: true, attackTroops: 25, id: 116842, interval: 30, name: 'zMaCaRongz' },
-			{ _no: 39, active: true, attackTroops: 3, id: 116845, interval: 5, name: 'tornado1975`s village' },
-			{ _no: 40, active: true, attackTroops: 5, id: 110520, interval: 5, name: 'MONKEY D LUFFY' },
-			{ _no: 41, active: true, attackTroops: 1, id: 110521, interval: 5, name: 'muami`s village' },
-			{ _no: 42, active: true, attackTroops: 5, id: 116847, interval: 5, name: 'Sanchal`s village' },
-			{ _no: 43, active: true, attackTroops: 1, id: 116848, interval: 5, name: 'pong' },
-			{ _no: 44, active: true, attackTroops: 1, id: 116849, interval: 5, name: 'zein`s village' },
-			{ _no: 45, active: true, attackTroops: 55, id: 117031, interval: 30, name: 'River Plate' },
-			{ _no: 46, active: true, attackTroops: 55, id: 117033, interval: 30, name: 'prof 1' },
-			{ _no: 47, active: true, attackTroops: 1, id: 117032, interval: 5, name: 'HarryPotter`s village' },
-			{ _no: 48, active: true, attackTroops: 1, id: 117035, interval: 5, name: 'aragorn21`s village' },
-			{ _no: 49, active: true, attackTroops: 5, id: 117037, interval: 5, name: '***HAŞİKİ TEPE***' },
-			{ _no: 50, active: true, attackTroops: 5, id: 117036, interval: 5, name: '***KAPI TEPE***' },
-			{ _no: 51, active: true, attackTroops: 2, id: 117038, interval: 5, name: 'arilakkuma`s village' },
-			{ _no: 52, active: true, attackTroops: 1, id: 117039, interval: 5, name: 'JeweLRaeX' },
-			{ _no: 53, active: true, attackTroops: 51, id: 117040, interval: 30, name: '00 - Legolas' },
-			{ _no: 54, active: true, attackTroops: 1, id: 117041, interval: 5, name: '03 Paper Moon' },
-			{ _no: 55, active: true, attackTroops: 1, id: 117042, interval: 5, name: 'Деревня Aureliano' },
-			{ _no: 56, active: true, attackTroops: 3, id: 117044, interval: 5, name: 'keawl`s village' },
-			{ _no: 57, active: true, attackTroops: 5, id: 117045, interval: 5, name: 'หมู่บ้านของTnc' },
-			{ _no: 58, active: true, attackTroops: 3, id: 117047, interval: 5, name: 'T.A.Edison`s' },
-		],
-	},
-	{
-		_no: 3,
-		active: true,
-		id: 2573,
-		victims: [
-			{ _no: 1, active: true, attackTroops: 1, id: 107732, interval: 5, name: 'jebray`s village' },
-			{ _no: 2, active: true, attackTroops: 1, id: 107733, interval: 5, name: 'La comarca' },
-			{ _no: 3, active: true, attackTroops: 2, id: 107734, interval: 5, name: 'GB I' },
-			{ _no: 4, active: true, attackTroops: 3, id: 87899, interval: 5, name: 'Centras' },
-			{ _no: 5, active: true, attackTroops: 2, id: 105961, interval: 5, name: 'taukiss Köyü' },
-			{ _no: 6, active: true, attackTroops: 3, id: 104745, interval: 5, name: 'prof 3' },
-			{ _no: 7, active: true, attackTroops: 2, id: 110491, interval: 5, name: 'M52 87 4988 1 93' },
-			{ _no: 8, active: true, attackTroops: 1, id: 110492, interval: 5, name: 'hachiprint' },
-			{ _no: 9, active: true, attackTroops: 2, id: 110493, interval: 5, name: 'jjiongche`s village' },
-			{ _no: 10, active: true, attackTroops: 1, id: 106497, interval: 5, name: 'ineffanle' },
-			{ _no: 11, active: true, attackTroops: 2, id: 114005, interval: 5, name: 'OMMAHO`s village' },
-			{ _no: 12, active: true, attackTroops: 2, id: 114006, interval: 5, name: '01' },
-			{ _no: 13, active: true, attackTroops: 2, id: 114007, interval: 5, name: '.exe`s village' },
-			{ _no: 14, active: true, attackTroops: 1, id: 116850, interval: 5, name: 'ABC1' },
-			{ _no: 15, active: true, attackTroops: 1, id: 116853, interval: 5, name: 'AhmetCanS Köyü' },
-			{ _no: 16, active: true, attackTroops: 1, id: 116854, interval: 5, name: 'مزرعة`s village' },
-			{ _no: 17, active: true, attackTroops: 1, id: 116855, interval: 5, name: '别打我' },
-			{ _no: 18, active: true, attackTroops: 1, id: 116856, interval: 5, name: 'Ulpia Traiana Sarmis' },
-			{ _no: 19, active: true, attackTroops: 1, id: 116857, interval: 5, name: 'Karabela53 Köyü' },
-			{ _no: 20, active: true, attackTroops: 1, id: 116858, interval: 5, name: 'Aldea de asdrano' },
-			{ _no: 21, active: true, attackTroops: 2, id: 116859, interval: 5, name: '1' },
-			{ _no: 22, active: true, attackTroops: 1, id: 116860, interval: 5, name: 'Indera Kayangan' },
-			{ _no: 23, active: true, attackTroops: 2, id: 108295, interval: 5, name: 'piyade' },
-			{ _no: 24, active: true, attackTroops: 2, id: 116861, interval: 5, name: '01' },
+			{ _no: 1, active: true, attackTroops: 1, id: 2292, interval: 30, name: 'Oasis (22|43)' },
+			{ _no: 2, active: true, attackTroops: 1, id: 843, interval: 30, name: 'Oasis (23|43)' },
+			{ _no: 3, active: true, attackTroops: 1, id: 841, interval: 30, name: 'Oasis (22|42)' },
+			{ _no: 4, active: true, attackTroops: 3, id: 842, interval: 30, name: 'Oasis (24|43)' },
+			{ _no: 5, active: true, attackTroops: 1, id: 846, interval: 30, name: 'Oasis (20|45)' },
+			{ _no: 6, active: true, attackTroops: 1, id: 847, interval: 30, name: 'Oasis (20|46)' },
+			{ _no: 7, active: true, attackTroops: 1, id: 845, interval: 30, name: 'Oasis (19|44)' },
+			{ _no: 8, active: true, attackTroops: 1, id: 5198, interval: 30, name: 'Oasis (21|40)' },
+			{ _no: 9, active: true, attackTroops: 1, id: 5197, interval: 30, name: 'Oasis (18|42)' },
+			{ _no: 10, active: true, attackTroops: 1, id: 5663, interval: 30, name: 'Oasis (20|48)' },
+			{ _no: 11, active: true, attackTroops: 1, id: 5199, interval: 30, name: 'Oasis (22|39)' },
+			{ _no: 12, active: true, attackTroops: 1, id: 848, interval: 30, name: 'Oasis (28|43)' },
+			{ _no: 13, active: true, attackTroops: 1, id: 5202, interval: 30, name: 'Oasis (24|50)' },
+			{ _no: 14, active: true, attackTroops: 1, id: 5203, interval: 30, name: 'Oasis (22|51)' },
+			{ _no: 15, active: true, attackTroops: 1, id: 5204, interval: 30, name: 'Oasis (21|51)' },
+			{ _no: 16, active: true, attackTroops: 1, id: 5201, interval: 30, name: 'Oasis (28|48)' },
+			{ _no: 17, active: true, attackTroops: 1, id: 5206, interval: 30, name: 'Oasis (17|50)' },
+			{ _no: 18, active: false, attackTroops: 1, id: 5665, interval: 30, name: 'Oasis (26|37)' },
+			{ _no: 19, active: false, attackTroops: 1, id: 5670, interval: 30, name: 'Oasis (18|51)' },
+			{ _no: 20, active: false, attackTroops: 1, id: 5207, interval: 30, name: 'Oasis (15|49)' },
+			{ _no: 21, active: false, attackTroops: 1, id: 5208, interval: 30, name: 'Oasis (17|51)' },
+			{ _no: 22, active: false, attackTroops: 1, id: 5209, interval: 30, name: 'Oasis (18|52)' },
+			{ _no: 23, active: false, attackTroops: 1, id: 5674, interval: 30, name: 'Oasis (26|52)' },
+			{ _no: 24, active: false, attackTroops: 1, id: 5715, interval: 30, name: 'Oasis (29|37)' },
+			{ _no: 25, active: false, attackTroops: 1, id: 5210, interval: 30, name: 'Oasis (17|53)' },
+			{ _no: 26, active: false, attackTroops: 1, id: 5671, interval: 30, name: 'Oasis (18|54)' },
+			{ _no: 27, active: false, attackTroops: 1, id: 5676, interval: 30, name: 'Oasis (26|54)' },
 		],
 	},
 ]
