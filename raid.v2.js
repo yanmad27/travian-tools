@@ -70,11 +70,6 @@ class Victim {
 
 	async select() {
 		try {
-			if (this.isRaiding()) {
-				logWarning(`Victim ${this.getName()} is already raiding, skipping...`)
-				return
-			}
-
 			await sleep(random(1000, 5000))
 			this.attempts++
 			if (this.attempts >= this.maxAttempts) throw new Error('Max attempts reached')
@@ -344,26 +339,19 @@ const farmLists = [
 		active: true,
 		id: 923,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 1, distance: 4.5, id: 22553, interval: 7, name: '8LG0mtuge`s village' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 5.7, id: 22554, interval: 5, name: 'Aldea de Nasus' },
-			{ _no: 3, active: true, attackTroops: 1, distance: 6, id: 22555, interval: 5, name: 'TheBighand`s village' },
-			{ _no: 4, active: true, attackTroops: 1, distance: 6.4, id: 36311, interval: 5, name: 'SuperRusty`s village' },
-			{ _no: 5, active: true, attackTroops: 1, distance: 6.7, id: 22580, interval: 4, name: 'Katsaplias`s village' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 6.7, id: 36313, interval: 4, name: 'GHOZ’s landsby' },
-			{ _no: 7, active: true, attackTroops: 1, distance: 7.1, id: 35958, interval: 4, name: 'nox`s village' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 7.8, id: 35966, interval: 4, name: 'Ale/sostinė' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 8.1, id: 35967, interval: 4, name: 'Why?`s village' },
-			{ _no: 10, active: true, attackTroops: 1, distance: 8.5, id: 35968, interval: 4, name: 'Namsyyy`s village' },
-			{ _no: 11, active: true, attackTroops: 1, distance: 9.2, id: 36753, interval: 3, name: 'LITCHI' },
-			{ _no: 12, active: true, attackTroops: 1, distance: 10.4, id: 36314, interval: 3, name: 'PfLwJKBsIi`s village' },
-			{ _no: 13, active: true, attackTroops: 1, distance: 11, id: 22573, interval: 3, name: 'Kinyous/sostinė' },
-			{ _no: 14, active: true, attackTroops: 1, distance: 11.2, id: 36315, interval: 3, name: 'PReYfT6u`s village' },
-			{ _no: 15, active: true, attackTroops: 1, distance: 11.7, id: 35971, interval: 3, name: 'Hory`s village' },
-			{ _no: 16, active: true, attackTroops: 1, distance: 13.2, id: 22584, interval: 2, name: 'juhkkjbbvdje673`s village' },
-			{ _no: 17, active: true, attackTroops: 1, distance: 13.2, id: 35974, interval: 2, name: 'doctorsaturno.`s village' },
-			{ _no: 18, active: true, attackTroops: 1, distance: 14.8, id: 36317, interval: 2, name: 'Crushing`s village' },
+			{ _no: 1, active: true, attackTroops: 1, distance: 11, id: 46828, interval: 15, name: 'Kinyous/sostinė' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 14.8, id: 46813, interval: 15, name: 'Crushing`s village' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 24.5, id: 46816, interval: 15, name: 'Puclik`s village' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 26, id: 46817, interval: 15, name: '00' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 33.2, id: 46818, interval: 15, name: 'iygY6wBV7`s village' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 35.4, id: 46819, interval: 15, name: 'x1' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 38.1, id: 46820, interval: 15, name: 'Searching alliance' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 43.7, id: 46822, interval: 15, name: 'DKMMWQqxPk`s village' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 47.9, id: 46824, interval: 15, name: 'Pablo666`s village' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 48.4, id: 46825, interval: 15, name: 'BowlaQQ faluja' },
+			{ _no: 11, active: true, attackTroops: 1, distance: 48.6, id: 46826, interval: 15, name: 'Градът на TravianPlayer' },
 		],
 	},
 ]
 const bot = new FarmBot(farmLists)
-bot.initialize()
+bot.initialize(true)
