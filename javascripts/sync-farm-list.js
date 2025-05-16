@@ -24,7 +24,7 @@ function syncFarmList() {
 								}
 								const troops = Number(child.querySelector('[class="troops"] [class="value"]').innerHTML)
 								const distance = Number(child.querySelector('[class="distance"] span').innerHTML)
-								const interval = 15
+								const interval = 5
 								const item = {
 									_no: index + 1,
 									id: Number(child.querySelector('[class="selection"] input').getAttribute('data-slot-id')),
