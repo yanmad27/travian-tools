@@ -352,6 +352,25 @@ const farmLists = [
 			{ _no: 11, active: true, attackTroops: 1, distance: 48.6, id: 46826, interval: 15, name: 'Градът на TravianPlayer' },
 		],
 	},
+	{
+		_no: 2,
+		active: true,
+		id: 1885,
+		victims: [
+			{ _no: 1, active: true, attackTroops: 1, distance: 23.4, id: 49915, interval: 15, name: 'Village de DovahShyv' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 23.8, id: 49916, interval: 15, name: 'Silver_Knight`s village' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 24.2, id: 49917, interval: 15, name: 'Vulkan' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 25.1, id: 49918, interval: 15, name: 'Деревня boni' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 25.1, id: 49919, interval: 15, name: 'Bufeo`s village' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 25.3, id: 49920, interval: 15, name: 'Osada: Knight123' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 25.8, id: 49921, interval: 15, name: 'searchforblood´s Dorp' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 26, id: 49922, interval: 15, name: 'Vesnice: hucyxx' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 26.1, id: 49923, interval: 15, name: 'Aldea de desdijo' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 27.1, id: 49924, interval: 15, name: 'Aldea de Seknxi' },
+			{ _no: 11, active: true, attackTroops: 1, distance: 28, id: 49925, interval: 15, name: 'Làng của nencci' },
+			{ _no: 12, active: true, attackTroops: 1, distance: 28.2, id: 49926, interval: 15, name: 'RandomDude`s village' },
+		],
+	},
 ]
 const bot = new FarmBot(farmLists)
-bot.initialize(true)
+bot.initialize(false)
