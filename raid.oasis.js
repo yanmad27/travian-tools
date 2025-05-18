@@ -4,18 +4,23 @@ const list = [
 	{ x: 9, y: 86, time: '2025/05/18 22:19:44' },
 ]
 
-async function fillRaidList(x, y, time) {
+function fillTroops() {
+	document.querySelector('#troops > tbody > tr:nth-child(3) > td.line-last.column-last > input').value = 1
+	document.querySelector('#build > div > form > div.option > label:nth-child(5) > input').click()
+}
+
+function fillRaidList(x, y, time) {
 	document.querySelector('#xCoordInput').value = x
 	document.querySelector('#yCoordInput').value = y
 	document.querySelector('#build > div > form > span').click()
-	await new Promise((resolve) => setTimeout(resolve, 500))
 	document.querySelector('#TTQat').value = time
 	document.querySelector('#submitBtn').click()
 }
 
-async function main() {
+function main() {
+	fillTroops()
 	for (let i = 0; i < list.length; i++) {
-		await fillRaidList(list[i].x, list[i].y, list[i].time)
+		fillRaidList(list[i].x, list[i].y, list[i].time)
 	}
 }
 
