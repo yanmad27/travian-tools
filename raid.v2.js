@@ -247,7 +247,7 @@ class FarmBot {
 
 		this.victims.forEach(async (victimData, i) => {
 			if (!victimData.active) return
-			await sleep(i * 10_000)
+			await sleep(i * 60_000)
 			const victim = new Victim(victimData.id, victimData.interval)
 			this.activeVictims.set(victimData.id, victim)
 
@@ -348,8 +348,7 @@ const farmLists = [
 			{ _no: 7, active: true, attackTroops: 1, distance: 38.1, id: 46820, interval: 5, name: 'Searching alliance' },
 			{ _no: 8, active: true, attackTroops: 1, distance: 43.7, id: 46822, interval: 5, name: 'DKMMWQqxPk`s village' },
 			{ _no: 9, active: true, attackTroops: 1, distance: 47.9, id: 46824, interval: 5, name: 'Pablo666`s village' },
-			{ _no: 10, active: true, attackTroops: 1, distance: 48.4, id: 46825, interval: 5, name: 'BowlaQQ faluja' },
-			{ _no: 11, active: true, attackTroops: 1, distance: 48.6, id: 46826, interval: 5, name: 'Градът на TravianPlayer' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 48.6, id: 46826, interval: 5, name: 'Градът на TravianPlayer' },
 		],
 	},
 	{
@@ -358,17 +357,16 @@ const farmLists = [
 		id: 1885,
 		victims: [
 			{ _no: 1, active: true, attackTroops: 1, distance: 23.4, id: 49915, interval: 5, name: 'Village de DovahShyv' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 23.8, id: 49916, interval: 5, name: 'Silver_Knight`s village' },
-			{ _no: 3, active: true, attackTroops: 1, distance: 24.2, id: 49917, interval: 5, name: 'Vulkan' },
-			{ _no: 4, active: true, attackTroops: 1, distance: 25.1, id: 49918, interval: 5, name: 'Деревня boni' },
-			{ _no: 5, active: true, attackTroops: 1, distance: 25.1, id: 49919, interval: 5, name: 'Bufeo`s village' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 25.3, id: 49920, interval: 5, name: 'Osada: Knight123' },
-			{ _no: 7, active: true, attackTroops: 1, distance: 25.8, id: 49921, interval: 5, name: 'searchforblood´s Dorp' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 26, id: 49922, interval: 5, name: 'Vesnice: hucyxx' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 26.1, id: 49923, interval: 5, name: 'Aldea de desdijo' },
-			{ _no: 10, active: true, attackTroops: 1, distance: 27.1, id: 49924, interval: 5, name: 'Aldea de Seknxi' },
-			{ _no: 11, active: true, attackTroops: 1, distance: 28, id: 49925, interval: 5, name: 'Làng của nencci' },
-			{ _no: 12, active: true, attackTroops: 1, distance: 28.2, id: 49926, interval: 5, name: 'RandomDude`s village' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 24.2, id: 49917, interval: 5, name: 'Vulkan' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 25.1, id: 49918, interval: 5, name: 'Деревня boni' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 25.1, id: 49919, interval: 5, name: 'Bufeo`s village' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 25.3, id: 49920, interval: 5, name: 'Osada: Knight123' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 25.8, id: 49921, interval: 5, name: 'searchforblood´s Dorp' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 26, id: 49922, interval: 5, name: 'Vesnice: hucyxx' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 26.1, id: 49923, interval: 5, name: 'Aldea de desdijo' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 27.1, id: 49924, interval: 5, name: 'Aldea de Seknxi' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 28, id: 49925, interval: 5, name: 'Làng của nencci' },
+			{ _no: 11, active: true, attackTroops: 1, distance: 28.2, id: 49926, interval: 5, name: 'RandomDude`s village' },
 		],
 	},
 ]
