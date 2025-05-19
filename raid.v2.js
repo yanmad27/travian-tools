@@ -234,6 +234,16 @@ class FarmBot {
 		this.healthCheckInterval = null
 	}
 
+	syncVictims() {
+		const domVictims = document.querySelectorAll('#rallyPointFarmList .slots tr.slot td.selection label.checkbox input')
+		for (const v of domVictims) {
+			const id = Number(v.getAttribute('data-slot-id'))
+			if (this.activeVictims.has(id)) continue
+			logInfo(`Syncing victim ${id}`)
+			this.activateVictim(id, 5)
+		}
+	}
+
 	initialize(isWaiting = false) {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
@@ -319,6 +329,8 @@ class FarmBot {
 					victim.start()
 				}
 			})
+
+			this.syncVictims()
 		}, 300000)
 	}
 
