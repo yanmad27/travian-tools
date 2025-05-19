@@ -1,5 +1,11 @@
 const localStorageKey = 'raidHistory'
-
+const localeStringOpts = {
+	year: 'numeric',
+	month: '2-digit',
+	day: '2-digit',
+	hour: '2-digit',
+	minute: '2-digit',
+}
 function saveSumToStorage(sum) {
 	chrome.storage.local.get([localStorageKey], (result) => {
 		const history = result[localStorageKey] || []
@@ -18,11 +24,11 @@ function saveSumToStorage(sum) {
 
 		if (todayEntryIndex !== -1) {
 			history[todayEntryIndex].sum = sum
-			history[todayEntryIndex].timestamp = now.toLocaleString()
+			history[todayEntryIndex].timestamp = now.toLocaleString('en-US', localeStringOpts)
 		} else {
 			const newEntry = {
 				sum: sum,
-				timestamp: now.toLocaleString(),
+				timestamp: now.toLocaleString('en-US', localeStringOpts),
 			}
 			history.unshift(newEntry)
 		}

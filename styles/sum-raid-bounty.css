@@ -4,6 +4,7 @@
 	gap: 12px;
 	padding: 8px;
 	border-bottom: 1px solid #eee;
+	white-space: nowrap;
 }
 
 .history-entry:last-child {
