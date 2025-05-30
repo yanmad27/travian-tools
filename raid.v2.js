@@ -136,12 +136,9 @@ class Victim {
 
 	start() {
 		this.stop()
-		this.intervalId = setInterval(
-			async () => {
-				await this.select()
-			},
-			this.interval * 60 * 1000,
-		)
+		this.intervalId = setInterval(async () => {
+			await this.select()
+		}, this.interval * 60_000)
 	}
 
 	stop() {
@@ -213,7 +210,8 @@ class FarmList {
 
 	start() {
 		this.stop()
-		this.intervalId = setInterval(() => {
+		this.intervalId = setInterval(async () => {
+			await sleep(random(0, 2000))
 			if (this.isCollapsed()) this.toggleCollapse()
 			if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
 		}, this.interval * 1000)
@@ -236,20 +234,33 @@ class FarmBot {
 		this.healthCheckInterval = null
 	}
 
+	syncVictims() {
+		const domVictims = document.querySelectorAll('#rallyPointFarmList .slots tr.slot td.selection label.checkbox input')
+		let hasNew = 0
+		for (const v of domVictims) {
+			const id = Number(v.getAttribute('data-slot-id'))
+			if (this.activeVictims.has(id)) continue
+			logInfo(`Syncing victim ${id}`)
+			this.activateVictim(id, 5)
+			hasNew++
+		}
+		if (hasNew) logInfo(`Synced ${hasNew} new victims`)
+	}
+
 	initialize(isWaiting = false) {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
-			await sleep(i * 5000)
-			const farmList = new FarmList(farmListData.id, 15)
+			await sleep(i * 5_000)
+			const farmList = new FarmList(farmListData.id, this.farmLists.length * 5)
 			this.activeFarmLists.set(farmListData.id, farmList)
 			if (farmList.isCollapsed()) farmList.toggleCollapse()
-			await sleep(5000)
+			await sleep(5_000)
 			farmList.start()
 		})
 
 		this.victims.forEach(async (victimData, i) => {
 			if (!victimData.active) return
-			await sleep(i * 5 * 1000)
+			await sleep(i * 60_000)
 			const victim = new Victim(victimData.id, victimData.interval)
 			this.activeVictims.set(victimData.id, victim)
 
@@ -257,8 +268,8 @@ class FarmBot {
 			if (isWaiting) {
 				let waitTime = 0
 				while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-					await sleep(5000)
-					waitTime += 5000
+					await sleep(5_000)
+					waitTime += 5_000
 				}
 			}
 
@@ -277,8 +288,8 @@ class FarmBot {
 			if (isWaiting) {
 				let waitTime = 0
 				while (victim.isRaiding() && waitTime < victim.interval * 60 * 1000) {
-					await sleep(5000)
-					waitTime += 5000
+					await sleep(5_000)
+					waitTime += 5_000
 				}
 			}
 
@@ -321,6 +332,8 @@ class FarmBot {
 					victim.start()
 				}
 			})
+
+			this.syncVictims()
 		}, 300000)
 	}
 
@@ -339,105 +352,30 @@ const farmLists = [
 	{
 		_no: 1,
 		active: true,
-		id: 1817,
+		id: 923,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 2, id: 110490, interval: 5, name: '新村莊' },
-			{ _no: 2, active: true, attackTroops: 4, id: 62443, interval: 5, name: 'Mr.Piet 01' },
-			{ _no: 3, active: true, attackTroops: 2, id: 62444, interval: 5, name: 'Mr.Piet 00' },
-			{ _no: 4, active: true, attackTroops: 4, id: 77006, interval: 5, name: 'vuthanh16`s village' },
-			{ _no: 5, active: true, attackTroops: 6, id: 107757, interval: 5, name: 'HaMBa002_15C' },
-			{ _no: 6, active: true, attackTroops: 6, id: 110886, interval: 5, name: 'HaMBa004_09C' },
-			{ _no: 7, active: true, attackTroops: 4, id: 48393, interval: 5, name: 'Lyly 01' },
-			{ _no: 8, active: true, attackTroops: 1, id: 77012, interval: 5, name: '00' },
-			{ _no: 9, active: true, attackTroops: 3, id: 70233, interval: 5, name: 'harry83820`s village' },
-			{ _no: 10, active: true, attackTroops: 100, id: 111665, interval: 30, name: '0.B' },
-			{ _no: 11, active: true, attackTroops: 2, id: 87903, interval: 5, name: 'Ruacon`s village' },
-			{ _no: 12, active: true, attackTroops: 3, id: 108067, interval: 5, name: 'Làng mới' },
-			{ _no: 13, active: true, attackTroops: 7, id: 103133, interval: 5, name: 'Oasis (−39|−67)' },
-			{ _no: 14, active: true, attackTroops: 2, id: 77024, interval: 5, name: '01. Em ne' },
-			{ _no: 15, active: true, attackTroops: 50, id: 110888, interval: 30, name: '01. Kopi Susu' },
-			{ _no: 16, active: true, attackTroops: 5, id: 110504, interval: 5, name: 'Oasis (−21|−47)' },
-			{ _no: 17, active: true, attackTroops: 2, id: 77912, interval: 5, name: '1' },
-			{ _no: 18, active: true, attackTroops: 5, id: 111200, interval: 5, name: 'Oasis (−22|−51)' },
-			{ _no: 19, active: true, attackTroops: 2, id: 77023, interval: 5, name: 'İNEK' },
-			{ _no: 20, active: true, attackTroops: 4, id: 87892, interval: 5, name: 'Eragon' },
-			{ _no: 21, active: true, attackTroops: 3, id: 77016, interval: 5, name: 'Làng của SkyOne' },
-			{ _no: 22, active: true, attackTroops: 5, id: 69810, interval: 5, name: '.' },
-			{ _no: 23, active: true, attackTroops: 5, id: 78862, interval: 5, name: 'TEA' },
-			{ _no: 24, active: true, attackTroops: 1, id: 110513, interval: 5, name: '01' },
-			{ _no: 25, active: true, attackTroops: 1, id: 110512, interval: 5, name: 'Làng của Giang' },
-			{ _no: 26, active: true, attackTroops: 7, id: 110514, interval: 5, name: 'Chonxanhle' },
-			{ _no: 27, active: true, attackTroops: 7, id: 69807, interval: 5, name: 'A' },
-			{ _no: 28, active: true, attackTroops: 3, id: 106630, interval: 5, name: 'Ardea' },
-			{ _no: 29, active: true, attackTroops: 5, id: 80226, interval: 5, name: '32' },
-			{ _no: 30, active: true, attackTroops: 6, id: 103136, interval: 5, name: 'Oasis (−43|64)' },
+			{ _no: 1, active: true, attackTroops: 1, distance: 24.5, id: 46816, interval: 5, name: 'Puclik`s village' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 26, id: 46817, interval: 5, name: '00' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 33.2, id: 46818, interval: 5, name: 'iygY6wBV7`s village' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 42.5, id: 71507, interval: 5, name: 'Авангард' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 43.7, id: 46822, interval: 5, name: 'DKMMWQqxPk`s village' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 43.9, id: 71509, interval: 5, name: 'StiflersMom`s villag' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 47, id: 71511, interval: 5, name: 'Ok12' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 47.9, id: 46824, interval: 5, name: 'Pablo666`s village' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 48.6, id: 46826, interval: 5, name: 'Градът на TravianPlayer' },
 		],
 	},
 	{
 		_no: 2,
 		active: true,
-		id: 2291,
+		id: 1885,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 2, id: 87914, interval: 5, name: 'Deli`s village' },
-			{ _no: 2, active: true, attackTroops: 3, id: 91945, interval: 5, name: 'EazyJJ的村莊' },
-			{ _no: 3, active: true, attackTroops: 5, id: 87915, interval: 5, name: 'Azamat`s village' },
-			{ _no: 4, active: true, attackTroops: 7, id: 103452, interval: 5, name: 'Natars -68|-20' },
-			{ _no: 5, active: true, attackTroops: 7, id: 102592, interval: 5, name: 'Let的村莊' },
-			{ _no: 6, active: true, attackTroops: 6, id: 87916, interval: 5, name: 'Lalala`s F' },
-			{ _no: 7, active: true, attackTroops: 7, id: 87918, interval: 5, name: 'An Nghĩa Đường' },
-			{ _no: 8, active: true, attackTroops: 4, id: 87917, interval: 5, name: 'หมู่บ้านของBAKI' },
-			{ _no: 9, active: true, attackTroops: 5, id: 80221, interval: 5, name: '123' },
-			{ _no: 10, active: true, attackTroops: 2, id: 99371, interval: 5, name: 'KOR1 | Kennametal' },
-			{ _no: 11, active: true, attackTroops: 2, id: 99372, interval: 5, name: 'shoes19944116的村莊' },
-			{ _no: 12, active: true, attackTroops: 8, id: 92374, interval: 5, name: 'Làng của abcd' },
-			{ _no: 13, active: true, attackTroops: 5, id: 103425, interval: 5, name: 'Natars -52|-22' },
-			{ _no: 14, active: true, attackTroops: 3, id: 89961, interval: 5, name: 'Suri`s village' },
-			{ _no: 15, active: true, attackTroops: 2, id: 105962, interval: 5, name: '風のAPiau的村莊' },
-			{ _no: 16, active: true, attackTroops: 2, id: 99373, interval: 5, name: 'Athena`s village' },
-			{ _no: 17, active: true, attackTroops: 12, id: 101908, interval: 5, name: 'Natars -84|-59' },
-			{ _no: 18, active: true, attackTroops: 3, id: 99374, interval: 5, name: 'New village' },
-			{ _no: 19, active: true, attackTroops: 5, id: 99376, interval: 5, name: 'Dorf von Djimmy98' },
-			{ _no: 20, active: true, attackTroops: 7, id: 99375, interval: 5, name: 'ab1` F' },
-			{ _no: 21, active: true, attackTroops: 3, id: 99370, interval: 5, name: 'Badwolf`s village' },
-			{ _no: 22, active: true, attackTroops: 2, id: 105960, interval: 5, name: 'Moon`s village' },
-			{ _no: 23, active: true, attackTroops: 2, id: 104059, interval: 5, name: 'Natars -41|7' },
-			{ _no: 24, active: true, attackTroops: 2, id: 105959, interval: 5, name: 'Làng của Gái già' },
-			{ _no: 25, active: true, attackTroops: 6, id: 101541, interval: 5, name: 'Buffalo' },
-			{ _no: 26, active: true, attackTroops: 100, id: 113527, interval: 30, name: '0.B' },
-			{ _no: 27, active: true, attackTroops: 5, id: 97081, interval: 5, name: 'Oasis (−59|−80)' },
-			{ _no: 28, active: true, attackTroops: 6, id: 107547, interval: 5, name: '2.B' },
-			{ _no: 29, active: true, attackTroops: 6, id: 103134, interval: 5, name: 'Oasis (−38|−68)' },
-			{ _no: 30, active: true, attackTroops: 50, id: 111661, interval: 30, name: '1.B' },
-			{ _no: 31, active: true, attackTroops: 7, id: 110890, interval: 5, name: 'Деревня Auka' },
-			{ _no: 32, active: true, attackTroops: 2, id: 106495, interval: 5, name: 'Oasis (−76|44)' },
-			{ _no: 33, active: true, attackTroops: 6, id: 110511, interval: 5, name: '1' },
-			{ _no: 34, active: true, attackTroops: 2, id: 91725, interval: 5, name: 'Lim Han Byul' },
-			{ _no: 35, active: true, attackTroops: 7, id: 93022, interval: 5, name: 'Shin Yong Jae' },
-			{ _no: 36, active: false, attackTroops: 50, id: 110518, interval: 30, name: '02. Kopi Hitam Pahit' },
-			{ _no: 37, active: true, attackTroops: 3, id: 110519, interval: 5, name: 'kancha`s village' },
-			{ _no: 38, active: true, attackTroops: 5, id: 110520, interval: 5, name: 'MONKEY D LUFFY' },
-			{ _no: 39, active: true, attackTroops: 1, id: 110521, interval: 5, name: 'muami`s village' },
-			{ _no: 40, active: true, attackTroops: 5, id: 108295, interval: 5, name: 'piyade' },
-		],
-	},
-	{
-		_no: 3,
-		active: true,
-		id: 2573,
-		victims: [
-			{ _no: 1, active: true, attackTroops: 1, id: 107732, interval: 5, name: 'jebray`s village' },
-			{ _no: 2, active: true, attackTroops: 1, id: 107733, interval: 5, name: 'La comarca' },
-			{ _no: 3, active: true, attackTroops: 2, id: 107734, interval: 5, name: 'GB I' },
-			{ _no: 4, active: true, attackTroops: 3, id: 87899, interval: 5, name: 'Centras' },
-			{ _no: 5, active: true, attackTroops: 2, id: 105961, interval: 5, name: 'taukiss Köyü' },
-			{ _no: 6, active: true, attackTroops: 3, id: 104745, interval: 5, name: 'prof 3' },
-			{ _no: 7, active: true, attackTroops: 2, id: 110491, interval: 5, name: 'M52 87 4988 1 93' },
-			{ _no: 8, active: true, attackTroops: 1, id: 110492, interval: 5, name: 'hachiprint' },
-			{ _no: 9, active: true, attackTroops: 2, id: 110493, interval: 5, name: 'jjiongche`s village' },
-			{ _no: 10, active: true, attackTroops: 1, id: 106497, interval: 5, name: 'ineffanle' },
-			{ _no: 11, active: true, attackTroops: 2, id: 114005, interval: 5, name: 'OMMAHO`s village' },
-			{ _no: 12, active: true, attackTroops: 2, id: 114006, interval: 5, name: '01' },
-			{ _no: 13, active: true, attackTroops: 2, id: 114007, interval: 5, name: '.exe`s village' },
+			{ _no: 1, active: true, attackTroops: 1, distance: 24.2, id: 49917, interval: 5, name: 'Vulkan' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 25.1, id: 49918, interval: 5, name: 'Деревня boni' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 25.1, id: 49919, interval: 5, name: 'Bufeo`s village' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 25.3, id: 49920, interval: 5, name: 'Osada: Knight123' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 26, id: 49922, interval: 5, name: 'Vesnice: hucyxx' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 28.2, id: 49926, interval: 5, name: 'RandomDude`s village' },
 		],
 	},
 ]

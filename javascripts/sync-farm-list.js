@@ -23,13 +23,16 @@ function syncFarmList() {
 									name = name.replace(/\.|\,|\u202D|\u202C/g, '')
 								}
 								const troops = Number(child.querySelector('[class="troops"] [class="value"]').innerHTML)
+								const distance = Number(child.querySelector('[class="distance"] span').innerHTML)
+								const interval = 5
 								const item = {
 									_no: index + 1,
 									id: Number(child.querySelector('[class="selection"] input').getAttribute('data-slot-id')),
-									interval: troops < 20 ? 5 : 30,
-									active: troops < 20,
+									interval: interval,
+									active: !child.getAttribute('class').includes('disabled'),
 									attackTroops: troops,
 									name: name,
+									distance: distance,
 								}
 								farms.push(item)
 							})

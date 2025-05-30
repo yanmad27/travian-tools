@@ -59,7 +59,7 @@ h3 {
 }
 .feature-section {
 	margin-top: 4px;
-	padding: 15px;
+	padding: 12px;
 	background-color: #e9ecef;
 	border-radius: 4px;
 	display: flex;
@@ -69,7 +69,7 @@ h3 {
 
 /* Sum Raid Bounty */
 .sum-raid-bounty .histories {
-	padding: 15px;
+	padding: 12px;
 	background-color: #f8f9fa;
 	border-radius: 4px;
 	max-height: 150px;
@@ -95,6 +95,10 @@ h3 {
 .sum-raid-bounty .no-history {
 	color: #6c757d;
 	font-style: italic;
+}
+#result span {
+	font-weight: bold;
+	color: #007bff;
 }
 
 /* Estimate Production */
