@@ -19,11 +19,28 @@
 	},
 	"organizeImports": { "enabled": true },
 	"linter": {
-		"enabled": true,
+		"enabled": false,
 		"rules": {
 			"recommended": true,
 			"complexity": {
-				"noForEach": "off"
+				"noForEach": "off",
+				"useArrowFunction": "off",
+				"noUselessTernary": "off"
+			},
+			"style": {
+				"useTemplate": "off",
+				"noUselessElse": "off",
+				"noVar": "off"
+			},
+			"suspicious": {
+				"noRedundantUseStrict": "off",
+				"noAssignInExpressions": "off",
+				"noDoubleEquals": "off",
+				"noRedeclare": "off"
+			},
+			"correctness": {
+				"noInnerDeclarations": "off",
+				"noInvalidUseBeforeDeclaration": "off"
 			}
 		}
 	},
