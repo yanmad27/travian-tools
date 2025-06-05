@@ -1,12 +1,16 @@
 {
 	"manifest_version": 3,
-	"name": "Travian Action Recorder",
+	"name": "Travian Raid Calculator",
 	"version": "1.0",
-	"description": "Records and automates web actions with scheduling capabilities",
-	"permissions": ["activeTab", "tabs", "scripting", "storage", "alarms"],
+	"description": "Calculates the sum of raid bounties in Travian",
+	"permissions": ["activeTab", "tabs", "scripting", "storage"],
+	"host_permissions": ["https://*.test.garrio.dev/*"],
 	"action": {
 		"default_popup": "index.html",
 		"default_icon": "images/icon.png"
+	},
+	"background": {
+		"service_worker": "background.js"
 	},
 	"content_security_policy": {
 		"extension_pages": "script-src 'self'; object-src 'self'"
