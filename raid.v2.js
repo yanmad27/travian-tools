@@ -165,6 +165,7 @@ class FarmList {
 			const list = this.getListElement()
 			list?.querySelector('[class="farmListName"] [class="name"]')?.click()
 			list?.querySelector('button')?.click()
+			logSuccess('Trigger raid')
 		} catch (error) {
 			logError(`Error triggering raid for farm list ${this.id}-${this.getName()}:`, error)
 		}
@@ -173,7 +174,7 @@ class FarmList {
 	start() {
 		this.stop()
 		this.intervalId = setInterval(async () => {
-			await sleep(random(0, 2000))
+			await sleep(random(0, 5000))
 			if (this.isCollapsed()) this.toggleCollapse()
 			if (this.hasAtLeastOneActiveVictim()) this.triggerRaid()
 		}, this.interval * 1000)
@@ -212,11 +213,12 @@ class FarmBot {
 	initialize(isWaiting = false) {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
-			await sleep(i * 5_000)
-			const farmList = new FarmList(farmListData.id, this.farmLists.length * 5)
+			const farmListInterval = 10
+			await sleep(i * farmListInterval * 1_000)
+			const farmList = new FarmList(farmListData.id, this.farmLists.length * farmListInterval)
 			this.activeFarmLists.set(farmListData.id, farmList)
 			if (farmList.isCollapsed()) farmList.toggleCollapse()
-			await sleep(5_000)
+			await sleep(farmListInterval * 1_000)
 			farmList.start()
 		})
 
@@ -314,30 +316,10 @@ const farmLists = [
 	{
 		_no: 1,
 		active: true,
-		id: 923,
+		id: 1045,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 1, distance: 24.5, id: 46816, interval: 5, name: 'Puclik`s village' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 26, id: 46817, interval: 5, name: '00' },
-			{ _no: 3, active: true, attackTroops: 1, distance: 33.2, id: 46818, interval: 5, name: 'iygY6wBV7`s village' },
-			{ _no: 4, active: true, attackTroops: 1, distance: 42.5, id: 71507, interval: 5, name: 'Авангард' },
-			{ _no: 5, active: true, attackTroops: 1, distance: 43.7, id: 46822, interval: 5, name: 'DKMMWQqxPk`s village' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 43.9, id: 71509, interval: 5, name: 'StiflersMom`s villag' },
-			{ _no: 7, active: true, attackTroops: 1, distance: 47, id: 71511, interval: 5, name: 'Ok12' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 47.9, id: 46824, interval: 5, name: 'Pablo666`s village' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 48.6, id: 46826, interval: 5, name: 'Градът на TravianPlayer' },
-		],
-	},
-	{
-		_no: 2,
-		active: true,
-		id: 1885,
-		victims: [
-			{ _no: 1, active: true, attackTroops: 1, distance: 24.2, id: 49917, interval: 5, name: 'Vulkan' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 25.1, id: 49918, interval: 5, name: 'Деревня boni' },
-			{ _no: 3, active: true, attackTroops: 1, distance: 25.1, id: 49919, interval: 5, name: 'Bufeo`s village' },
-			{ _no: 4, active: true, attackTroops: 1, distance: 25.3, id: 49920, interval: 5, name: 'Osada: Knight123' },
-			{ _no: 5, active: true, attackTroops: 1, distance: 26, id: 49922, interval: 5, name: 'Vesnice: hucyxx' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 28.2, id: 49926, interval: 5, name: 'RandomDude`s village' },
+			{ _no: 1, active: true, attackTroops: 1, distance: 13, id: 30684, interval: 5, name: '1' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 20, id: 30780, interval: 5, name: 'Aldeia do Tempo' },
 		],
 	},
 ]
