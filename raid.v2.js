@@ -53,9 +53,9 @@ class Victim {
 			}
 
 			this.attempts = 0
-			logSuccess(`Selected victim ${this.getName()}`)
+			logSuccess(`Selected victim id=${this.id} name=${this.getName()}`)
 		} catch (error) {
-			logError(`Error selecting victim ${this.getName()}:`, error)
+			logError(`Error selecting victim id=${this.id} err=`, error)
 			if (this.attempts >= this.maxAttempts) {
 				this.attempts = 0
 				this.stop()
@@ -165,7 +165,7 @@ class FarmList {
 			const list = this.getListElement()
 			list?.querySelector('[class="farmListName"] [class="name"]')?.click()
 			list?.querySelector('button')?.click()
-			logSuccess('Trigger raid')
+			logWarning(`Trigger raid  id=${this.id} name=${this.getName()}`)
 		} catch (error) {
 			logError(`Error triggering raid for farm list ${this.id}-${this.getName()}:`, error)
 		}
@@ -319,7 +319,27 @@ const farmLists = [
 		id: 1045,
 		victims: [
 			{ _no: 1, active: true, attackTroops: 1, distance: 13, id: 30684, interval: 5, name: '1' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 20, id: 30780, interval: 5, name: 'Aldeia do Tempo' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 13.5, id: 31601, interval: 5, name: 'toppydoppy`s village' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 18.4, id: 31562, interval: 5, name: 'Sloth' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 20, id: 30780, interval: 5, name: 'Aldeia do Tempo' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 22, id: 36187, interval: 5, name: 'northern的村莊' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 32.3, id: 32202, interval: 5, name: 'Satul lui Winnetou' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 34.7, id: 31416, interval: 5, name: 'The tav' },
+		],
+	},
+	{
+		_no: 2,
+		active: true,
+		id: 1436,
+		victims: [
+			{ _no: 1, active: true, attackTroops: 1, distance: 2, id: 46440, interval: 5, name: 'Oasis (40|−62)' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 3, id: 46441, interval: 5, name: 'Oasis (40|−67)' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 3.2, id: 46442, interval: 5, name: 'Oasis (41|−67)' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 3.6, id: 46443, interval: 5, name: 'Oasis (42|−67)' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 3.6, id: 46444, interval: 5, name: 'Oasis (37|−66)' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 4.1, id: 46445, interval: 5, name: 'Oasis (41|−60)' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 4.5, id: 46446, interval: 5, name: 'Oasis (38|−68)' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 5, id: 46447, interval: 5, name: 'Oasis (35|−64)' },
 		],
 	},
 ]
