@@ -214,9 +214,9 @@ class FarmBot {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
 			const farmListInterval = 10
-			await sleep(i * farmListInterval * 1_000)
 			const farmList = new FarmList(farmListData.id, this.farmLists.length * farmListInterval)
 			this.activeFarmLists.set(farmListData.id, farmList)
+			await sleep(i * farmListInterval * 1_000)
 			if (farmList.isCollapsed()) farmList.toggleCollapse()
 			await sleep(farmListInterval * 1_000)
 			farmList.start()
@@ -224,9 +224,9 @@ class FarmBot {
 
 		this.victims.forEach(async (victimData, i) => {
 			if (!victimData.active) return
-			await sleep(i * 60_000)
 			const victim = new Victim(victimData.id, victimData.interval)
 			this.activeVictims.set(victimData.id, victim)
+			await sleep(i * 60_000)
 
 			// Wait if currently raiding
 			if (isWaiting) {
