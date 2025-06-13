@@ -226,7 +226,7 @@ class FarmBot {
 			if (!victimData.active) return
 			const victim = new Victim(victimData.id, victimData.interval)
 			this.activeVictims.set(victimData.id, victim)
-			await sleep(i * 60_000)
+			await sleep(i * 10_000)
 
 			// Wait if currently raiding
 			if (isWaiting) {
