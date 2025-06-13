@@ -53,7 +53,7 @@ class Victim {
 			}
 
 			this.attempts = 0
-			logSuccess(`Selected victim id=${this.id} name=${this.getName()}`)
+			logSuccess(`Select victim id=${this.id} name=${this.getName()}`)
 		} catch (error) {
 			logError(`Error selecting victim id=${this.id} err=`, error)
 			if (this.attempts >= this.maxAttempts) {
