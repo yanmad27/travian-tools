@@ -231,7 +231,7 @@ class FarmBot {
 			this.activateVictim(id, 5)
 			cnt++
 		}
-		if (cnt) logInfo('Synced new victims', 'count', cnt)
+		if (cnt) logInfo('Total new victims synced', 'count', cnt)
 	}
 
 	initialize(isWaiting = false) {
