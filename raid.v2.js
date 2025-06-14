@@ -1,9 +1,10 @@
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
-const logInfo = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;')
-const logError = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: red; font-weight: bold;')
-const logSuccess = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: bold;')
-const logWarning = (message) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: orange; font-weight: bold;')
+const logInfo = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;', ...args)
+const logError = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: red; font-weight: bold;', ...args)
+const logSuccess = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: bold;', ...args)
+const logSuccess2 = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: 900;', ...args)
+const logWarning = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: orange; font-weight: bold;', ...args)
 
 class DOMElementHandler {
 	constructor(selector) {
@@ -46,16 +47,16 @@ class Victim {
 				checkBox.click()
 
 				if (!checkBox.checked && this.attempts < this.maxAttempts) {
-					logWarning(`Retrying to select victim ${this.getName()} (${this.attempts}/${this.maxAttempts})`)
+					logWarning('Retrying to select victim', 'name', this.getName(), 'attempts', this.attempts, 'max', this.maxAttempts)
 					await sleep(random(1000, 5000))
 					return await this.select()
 				}
 			}
 
 			this.attempts = 0
-			logSuccess(`Select victim id=${this.id} name=${this.getName()}`)
+			logSuccess('Select victim', 'id', this.id, 'name', this.getName())
 		} catch (error) {
-			logError(`Error selecting victim id=${this.id} err=`, error)
+			logError('Error selecting victim', 'id', this.id, 'err', error)
 			if (this.attempts >= this.maxAttempts) {
 				this.attempts = 0
 				this.stop()
@@ -147,7 +148,7 @@ class FarmList {
 			const list = this.getListElement()
 			list?.querySelector('[class="expandCollapse"]')?.click()
 		} catch (error) {
-			logError(`Error toggling farm list ${this.getName()}`, error)
+			logError('Error toggling farm list', 'name', this.getName(), 'err', error)
 		}
 	}
 
@@ -165,9 +166,9 @@ class FarmList {
 			const list = this.getListElement()
 			list?.querySelector('[class="farmListName"] [class="name"]')?.click()
 			list?.querySelector('button')?.click()
-			logWarning(`Trigger raid  id=${this.id} name=${this.getName()}`)
+			logSuccess2('Trigger raid', 'id', this.id, 'name', this.getName())
 		} catch (error) {
-			logError(`Error triggering raid for farm list ${this.id}-${this.getName()}:`, error)
+			logError('Error triggering raid for farm list', 'id', this.id, 'name', this.getName(), 'err', error)
 		}
 	}
 
@@ -199,15 +200,15 @@ class FarmBot {
 
 	syncVictims() {
 		const domVictims = document.querySelectorAll('#rallyPointFarmList .slots tr.slot td.selection label.checkbox input')
-		let hasNew = 0
+		let cnt = 0
 		for (const v of domVictims) {
 			const id = Number(v.getAttribute('data-slot-id'))
 			if (this.activeVictims.has(id)) continue
-			logInfo(`Syncing victim ${id}`)
+			logInfo('Syncing new victim', 'id', id)
 			this.activateVictim(id, 5)
-			hasNew++
+			cnt++
 		}
-		if (hasNew) logInfo(`Synced ${hasNew} new victims`)
+		if (cnt) logInfo('Synced new victims', 'count', cnt)
 	}
 
 	initialize(isWaiting = false) {
@@ -257,11 +258,11 @@ class FarmBot {
 				}
 			}
 
-			logInfo(`Activated victim ${id} ${victim.getName()}`)
+			logInfo('Activated victim', 'id', id, 'name', victim.getName())
 			await victim.select()
 			victim.start()
 		} catch (error) {
-			logError(`Error activating victim ${id}:`, error)
+			logError('Error activating victim', 'id', id, 'err', error)
 		}
 	}
 
@@ -271,9 +272,9 @@ class FarmBot {
 			if (!victim) throw new Error('Victim not found')
 			victim.stop()
 			this.activeVictims.delete(id)
-			logInfo(`Deactivated victim ${id} ${victim.getName()}`)
+			logInfo('Deactivated victim', 'id', id, 'name', victim.getName())
 		} catch (error) {
-			logError(`Error deactivating victim ${id}:`, error)
+			logError('Error deactivating victim', 'id', id, 'err', error)
 		}
 	}
 
@@ -283,7 +284,7 @@ class FarmBot {
 
 			this.activeFarmLists.forEach((farmList) => {
 				if (!farmList.baseElement.exists()) {
-					logWarning(`Farm list ${farmList.id} element missing, restarting...`)
+					logWarning('Farm list element missing, restarting...', 'id', farmList.id, 'name', farmList.getName())
 					farmList.stop()
 					farmList.start()
 				}
@@ -291,7 +292,7 @@ class FarmBot {
 
 			this.activeVictims.forEach((victim) => {
 				if (!victim.baseElement.exists()) {
-					logWarning(`Victim ${victim.id} element missing, restarting...`)
+					logWarning('Victim element missing, restarting...', 'id', victim.id, 'name', victim.getName())
 					victim.stop()
 					victim.start()
 				}
