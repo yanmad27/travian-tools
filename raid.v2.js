@@ -317,7 +317,7 @@ class FarmBot {
 				if (!victim.baseElement.exists()) {
 					logWarning('Victim element missing, restarting...', 'id', victim.id, 'name', victim.getName())
 					victim.stop()
-					victim.start()
+					this.activeVictims.delete(victim.id)
 				}
 			})
 
