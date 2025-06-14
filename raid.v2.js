@@ -189,7 +189,7 @@ class FarmList {
 			const list = this.getListElement()
 			list?.querySelector('[class="farmListName"] [class="name"]')?.click()
 			list?.querySelector('button')?.click()
-			logSuccess('🚀Trigger raid', 'id', this.id, 'name', this.getName())
+			logSuccess('🚀 Trigger raid', 'id', this.id, 'name', this.getName())
 		} catch (error) {
 			logError('Error triggering raid for farm list', 'id', this.id, 'name', this.getName(), 'err', error)
 		}
