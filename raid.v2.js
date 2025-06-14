@@ -1,10 +1,33 @@
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
-const logInfo = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: blue; font-weight: bold;', ...args)
-const logError = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: red; font-weight: bold;', ...args)
-const logSuccess = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: bold;', ...args)
-const logSuccess2 = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: #5a9a0a; font-weight: 900;', ...args)
-const logWarning = (message, ...args) => console.log(`${new Date().toLocaleString()} ~ %c${message}`, 'color: orange; font-weight: bold;', ...args)
+const logBase =
+	(color) =>
+	(message, ...args) => {
+		const newArgs = [`color: ${color}; font-weight: bold;`]
+		let baseMessage = `${new Date().toLocaleString()} ~ %c${message}`
+
+		for (let i = 0; i < args.length; i += 2) {
+			baseMessage += ` %c${args[i]}=%c${args[i + 1]}`
+			newArgs.push('color: gray;')
+			switch (typeof args[i + 1]) {
+				case 'number':
+					newArgs.push('color: rgb(146, 121, 241);')
+					break
+				case 'string':
+					newArgs.push('color: white;')
+					break
+				default:
+					newArgs.push('color: white;')
+					break
+			}
+		}
+
+		console.log(baseMessage, ...newArgs)
+	}
+const logInfo = logBase('blue')
+const logError = logBase('red')
+const logSuccess = logBase('#5a9a0a')
+const logWarning = logBase('orange')
 
 class DOMElementHandler {
 	constructor(selector) {
@@ -166,7 +189,7 @@ class FarmList {
 			const list = this.getListElement()
 			list?.querySelector('[class="farmListName"] [class="name"]')?.click()
 			list?.querySelector('button')?.click()
-			logSuccess2('Trigger raid', 'id', this.id, 'name', this.getName())
+			logSuccess('🚀Trigger raid', 'id', this.id, 'name', this.getName())
 		} catch (error) {
 			logError('Error triggering raid for farm list', 'id', this.id, 'name', this.getName(), 'err', error)
 		}
