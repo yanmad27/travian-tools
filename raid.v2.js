@@ -54,6 +54,13 @@ class Victim {
 		return base?.parentNode?.parentNode?.parentNode
 	}
 
+	async lastRaidWonWithoutLosses() {
+		const victim = this.getVictimElement()
+		const lastRaidElm = victim.querySelector('[class~="lastRaidState"]')
+		const lastRaidElmClass = lastRaidElm.getAttribute('class')
+		return lastRaidElmClass.includes('attack_won_withoutLosses_small')
+	}
+
 	async select() {
 		try {
 			await sleep(random(1000, 5000))
@@ -62,6 +69,11 @@ class Victim {
 
 			const victim = this.getVictimElement()
 			if (!victim) throw new Error('Victim element not found')
+
+			if (!(await this.lastRaidWonWithoutLosses())) {
+				logWarning('Last raid lost, skipping...', 'id', this.id, 'name', this.getName())
+				return
+			}
 
 			const checkBox = victim.querySelector('[class="selection"] input')
 			if (!checkBox) throw new Error('Checkbox not found')
@@ -349,8 +361,9 @@ const farmLists = [
 			{ _no: 5, active: true, attackTroops: 1, distance: 22, id: 36187, interval: 5, name: 'northern的村莊' },
 			{ _no: 6, active: true, attackTroops: 1, distance: 31.1, id: 46730, interval: 5, name: 'Pilat`s village' },
 			{ _no: 7, active: true, attackTroops: 1, distance: 32.3, id: 32202, interval: 5, name: 'Satul lui Winnetou' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 34.7, id: 31416, interval: 5, name: 'The tav' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 37.2, id: 46738, interval: 5, name: 'rzK9mz7YD`s village' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 37.2, id: 46738, interval: 5, name: 'rzK9mz7YD`s village' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 41.2, id: 47862, interval: 5, name: 'Aldea de Panrro' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 43.4, id: 47864, interval: 5, name: 'Aldea de licha22' },
 		],
 	},
 	{
@@ -363,13 +376,14 @@ const farmLists = [
 			{ _no: 3, active: true, attackTroops: 1, distance: 3.2, id: 46442, interval: 5, name: 'Oasis (41|−67)' },
 			{ _no: 4, active: true, attackTroops: 1, distance: 3.6, id: 46443, interval: 5, name: 'Oasis (42|−67)' },
 			{ _no: 5, active: true, attackTroops: 1, distance: 3.6, id: 46444, interval: 5, name: 'Oasis (37|−66)' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 4, id: 46915, interval: 5, name: 'Oasis (40|−68)' },
-			{ _no: 7, active: true, attackTroops: 1, distance: 4.1, id: 46445, interval: 5, name: 'Oasis (41|−60)' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 4.5, id: 46446, interval: 5, name: 'Oasis (38|−68)' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 5, id: 46447, interval: 5, name: 'Oasis (35|−64)' },
-			{ _no: 10, active: true, attackTroops: 1, distance: 5, id: 46928, interval: 5, name: 'Oasis (40|−69)' },
-			{ _no: 11, active: true, attackTroops: 1, distance: 5.4, id: 46944, interval: 5, name: 'Oasis (38|−69)' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 4.1, id: 46445, interval: 5, name: 'Oasis (41|−60)' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 4.5, id: 46446, interval: 5, name: 'Oasis (38|−68)' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 5, id: 46447, interval: 5, name: 'Oasis (35|−64)' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 5.4, id: 49771, interval: 5, name: 'Oasis (38|−69)' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 5.8, id: 47703, interval: 5, name: 'Oasis (37|−59)' },
+			{ _no: 11, active: true, attackTroops: 1, distance: 5.8, id: 49647, interval: 5, name: 'Oasis (45|−61)' },
 			{ _no: 12, active: true, attackTroops: 1, distance: 6.4, id: 46783, interval: 5, name: 'Oasis (35|−68)' },
+			{ _no: 13, active: false, attackTroops: 1, distance: 7.1, id: 49648, interval: 5, name: 'Oasis (47|−63)' },
 		],
 	},
 ]
