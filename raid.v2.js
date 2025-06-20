@@ -1,3 +1,6 @@
+const VICTIM_DEFAULT_INTERVAL = 7
+const FARMLIST_DEFAULT_INTERVAL = 10
+const HEALTH_CHECK_INTERVAL = 300_000
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
 const logBase =
@@ -42,7 +45,7 @@ class Victim {
 	constructor(id, interval) {
 		this.id = id
 		this.name = ''
-		this.interval = interval
+		this.interval = interval || VICTIM_DEFAULT_INTERVAL
 		this.intervalId = null
 		this.attempts = 0
 		this.maxAttempts = 5
@@ -55,10 +58,14 @@ class Victim {
 	}
 
 	async lastRaidWonWithoutLosses() {
-		const victim = this.getVictimElement()
-		const lastRaidElm = victim.querySelector('[class~="lastRaidState"]')
-		const lastRaidElmClass = lastRaidElm.getAttribute('class')
-		return lastRaidElmClass.includes('attack_won_withoutLosses_small')
+		try {
+			const victim = this.getVictimElement()
+			const lastRaidElm = victim.querySelector('[class~="lastRaidState"]')
+			const lastRaidElmClass = lastRaidElm.getAttribute('class')
+			return lastRaidElmClass.includes('attack_won_withoutLosses_small')
+		} catch {
+			return true
+		}
 	}
 
 	async select() {
@@ -150,7 +157,7 @@ class Victim {
 class FarmList {
 	constructor(id, interval) {
 		this.id = id
-		this.interval = interval
+		this.interval = interval || FARMLIST_DEFAULT_INTERVAL
 		this.intervalId = null
 		this.baseElement = new DOMElementHandler(`[data-list="${id}"]`)
 	}
@@ -249,7 +256,7 @@ class FarmBot {
 	initialize(isWaiting = false) {
 		logInfo('Initializing farm bot...')
 		this.farmLists.forEach(async (farmListData, i) => {
-			const farmListInterval = 10
+			const farmListInterval = FARMLIST_DEFAULT_INTERVAL
 			const farmList = new FarmList(farmListData.id, this.farmLists.length * farmListInterval)
 			this.activeFarmLists.set(farmListData.id, farmList)
 			await sleep(i * farmListInterval * 1_000)
@@ -260,7 +267,7 @@ class FarmBot {
 
 		this.victims.forEach(async (victimData, i) => {
 			if (!victimData.active) return
-			const victim = new Victim(victimData.id, victimData.interval)
+			const victim = new Victim(victimData.id, victimData.interval || VICTIM_DEFAULT_INTERVAL)
 			this.activeVictims.set(victimData.id, victim)
 			await sleep(i * 10_000)
 
@@ -280,7 +287,7 @@ class FarmBot {
 		this.startHealthCheck()
 	}
 
-	async activateVictim(id, interval = 5, isWaiting = false) {
+	async activateVictim(id, interval = VICTIM_DEFAULT_INTERVAL, isWaiting = false) {
 		try {
 			const victim = new Victim(id, interval)
 			this.activeVictims.set(id, victim)
@@ -334,7 +341,7 @@ class FarmBot {
 			})
 
 			this.syncVictims()
-		}, 300000)
+		}, HEALTH_CHECK_INTERVAL)
 	}
 
 	stop() {
@@ -352,39 +359,21 @@ const farmLists = [
 	{
 		_no: 1,
 		active: true,
-		id: 1045,
+		id: 1115,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 1, distance: 13, id: 30684, interval: 5, name: '1' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 13.5, id: 31601, interval: 5, name: 'toppydoppy`s village' },
-			{ _no: 3, active: true, attackTroops: 1, distance: 18.4, id: 31562, interval: 5, name: 'Sloth' },
-			{ _no: 4, active: true, attackTroops: 1, distance: 20, id: 30780, interval: 5, name: 'Aldeia do Tempo' },
-			{ _no: 5, active: true, attackTroops: 1, distance: 22, id: 36187, interval: 5, name: 'northern的村莊' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 31.1, id: 46730, interval: 5, name: 'Pilat`s village' },
-			{ _no: 7, active: true, attackTroops: 1, distance: 32.3, id: 32202, interval: 5, name: 'Satul lui Winnetou' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 37.2, id: 46738, interval: 5, name: 'rzK9mz7YD`s village' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 41.2, id: 47862, interval: 5, name: 'Aldea de Panrro' },
-			{ _no: 10, active: true, attackTroops: 1, distance: 43.4, id: 47864, interval: 5, name: 'Aldea de licha22' },
-		],
-	},
-	{
-		_no: 2,
-		active: true,
-		id: 1436,
-		victims: [
-			{ _no: 1, active: true, attackTroops: 1, distance: 2, id: 46440, interval: 5, name: 'Oasis (40|−62)' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 3, id: 46441, interval: 5, name: 'Oasis (40|−67)' },
-			{ _no: 3, active: true, attackTroops: 1, distance: 3.2, id: 46442, interval: 5, name: 'Oasis (41|−67)' },
-			{ _no: 4, active: true, attackTroops: 1, distance: 3.6, id: 46443, interval: 5, name: 'Oasis (42|−67)' },
-			{ _no: 5, active: true, attackTroops: 1, distance: 3.6, id: 46444, interval: 5, name: 'Oasis (37|−66)' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 4.1, id: 46445, interval: 5, name: 'Oasis (41|−60)' },
-			{ _no: 7, active: false, attackTroops: 1, distance: 4.1, id: 52449, interval: 5, name: 'Oasis (36|−65)' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 4.5, id: 46446, interval: 5, name: 'Oasis (38|−68)' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 5, id: 46447, interval: 5, name: 'Oasis (35|−64)' },
-			{ _no: 10, active: true, attackTroops: 1, distance: 5.4, id: 49771, interval: 5, name: 'Oasis (38|−69)' },
-			{ _no: 11, active: true, attackTroops: 1, distance: 5.8, id: 47703, interval: 5, name: 'Oasis (37|−59)' },
-			{ _no: 12, active: true, attackTroops: 1, distance: 5.8, id: 49647, interval: 5, name: 'Oasis (45|−61)' },
-			{ _no: 13, active: false, attackTroops: 1, distance: 6.4, id: 46783, interval: 5, name: 'Oasis (35|−68)' },
-			{ _no: 14, active: false, attackTroops: 1, distance: 7.1, id: 49648, interval: 5, name: 'Oasis (47|−63)' },
+			{ _no: 1, active: true, attackTroops: 1, distance: 1, id: 30393, interval: 7, name: 'Oasis (81|12)' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 1, id: 30395, interval: 7, name: 'Oasis (83|12)' },
+			{ _no: 3, active: true, attackTroops: 2, distance: 2, id: 30397, interval: 7, name: 'Oasis (82|14)' },
+			{ _no: 4, active: true, attackTroops: 2, distance: 3.2, id: 30398, interval: 7, name: 'Oasis (79|11)' },
+			{ _no: 5, active: true, attackTroops: 2, distance: 3.6, id: 34584, interval: 7, name: 'Oasis (79|10)' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 5.7, id: 37423, interval: 7, name: 'Oasis (78|8)' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 5.8, id: 35782, interval: 7, name: 'Oasis (79|17)' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 6, id: 34886, interval: 7, name: 'Oasis (82|6)' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 6, id: 36338, interval: 7, name: 'Oasis (88|12)' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 6.4, id: 35827, interval: 7, name: 'Oasis (78|7)' },
+			{ _no: 11, active: true, attackTroops: 1, distance: 7.2, id: 35933, interval: 7, name: 'Oasis (88|8)' },
+			{ _no: 12, active: false, attackTroops: 1, distance: 7.6, id: 34891, interval: 7, name: 'Oasis (75|15)' },
+			{ _no: 13, active: false, attackTroops: 1, distance: 7.6, id: 37656, interval: 7, name: 'Oasis (79|5)' },
 		],
 	},
 ]
