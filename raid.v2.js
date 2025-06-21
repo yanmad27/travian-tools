@@ -1,6 +1,6 @@
 const VICTIM_DEFAULT_INTERVAL = 7
 const FARMLIST_DEFAULT_INTERVAL = 10
-const HEALTH_CHECK_INTERVAL = 300_000
+const HEALTH_CHECK_INTERVAL = 7
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
 const logBase =
@@ -335,27 +335,30 @@ class FarmBot {
 	}
 
 	startHealthCheck() {
-		this.healthCheckInterval = setInterval(() => {
-			logInfo('Running health check...')
+		this.healthCheckInterval = setInterval(
+			() => {
+				logInfo('Running health check...')
 
-			this.activeFarmLists.forEach((farmList) => {
-				if (!farmList.baseElement.exists()) {
-					logWarning('Farm list element missing, restarting...', 'id', farmList.id, 'name', farmList.getName())
-					farmList.stop()
-					farmList.start()
-				}
-			})
+				this.activeFarmLists.forEach((farmList) => {
+					if (!farmList.baseElement.exists()) {
+						logWarning('Farm list element missing, restarting...', 'id', farmList.id, 'name', farmList.getName())
+						farmList.stop()
+						farmList.start()
+					}
+				})
 
-			this.activeVictims.forEach((victim) => {
-				if (!victim.baseElement.exists()) {
-					logWarning('Victim element missing, restarting...', 'id', victim.id, 'name', victim.getName())
-					victim.stop()
-					this.activeVictims.delete(victim.id)
-				}
-			})
+				this.activeVictims.forEach((victim) => {
+					if (!victim.baseElement.exists()) {
+						logWarning('Victim element missing, restarting...', 'id', victim.id, 'name', victim.getName())
+						victim.stop()
+						this.activeVictims.delete(victim.id)
+					}
+				})
 
-			this.syncVictims()
-		}, HEALTH_CHECK_INTERVAL)
+				this.syncVictims()
+			},
+			HEALTH_CHECK_INTERVAL * 60 * 1000,
+		)
 	}
 
 	stop() {
