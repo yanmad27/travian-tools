@@ -255,7 +255,7 @@ class FarmBot {
 	}
 
 	syncVictims() {
-		const domVictims = document.querySelectorAll('#rallyPointFarmList .slots tr.slot td.selection label.checkbox input')
+		const domVictims = document.querySelectorAll('#rallyPointFarmList .slots tr.slot:not(.disabled) td.selection label.checkbox input')
 		let cnt = 0
 		for (const v of domVictims) {
 			const id = Number(v.getAttribute('data-slot-id'))
@@ -348,6 +348,13 @@ class FarmBot {
 				})
 
 				this.activeVictims.forEach((victim) => {
+					if (victim.isDisabled()) {
+						logWarning('Victim is disabled, deactivating...', 'id', victim.id, 'name', victim.getName())
+						victim.stop()
+						this.activeVictims.delete(victim.id)
+						return
+					}
+
 					if (!victim.baseElement.exists()) {
 						logWarning('Victim element missing, restarting...', 'id', victim.id, 'name', victim.getName())
 						victim.stop()
@@ -392,9 +399,9 @@ const farmLists = [
 			{ _no: 12, active: true, attackTroops: 1, distance: 6, id: 39194, interval: 6, name: 'Oasis (76|12)' },
 			{ _no: 13, active: true, attackTroops: 1, distance: 6.4, id: 35827, interval: 6, name: 'Oasis (78|7)' },
 			{ _no: 14, active: true, attackTroops: 1, distance: 7, id: 39132, interval: 6, name: 'Oasis (82|5)' },
-			{ _no: 15, active: false, attackTroops: 1, distance: 7.1, id: 39182, interval: 6, name: 'Oasis (83|5)' },
+			{ _no: 15, active: true, attackTroops: 1, distance: 7.1, id: 39182, interval: 6, name: 'Oasis (83|5)' },
 			{ _no: 16, active: true, attackTroops: 1, distance: 7.2, id: 35933, interval: 6, name: 'Oasis (88|8)' },
-			{ _no: 17, active: true, attackTroops: 1, distance: 7.2, id: 39136, interval: 6, name: 'Oasis (78|6)' },
+			{ _no: 17, active: false, attackTroops: 1, distance: 7.2, id: 39136, interval: 6, name: 'Oasis (78|6)' },
 			{ _no: 18, active: false, attackTroops: 1, distance: 7.6, id: 34891, interval: 6, name: 'Oasis (75|15)' },
 			{ _no: 19, active: false, attackTroops: 1, distance: 7.6, id: 37656, interval: 6, name: 'Oasis (79|5)' },
 		],
