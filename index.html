@@ -4,6 +4,7 @@
     <title>Travian Extension</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/sum-raid-bounty.css" />
+    <link rel="stylesheet" href="styles/troops-needed.css" />
   </head>
   <body>
     <div class="container">
@@ -37,6 +38,13 @@
             <p class="no-history">No history yet</p>
           </div>
         </div>
+      </div>
+      <div class="feature-section troops-needed">
+        <h3>Troops Needed</h3>
+        <div>
+          <input type="number" id="interval" placeholder="Interval" value="6" />
+        </div>
+        <div id="troops-needed-result"></div>
       </div>
       <div class="feature-section estimate-production">
         <h3>Estimate Production</h3>
@@ -75,5 +83,6 @@
     <script src="javascripts/highlight-troops.js"></script>
     <!-- <script src="javascripts/auto-raid.js"></script> -->
     <script src="javascripts/sync-farm-list.js"></script>
+    <script src="javascripts/troops-needed.js"></script>
   </body>
 </html>
