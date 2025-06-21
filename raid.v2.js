@@ -1,7 +1,7 @@
 const VICTIM_DEFAULT_INTERVAL = 7
 const FARMLIST_DEFAULT_INTERVAL = 10
 const HEALTH_CHECK_INTERVAL = 7
-const BETWEEN_TWO_VICTIM_WAIT = 1_000
+const BETWEEN_TWO_VICTIM_WAIT = 5_000
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
 const logBase =
