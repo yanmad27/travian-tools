@@ -57,7 +57,16 @@ class Victim {
 		return base?.parentNode?.parentNode?.parentNode
 	}
 
-	async lastRaidWonWithoutLosses() {
+	isDisabled() {
+		try {
+			const victim = this.getVictimElement()
+			return victim?.getAttribute('class')?.includes('disabled')
+		} catch {
+			return false
+		}
+	}
+
+	lastRaidWonWithoutLosses() {
 		try {
 			const victim = this.getVictimElement()
 			const lastRaidElm = victim.querySelector('[class~="lastRaidState"]')
@@ -77,7 +86,12 @@ class Victim {
 			const victim = this.getVictimElement()
 			if (!victim) throw new Error('Victim element not found')
 
-			if (!(await this.lastRaidWonWithoutLosses())) {
+			if (this.isDisabled()) {
+				logWarning('Victim is disabled, skipping...', 'id', this.id, 'name', this.getName())
+				return
+			}
+
+			if (!this.lastRaidWonWithoutLosses()) {
 				logWarning('Last raid lost, skipping...', 'id', this.id, 'name', this.getName())
 				return
 			}
@@ -361,19 +375,25 @@ const farmLists = [
 		active: true,
 		id: 1115,
 		victims: [
-			{ _no: 1, active: true, attackTroops: 1, distance: 1, id: 30393, interval: 7, name: 'Oasis (81|12)' },
-			{ _no: 2, active: true, attackTroops: 1, distance: 1, id: 30395, interval: 7, name: 'Oasis (83|12)' },
-			{ _no: 3, active: true, attackTroops: 2, distance: 2, id: 30397, interval: 7, name: 'Oasis (82|14)' },
-			{ _no: 4, active: true, attackTroops: 2, distance: 3.2, id: 30398, interval: 7, name: 'Oasis (79|11)' },
-			{ _no: 5, active: true, attackTroops: 2, distance: 3.6, id: 34584, interval: 7, name: 'Oasis (79|10)' },
-			{ _no: 6, active: true, attackTroops: 1, distance: 5.7, id: 37423, interval: 7, name: 'Oasis (78|8)' },
-			{ _no: 7, active: true, attackTroops: 1, distance: 5.8, id: 35782, interval: 7, name: 'Oasis (79|17)' },
-			{ _no: 8, active: true, attackTroops: 1, distance: 6, id: 34886, interval: 7, name: 'Oasis (82|6)' },
-			{ _no: 9, active: true, attackTroops: 1, distance: 6, id: 36338, interval: 7, name: 'Oasis (88|12)' },
-			{ _no: 10, active: true, attackTroops: 1, distance: 6.4, id: 35827, interval: 7, name: 'Oasis (78|7)' },
-			{ _no: 11, active: true, attackTroops: 1, distance: 7.2, id: 35933, interval: 7, name: 'Oasis (88|8)' },
-			{ _no: 12, active: false, attackTroops: 1, distance: 7.6, id: 34891, interval: 7, name: 'Oasis (75|15)' },
-			{ _no: 13, active: false, attackTroops: 1, distance: 7.6, id: 37656, interval: 7, name: 'Oasis (79|5)' },
+			{ _no: 1, active: true, attackTroops: 1, distance: 1, id: 30393, interval: 6, name: 'Oasis (81|12)' },
+			{ _no: 2, active: true, attackTroops: 1, distance: 1, id: 30395, interval: 6, name: 'Oasis (83|12)' },
+			{ _no: 3, active: true, attackTroops: 1, distance: 2, id: 30397, interval: 6, name: 'Oasis (82|14)' },
+			{ _no: 4, active: true, attackTroops: 1, distance: 3.2, id: 30398, interval: 6, name: 'Oasis (79|11)' },
+			{ _no: 5, active: true, attackTroops: 1, distance: 3.6, id: 34584, interval: 6, name: 'Oasis (79|10)' },
+			{ _no: 6, active: true, attackTroops: 1, distance: 4.2, id: 38230, interval: 6, name: 'Oasis (79|9)' },
+			{ _no: 7, active: true, attackTroops: 1, distance: 5, id: 38429, interval: 6, name: 'Oasis (79|8)' },
+			{ _no: 8, active: true, attackTroops: 1, distance: 5.7, id: 37423, interval: 6, name: 'Oasis (78|8)' },
+			{ _no: 9, active: true, attackTroops: 1, distance: 5.8, id: 35782, interval: 6, name: 'Oasis (79|17)' },
+			{ _no: 10, active: true, attackTroops: 1, distance: 6, id: 34886, interval: 6, name: 'Oasis (82|6)' },
+			{ _no: 11, active: true, attackTroops: 1, distance: 6, id: 36338, interval: 6, name: 'Oasis (88|12)' },
+			{ _no: 12, active: true, attackTroops: 1, distance: 6, id: 39194, interval: 6, name: 'Oasis (76|12)' },
+			{ _no: 13, active: true, attackTroops: 1, distance: 6.4, id: 35827, interval: 6, name: 'Oasis (78|7)' },
+			{ _no: 14, active: true, attackTroops: 1, distance: 7, id: 39132, interval: 6, name: 'Oasis (82|5)' },
+			{ _no: 15, active: false, attackTroops: 1, distance: 7.1, id: 39182, interval: 6, name: 'Oasis (83|5)' },
+			{ _no: 16, active: true, attackTroops: 1, distance: 7.2, id: 35933, interval: 6, name: 'Oasis (88|8)' },
+			{ _no: 17, active: true, attackTroops: 1, distance: 7.2, id: 39136, interval: 6, name: 'Oasis (78|6)' },
+			{ _no: 18, active: false, attackTroops: 1, distance: 7.6, id: 34891, interval: 6, name: 'Oasis (75|15)' },
+			{ _no: 19, active: false, attackTroops: 1, distance: 7.6, id: 37656, interval: 6, name: 'Oasis (79|5)' },
 		],
 	},
 ]
