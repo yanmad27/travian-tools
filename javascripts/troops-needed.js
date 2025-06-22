@@ -1,13 +1,14 @@
 const troopneededkey = 'troopsNeeded'
+const troopsOverviewkey = 'troopsOverview'
 
-const renderResult = (farmList) => {
+const renderResult = (villageList, troopsOverview) => {
 	const troopsImgPath = 'https://cdn.legends.travian.com/gpack/155.5/img_ltr/global/units/hun/icon/hun_small.png'
 	// const interval = Number(document.getElementById('interval').value)
 	const result = document.getElementById('troops-needed-result')
 	result.innerHTML = ''
-	for (const farm of farmList) {
-		const farmName = farm.name
-		const victimList = farm.victimList
+	for (const village of villageList) {
+		const villageName = village.name
+		const farmList = village.farmList
 		const sumTroops = {
 			t1: 0,
 			t2: 0,
@@ -26,16 +27,18 @@ const renderResult = (farmList) => {
 			t6: 0,
 			t7: 0,
 		}
-		for (const victim of victimList) {
-			for (const [key, value] of Object.entries(victim.troops)) {
-				sumTroopsAll[key] += value
-				if (!victim.isDisabled) sumTroops[key] += value
+		for (const farm of farmList) {
+			const farmName = farm.name
+			const victimList = farm.victimList
+			for (const victim of victimList) {
+				for (const [key, value] of Object.entries(victim.troops)) {
+					sumTroopsAll[key] += value
+					if (!victim.isDisabled) sumTroops[key] += value
+				}
 			}
-		}
-
-		result.innerHTML += `
+			result.innerHTML += `
               <div class="farm-item">
-                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${farmName}</div>
+                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - ${farmName}</div>
                 <div class="farm-troops" style="display: flex; align-items: center; gap: 8px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
@@ -53,19 +56,27 @@ const renderResult = (farmList) => {
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div style="min-width: 60px;">${value} <span style="color: #999;">(${sumTroopsAll[key]})</span></div>
+                <div style="min-width: 60px;">${value}<span style="color: #999;">/${troopsOverview[villageName]?.[key]} (${sumTroopsAll[key]})</span></div>
               </div>
               `
 						})
 						.join('')}
                 </div>
               </div>`
+		}
 	}
 }
 function saveToStorage(data) {
-	chrome.storage.local.set({ [troopneededkey]: data }, () => {
-		renderResult(data)
+	chrome.storage.local.get([troopsOverviewkey], (result) => {
+		const troopsOverview = result[troopsOverviewkey] || {}
+		chrome.storage.local.set({ [troopneededkey]: data }, () => {
+			renderResult(data, troopsOverview)
+		})
 	})
+}
+
+function saveToStorage2(data) {
+	chrome.storage.local.set({ [troopsOverviewkey]: data }, () => {})
 }
 
 const getTroopNeeded = () => {
@@ -91,39 +102,50 @@ const getTroopNeeded = () => {
 								t7: getTroops('i.t7'),
 							}
 						}
-						const farmListElems = document.querySelectorAll('.farmListWrapper')
-						const farmList = []
-						for (const farmListElem of farmListElems) {
-							const name = farmListElem.querySelector('.farmListName .name').innerHTML
-							const victimListElem = farmListElem.querySelectorAll('tr.slot')
-							const victimList = []
-							for (const victimElem of victimListElem) {
-								const isDisabled = victimElem.getAttribute('class')?.includes('disabled')
-								const id = victimElem.querySelector('[class="selection"] input').getAttribute('data-slot-id')
-								const distance = Number(victimElem.querySelector('.distance span').innerHTML)
-								const totalLoop = (60 * 2 * distance) / SLOWEST_SPEED / BASE_INTERVAL
-								const ceilTotalLoop = Math.ceil(totalLoop)
-								const troops = getTroops(ceilTotalLoop, victimElem.querySelector('td.troops div'))
-								const item = {
-									id,
-									distance,
-									troops,
-									isDisabled,
+						const villageListElems = document.querySelectorAll('.villageWrapper ')
+						const villageList = []
+						for (const villageListElem of villageListElems) {
+							const name = villageListElem.querySelector('.villageName').innerHTML
+							const farmListElems = villageListElem.querySelectorAll('.farmListWrapper')
+							const farmList = []
+							for (const farmListElem of farmListElems) {
+								const name = farmListElem.querySelector('.farmListName .name').innerHTML
+								const victimListElem = farmListElem.querySelectorAll('tr.slot')
+								const victimList = []
+								for (const victimElem of victimListElem) {
+									const isDisabled = victimElem.getAttribute('class')?.includes('disabled')
+									const id = victimElem.querySelector('[class="selection"] input').getAttribute('data-slot-id')
+									const distance = Number(victimElem.querySelector('.distance span').innerHTML)
+									const totalLoop = (60 * 2 * distance) / SLOWEST_SPEED / BASE_INTERVAL
+									const ceilTotalLoop = Math.ceil(totalLoop)
+									const troops = getTroops(ceilTotalLoop, victimElem.querySelector('td.troops div'))
+									const item = {
+										id,
+										distance,
+										troops,
+										isDisabled,
+									}
+									victimList.push(item)
 								}
-								victimList.push(item)
+								farmList.push({
+									name,
+									victimList,
+								})
 							}
-							farmList.push({
+							villageList.push({
 								name,
-								victimList,
+								farmList,
 							})
 						}
-						return farmList
+
+						console.log('LOG ~ chrome.tabs.query ~ villageList:', villageList)
+						return villageList
 					},
 				},
 				(results) => {
-					const farmList = results[0].result
-					if (farmList.length === 0) return
-					saveToStorage(farmList)
+					const villageList = results[0].result
+					if (villageList.length === 0) return
+					saveToStorage(villageList)
 				},
 			)
 		})
@@ -132,11 +154,53 @@ const getTroopNeeded = () => {
 	}
 }
 
+const getTroopsOverview = () => {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.scripting.executeScript(
+			{
+				target: { tabId: tabs[0].id },
+				function: () => {
+					if (!document.location.href.includes('/village/statistics/troops')) return
+					const table = document.querySelector('#troops')
+					const tmps = table.querySelectorAll('td.villageName')
+					const troops = {}
+					for (const tmp of tmps) {
+						const row = tmp.parentNode
+						const getTroop = (index) => {
+							return isNaN(Number(row.querySelector(`td:nth-child(${index})`).innerHTML)) ? 0 : Number(row.querySelector(`td:nth-child(${index})`).innerHTML)
+						}
+						const name = row.querySelector('.villageName a').innerHTML
+						const troop = {
+							t1: getTroop(2),
+							t2: getTroop(3),
+							t3: getTroop(4),
+							t4: getTroop(5),
+							t5: getTroop(6),
+							t6: getTroop(7),
+							t7: getTroop(8),
+							t8: getTroop(9),
+							t9: getTroop(10),
+							t10: getTroop(11),
+						}
+						troops[name] = troop
+					}
+					return troops
+				},
+			},
+			(results) => {
+				const troops = results[0].result
+				if (troops.length === 0) return
+				saveToStorage2(troops)
+			},
+		)
+	})
+}
 document.addEventListener('DOMContentLoaded', () => {
 	getTroopNeeded()
-	chrome.storage.local.get([troopneededkey], (result) => {
-		const farmList = result[troopneededkey] || []
-		console.log('LOG ~ chrome.storage.local.get ~ farmList:', farmList)
-		renderResult(farmList)
+	getTroopsOverview()
+	chrome.storage.local.get([troopneededkey, troopsOverviewkey], (result) => {
+		const villageList = result[troopneededkey] || []
+		const troopsOverview = result[troopsOverviewkey] || {}
+		renderResult(villageList, troopsOverview)
 	})
 })
