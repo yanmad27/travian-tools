@@ -1,4 +1,4 @@
-const INTERVAL = 7
+const INTERVAL = 6
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * max)
 const logBase =
