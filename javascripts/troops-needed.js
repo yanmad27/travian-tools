@@ -4,6 +4,7 @@ const renderResult = (farmList) => {
 	const troopsImgPath = 'https://cdn.legends.travian.com/gpack/155.5/img_ltr/global/units/hun/icon/hun_small.png'
 	// const interval = Number(document.getElementById('interval').value)
 	const result = document.getElementById('troops-needed-result')
+	result.innerHTML = ''
 	for (const farm of farmList) {
 		const farmName = farm.name
 		const victimList = farm.victimList
@@ -25,7 +26,7 @@ const renderResult = (farmList) => {
 		result.innerHTML += `
               <div class="farm-item">
                 <div class="farm-name">${farmName}</div>
-                <div class="farm-troops">
+                <div class="farm-troops" style="display: flex; align-items: center; gap: 8px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
 							if (value === 0) return ''
@@ -39,10 +40,12 @@ const renderResult = (farmList) => {
 								t7: '0 -96px',
 							}
 							const backgroundPosition = backgrounPosition[key] || '0 0'
-							return `<div style="display: flex; align-items: center; gap: 8px;">
-                      <div style="margin-left: 20px;background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};" />
-                      <div style="margin-left: 20px">${value}</div>
-                    </div>`
+							return `
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
+                <div >${value}</div>
+              </div>
+              `
 						})
 						.join('')}
                 </div>
