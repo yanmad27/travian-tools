@@ -1,170 +1,130 @@
-const SERVER_SPEED = 2
-const TROOPS_BASE_SPEED = {
-	tribe7: {
-		t4: 16,
-		t6: 14,
-	},
-}
+const troopneededkey = 'troopsNeeded'
 
-function calculateTroopsNeeded() {
-	const intervalInput = document.getElementById('interval')
-	const interval = parseFloat(intervalInput.value) || 6 // Default 10 minutes if not set
+const renderResult = (farmList) => {
+	const troopsImgPath = 'https://cdn.legends.travian.com/gpack/155.5/img_ltr/global/units/hun/icon/hun_small.png'
+	// const interval = Number(document.getElementById('interval').value)
+	const result = document.getElementById('troops-needed-result')
+	for (const farm of farmList) {
+		const farmName = farm.name
+		const victimList = farm.victimList
+		const sumTroops = {
+			t1: 0,
+			t2: 0,
+			t3: 0,
+			t4: 0,
+			t5: 0,
+			t6: 0,
+			t7: 0,
+		}
+		for (const victim of victimList) {
+			for (const [key, value] of Object.entries(victim.troops)) {
+				sumTroops[key] += value
+			}
+		}
 
-	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-		chrome.scripting.executeScript(
-			{
-				target: { tabId: tabs[0].id },
-				function: () => {
-					// Extract farm list data from the page
-					const farmListIds = []
-					const farmListDOM = document.querySelectorAll('#rallyPointFarmList .farmListHeader .dragAndDrop')
-					farmListDOM.forEach((item) => {
-						farmListIds.push(Number(item.getAttribute('data-list')))
-					})
-
-					function getVictims(farmlistId) {
-						const farmlistContainer = document.querySelector(`[data-list="${farmlistId}"]`).parentElement.parentElement
-						const farmlist = farmlistContainer.querySelector('tbody')
-						if (!farmlist) return []
-
-						const farms = []
-						// Get all TR elements instead of childNodes to avoid text nodes
-						const rows = farmlist.querySelectorAll('tr')
-
-						rows.forEach((child, index) => {
-							// Skip the last row if it's the "add slot" row
-							if (child.querySelector('.addSlot')) return
-
-							// Get farm name
-							const targetElement = child.querySelector('.target span')
-							if (!targetElement) return
-
-							let name = targetElement.innerHTML || ''
-							if (name.includes('coordinate')) {
-								const coordX = child.querySelector('.target .coordinateX')?.innerHTML || ''
-								const coordY = child.querySelector('.target .coordinateY')?.innerHTML || ''
-								name = `Oasis ${coordX}|${coordY}`
-								name = name.replace(/\.|\,|\u202D|\u202C/g, '')
+		result.innerHTML += `
+              <div class="farm-item">
+                <div class="farm-name">${farmName}</div>
+                <div class="farm-troops">
+                  ${Object.entries(sumTroops)
+						.map(([key, value]) => {
+							if (value === 0) return ''
+							const backgrounPosition = {
+								t1: '0 0',
+								t2: '0 -16px',
+								t3: '0 -32px',
+								t4: '0 -48px',
+								t5: '0 -64px',
+								t6: '0 -80px',
+								t7: '0 -96px',
 							}
-
-							// Extract data
-							const troopsElement = child.querySelector('.troops .value')
-							const distanceElement = child.querySelector('.distance span')
-
-							if (!troopsElement || !distanceElement) return
-
-							const troops = Number(troopsElement.innerHTML || 0)
-							const distance = Number(distanceElement.innerHTML || 0)
-							const active = !child.classList.contains('disabled')
-
-							farms.push({
-								_no: farms.length + 1,
-								id: Number(child.querySelector('.selection input')?.getAttribute('data-slot-id') || 0),
-								name: name,
-								distance: distance,
-								currentTroops: troops,
-								active: active,
-							})
+							const backgroundPosition = backgrounPosition[key] || '0 0'
+							return `<div style="display: flex; align-items: center; gap: 8px;">
+                      <div style="margin-left: 20px;background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};" />
+                      <div style="margin-left: 20px">${value}</div>
+                    </div>`
 						})
-
-						console.log(`Farm list ${farmlistId} has ${farms.length} victims`)
-						return farms
-					}
-
-					const farmLists = []
-					for (const id of farmListIds) {
-						const header = document.querySelector(`[data-list="${id}"]`).parentElement
-						const listName = header.querySelector('.farmListName')?.textContent || `Farm List ${id}`
-
-						const victims = getVictims(id)
-						if (victims.length > 0) {
-							farmLists.push({
-								id: id,
-								name: listName,
-								victims: victims,
-							})
-						}
-					}
-					return farmLists
-				},
-			},
-			(result) => {
-				if (!result || !result[0] || !result[0].result) {
-					document.getElementById('troops-needed-result').innerHTML = '<p style="color: red;">Error: Could not extract farm list data. Make sure you are on the Rally Point farm list page.</p>'
-					return
-				}
-
-				const farmLists = result[0].result
-				const resultDiv = document.getElementById('troops-needed-result')
-
-				// Calculate troops needed for each victim
-				let html = '<div class="troops-calculation">'
-				let grandTotal = 0
-
-				farmLists.forEach((farmList) => {
-					if (farmList.victims.length === 0) return
-
-					let totalTroopsNeeded = 0
-					let activeVictimCount = 0
-
-					farmList.victims.forEach((victim) => {
-						if (!victim.active) return
-
-						activeVictimCount++
-
-						// Calculate travel time in minutes (one way)
-						// Using t6 speed (14 fields/hour) as default
-						const troopSpeed = TROOPS_BASE_SPEED.tribe7.t6 * SERVER_SPEED
-						const travelTimeOneWay = (Number(victim.distance) / troopSpeed) * 60 // in minutes
-						const roundTripTime = travelTimeOneWay * 2
-
-						// Calculate how many raids can fit in the interval
-						const raidsPerInterval = Math.floor(roundTripTime / interval)
-
-						// Troops needed = current troops * raids that can fit in interval
-						const troopsNeeded = Math.ceil(victim.currentTroops * raidsPerInterval)
-						totalTroopsNeeded += troopsNeeded
-					})
-
-					grandTotal += totalTroopsNeeded
-
-					if (activeVictimCount > 0) {
-						html += `<div class="farm-list-total">`
-						html += `<span class="list-name">${farmList.name}</span>`
-						html += `<span class="victim-count">(${activeVictimCount} active farms)</span>`
-						html += `<span class="total-troops">${totalTroopsNeeded} troops</span>`
-						html += `</div>`
-					}
-				})
-
-				html += `<div class="grand-total">`
-				html += `<span>Total Troops Needed:</span>`
-				html += `<span class="total-value">${grandTotal}</span>`
-				html += `</div>`
-
-				html += '</div>'
-				html += `<p class="calculation-info">Calculated with ${interval} minute interval, using T6 cavalry speed (${TROOPS_BASE_SPEED.tribe7.t6 * SERVER_SPEED} fields/hour)</p>`
-
-				resultDiv.innerHTML = html
-			},
-		)
+						.join('')}
+                </div>
+              </div>`
+	}
+}
+function saveToStorage(data) {
+	chrome.storage.local.set({ [troopneededkey]: data }, () => {
+		renderResult(data)
 	})
 }
 
-// Add event listener for the interval input
+const getTroopNeeded = () => {
+	try {
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.scripting.executeScript(
+				{
+					target: { tabId: tabs[0].id },
+					function: () => {
+						const BASE_INTERVAL = 6
+						const SLOWEST_SPEED = 28
+						const getTroops = (totalLoop, troopsElem) => {
+							const getTroops = (selector) => {
+								return isNaN(Number(troopsElem.querySelector(selector)?.parentNode.querySelector('.value').innerHTML)) ? 0 : Number(troopsElem.querySelector(selector)?.parentNode.querySelector('.value').innerHTML)
+							}
+							return {
+								t1: getTroops('i.t1') * totalLoop,
+								t2: getTroops('i.t2') * totalLoop,
+								t3: getTroops('i.t3') * totalLoop,
+								t4: getTroops('i.t4') * totalLoop,
+								t5: getTroops('i.t5') * totalLoop,
+								t6: getTroops('i.t6') * totalLoop,
+								t7: getTroops('i.t7'),
+							}
+						}
+						const farmListElems = document.querySelectorAll('.farmListWrapper')
+						const farmList = []
+						for (const farmListElem of farmListElems) {
+							const name = farmListElem.querySelector('.farmListName .name').innerHTML
+							const victimListElem = farmListElem.querySelectorAll('tr.slot')
+							const victimList = []
+							for (const victimElem of victimListElem) {
+								const isDisabled = victimElem.getAttribute('class')?.includes('disabled')
+								const id = victimElem.querySelector('[class="selection"] input').getAttribute('data-slot-id')
+								const distance = Number(victimElem.querySelector('.distance span').innerHTML)
+								const totalLoop = (60 * 2 * distance) / SLOWEST_SPEED / BASE_INTERVAL
+								const ceilTotalLoop = Math.ceil(totalLoop)
+								const troops = getTroops(ceilTotalLoop, victimElem.querySelector('td.troops div'))
+								const item = {
+									id,
+									distance,
+									troops,
+									isDisabled,
+								}
+								if (isDisabled) continue
+								victimList.push(item)
+							}
+							farmList.push({
+								name,
+								victimList,
+							})
+						}
+						return farmList
+					},
+				},
+				(results) => {
+					const farmList = results[0].result
+					if (farmList.length === 0) return
+					saveToStorage(farmList)
+				},
+			)
+		})
+	} catch (error) {
+		console.log('LOG ~ getTroopNeeded ~ error:', error)
+	}
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-	const intervalInput = document.getElementById('interval')
-	const calculateButton = document.createElement('button')
-	calculateButton.textContent = 'Calculate'
-	calculateButton.id = 'calculateTroopsNeeded'
-	intervalInput.parentElement.appendChild(calculateButton)
-
-	calculateButton.addEventListener('click', calculateTroopsNeeded)
-
-	// Allow calculation on Enter key
-	intervalInput.addEventListener('keypress', (e) => {
-		if (e.key === 'Enter') {
-			calculateTroopsNeeded()
-		}
+	getTroopNeeded()
+	chrome.storage.local.get([troopneededkey], (result) => {
+		const farmList = result[troopneededkey] || []
+		console.log('LOG ~ chrome.storage.local.get ~ farmList:', farmList)
+		renderResult(farmList)
 	})
 })
