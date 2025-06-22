@@ -17,15 +17,25 @@ const renderResult = (farmList) => {
 			t6: 0,
 			t7: 0,
 		}
+		const sumTroopsAll = {
+			t1: 0,
+			t2: 0,
+			t3: 0,
+			t4: 0,
+			t5: 0,
+			t6: 0,
+			t7: 0,
+		}
 		for (const victim of victimList) {
 			for (const [key, value] of Object.entries(victim.troops)) {
-				sumTroops[key] += value
+				sumTroopsAll[key] += value
+				if (!victim.isDisabled) sumTroops[key] += value
 			}
 		}
 
 		result.innerHTML += `
               <div class="farm-item">
-                <div class="farm-name">${farmName}</div>
+                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${farmName}</div>
                 <div class="farm-troops" style="display: flex; align-items: center; gap: 8px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
@@ -43,7 +53,7 @@ const renderResult = (farmList) => {
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div >${value}</div>
+                <div style="min-width: 60px;">${value} <span style="color: #999;">(${sumTroopsAll[key]})</span></div>
               </div>
               `
 						})
@@ -65,7 +75,7 @@ const getTroopNeeded = () => {
 				{
 					target: { tabId: tabs[0].id },
 					function: () => {
-						const BASE_INTERVAL = 6
+						const BASE_INTERVAL = 5
 						const SLOWEST_SPEED = 28
 						const getTroops = (totalLoop, troopsElem) => {
 							const getTroops = (selector) => {
@@ -100,7 +110,6 @@ const getTroopNeeded = () => {
 									troops,
 									isDisabled,
 								}
-								if (isDisabled) continue
 								victimList.push(item)
 							}
 							farmList.push({
