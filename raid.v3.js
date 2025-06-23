@@ -96,7 +96,7 @@ const checkVictims = async () => {
 const main = async () => {
 	try {
 		await checkVictims()
-		await sleep(random(1_000, 30_000))
+		await sleep(random(1_000, 15_000))
 		await triggerRaid()
 	} catch (error) {
 		logError('Failed to check victims', 'err', error)
