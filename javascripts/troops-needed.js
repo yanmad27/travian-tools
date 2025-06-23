@@ -53,10 +53,21 @@ const renderResult = (villageList, troopsOverview) => {
 								t7: '0 -96px',
 							}
 							const backgroundPosition = backgrounPosition[key] || '0 0'
+							const ratio = Number(value) / Number(troopsOverview[villageName]?.[key])
+							let color = 'black'
+							if (ratio <= 1) color = 'red'
+							if (ratio <= 0.95) color = 'orange'
+							if (ratio <= 0.9) color = 'green'
+
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div style="min-width: 60px;">${value}<span style="color: #999;">/${troopsOverview[villageName]?.[key]} (${sumTroopsAll[key]})</span></div>
+                <div style="min-width: 40px; max-width: 80px;">
+                  <span style="color: ${color};">${value}</span>
+                  <span style="color: #999;">/ ${troopsOverview[villageName]?.[key]} </span>
+                  <span style="color: ${color};">${(ratio * 100).toFixed(1)}%</span> 
+                  <span style="color: #999;">(${sumTroopsAll[key]})</span>
+                </div>
               </div>
               `
 						})
