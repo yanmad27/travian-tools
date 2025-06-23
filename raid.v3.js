@@ -1,6 +1,6 @@
 const INTERVAL = 5
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-const random = (min, max) => min + Math.floor(Math.random() * max)
+const random = (min, max) => min + Math.floor(Math.random() * (max - min))
 const logBase =
 	(color) =>
 	(message, ...args) => {
@@ -96,7 +96,7 @@ const checkVictims = async () => {
 const main = async () => {
 	try {
 		await checkVictims()
-		await sleep(random(1000, 10_000))
+		await sleep(random(1_000, 30_000))
 		await triggerRaid()
 	} catch (error) {
 		logError('Failed to check victims', 'err', error)
