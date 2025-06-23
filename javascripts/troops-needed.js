@@ -67,12 +67,7 @@ const renderResult = (villageList, troopsOverview) => {
 	}
 }
 function saveToStorage(data) {
-	chrome.storage.local.get([troopsOverviewkey], (result) => {
-		const troopsOverview = result[troopsOverviewkey] || {}
-		chrome.storage.local.set({ [troopneededkey]: data }, () => {
-			renderResult(data, troopsOverview)
-		})
-	})
+	chrome.storage.local.set({ [troopneededkey]: data })
 }
 
 function saveToStorage2(data) {
@@ -203,4 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		const troopsOverview = result[troopsOverviewkey] || {}
 		renderResult(villageList, troopsOverview)
 	})
+	setTimeout(() => {
+		chrome.storage.local.get([troopneededkey, troopsOverviewkey], (result) => {
+			const villageList = result[troopneededkey] || []
+			const troopsOverview = result[troopsOverviewkey] || {}
+			renderResult(villageList, troopsOverview)
+		})
+	}, 500)
 })
