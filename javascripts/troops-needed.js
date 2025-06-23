@@ -58,15 +58,17 @@ const renderResult = (villageList, troopsOverview) => {
 							if (ratio <= 1) color = 'red'
 							if (ratio <= 0.95) color = 'orange'
 							if (ratio <= 0.9) color = 'green'
+							const style1 = `color: ${color};`
+							const style2 = `color: #999;`
 
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
                 <div style="min-width: 40px; max-width: 80px;">
-                  <span style="color: ${color};">${value}</span>
-                  <span style="color: #999;">/ ${troopsOverview[villageName]?.[key]} </span>
-                  <span style="color: ${color};">${(ratio * 100).toFixed(1)}%</span> 
-                  <span style="color: #999;">(${sumTroopsAll[key]})</span>
+                  <span style="${style1}">${value}</span>
+                  <span style="${style2}">/ ${troopsOverview[villageName]?.[key]} </span>
+                  <span style="${style1}">${(ratio * 100).toFixed(1)}%</span> 
+                  <span style="${style2}">(${sumTroopsAll[key]})</span>
                 </div>
               </div>
               `
