@@ -17,20 +17,6 @@
 	font-size: 14px;
 }
 
-.troops-needed button {
-	padding: 8px 16px;
-	background-color: #4caf50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 14px;
-}
-
-.troops-needed button:hover {
-	background-color: #45a049;
-}
-
 .troops-calculation {
 	margin-top: 15px;
 }

@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/sum-raid-bounty.css" />
     <link rel="stylesheet" href="styles/troops-needed.css" />
+    <link rel="stylesheet" href="styles/section-collapse.css" />
   </head>
   <body>
     <div class="container">
@@ -27,54 +28,77 @@
       </div>
       <!-- Troops Needed -->
       <div class="feature-section troops-needed">
-        <h3>Troops Needed</h3>
-        <div id="troops-needed-result"></div>
-      </div>
-      <!-- Sum Raid Bounty -->
-      <div class="feature-section sum-raid-bounty">
-        <h3>Sum Raid Bounty</h3>
-        <div style="display: flex; align-items: center; gap: 10px">
-          <button id="calculateButton">
-            <img src="images/sum.svg" alt="Sum" />
+        <div class="section-header">
+          <h3>Troops Needed</h3>
+          <button class="collapse-btn" aria-label="Collapse section">
+            <span class="collapse-icon">+</span>
           </button>
-          <div id="result"></div>
         </div>
-        <div class="histories">
-          <div id="history">
-            <p class="no-history">No history yet</p>
-          </div>
+        <div class="section-content">
+          <div id="troops-needed-result"></div>
         </div>
       </div>
 
       <!-- Estimate Production -->
       <div class="feature-section estimate-production">
-        <h3>Estimate Production</h3>
-        <div style="display: flex; align-items: center; flex-direction: column">
-          <div class="row">
-            <div id="report1-datetime">dd.mm.yy, hh:mm:ss</div>
-            <div id="report1-production">0</div>
-            <button id="reportButton1">
-              <img src="images/report.png" alt="Report1" />
-            </button>
-          </div>
-          <div class="row">
-            <div id="report2-datetime">dd.mm.yy, hh:mm:ss</div>
-            <div id="report2-production">0</div>
-            <button id="reportButton2">
-              <img src="images/report.png" alt="Report2" />
-            </button>
-          </div>
+        <div class="section-header">
+          <h3>Estimate Production</h3>
+          <button class="collapse-btn" aria-label="Collapse section">
+            <span class="collapse-icon">+</span>
+          </button>
+        </div>
+        <div class="section-content">
           <div
-            style="
-              display: flex;
-              align-items: center;
-              gap: 4px;
-              font-weight: bold;
-              align-self: baseline;
-            "
+            style="display: flex; align-items: center; flex-direction: column"
           >
-            <span id="report-result">0</span>
-            <span id="unit">/h</span>
+            <div class="row">
+              <div id="report1-datetime">dd.mm.yy, hh:mm:ss</div>
+              <div id="report1-production">0</div>
+              <button id="reportButton1">
+                <img src="images/report.png" alt="Report1" />
+              </button>
+            </div>
+            <div class="row">
+              <div id="report2-datetime">dd.mm.yy, hh:mm:ss</div>
+              <div id="report2-production">0</div>
+              <button id="reportButton2">
+                <img src="images/report.png" alt="Report2" />
+              </button>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                font-weight: bold;
+                align-self: baseline;
+              "
+            >
+              <span id="report-result">0</span>
+              <span id="unit">/h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sum Raid Bounty -->
+      <div class="feature-section sum-raid-bounty">
+        <div class="section-header">
+          <h3>Sum Raid Bounty</h3>
+          <button class="collapse-btn" aria-label="Collapse section">
+            <span class="collapse-icon">+</span>
+          </button>
+        </div>
+        <div class="section-content">
+          <div style="display: flex; align-items: center; gap: 10px">
+            <button id="calculateButton">
+              <img src="images/sum.svg" alt="Sum" />
+            </button>
+            <div id="result"></div>
+          </div>
+          <div class="histories">
+            <div id="history">
+              <p class="no-history">No history yet</p>
+            </div>
           </div>
         </div>
       </div>
@@ -86,5 +110,6 @@
     <!-- <script src="javascripts/auto-raid.js"></script> -->
     <script src="javascripts/sync-farm-list.js"></script>
     <script src="javascripts/troops-needed.js"></script>
+    <script src="javascripts/section-collapse.js"></script>
   </body>
 </html>

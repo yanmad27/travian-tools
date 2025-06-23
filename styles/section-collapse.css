@@ -1,0 +1,65 @@
+/* Section header styling */
+.section-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.section-header h3 {
+	margin: 0;
+	flex-grow: 1;
+}
+
+/* Collapse button styling */
+.collapse-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 5px 10px;
+	font-size: 14px;
+	color: #666;
+	transition: all 0.3s ease;
+	border-radius: 4px;
+}
+
+.collapse-btn:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+	color: #333;
+}
+
+.collapse-btn:active {
+	transform: scale(0.95);
+}
+
+/* Collapse icon */
+.collapse-icon {
+	display: inline-block;
+	transition: transform 0.3s ease;
+	font-size: 12px;
+}
+
+/* Section content animation */
+.section-content {
+	overflow: hidden;
+	transition: all 0.3s ease;
+}
+
+/* Collapsed state */
+.feature-section.collapsed .section-header {
+	margin-bottom: 0;
+}
+
+.feature-section.collapsed .section-content {
+	max-height: 0;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+}
+
+/* Add a subtle bottom border to collapsed sections */
+.feature-section.collapsed {
+	padding-bottom: 10px;
+}
