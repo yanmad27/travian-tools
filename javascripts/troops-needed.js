@@ -99,7 +99,8 @@ const getTroopNeeded = () => {
 						const SLOWEST_SPEED = 28
 						const getTroops = (totalLoop, troopsElem) => {
 							const getTroops = (selector) => {
-								return isNaN(Number(troopsElem.querySelector(selector)?.parentNode.querySelector('.value').innerHTML)) ? 0 : Number(troopsElem.querySelector(selector)?.parentNode.querySelector('.value').innerHTML)
+								const cnt = Number(troopsElem.querySelector(selector)?.parentNode.querySelector('.value').innerHTML)
+								return isNaN(cnt) ? 0 : cnt
 							}
 							return {
 								t1: getTroops('i.t1') * totalLoop,
@@ -108,7 +109,7 @@ const getTroopNeeded = () => {
 								t4: getTroops('i.t4') * totalLoop,
 								t5: getTroops('i.t5') * totalLoop,
 								t6: getTroops('i.t6') * totalLoop,
-								t7: getTroops('i.t7'),
+								t7: getTroops('i.t7') * totalLoop,
 							}
 						}
 						const villageListElems = document.querySelectorAll('.villageWrapper ')
@@ -125,6 +126,7 @@ const getTroopNeeded = () => {
 									const isDisabled = victimElem.getAttribute('class')?.includes('disabled')
 									const id = victimElem.querySelector('[class="selection"] input').getAttribute('data-slot-id')
 									const distance = Number(victimElem.querySelector('.distance span').innerHTML)
+									// TODO: Add TS Level
 									const totalLoop = (60 * 2 * distance) / SLOWEST_SPEED / BASE_INTERVAL
 									const ceilTotalLoop = Math.ceil(totalLoop)
 									const troops = getTroops(ceilTotalLoop, victimElem.querySelector('td.troops div'))
