@@ -1,4 +1,3 @@
-const INTERVAL = 5
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const random = (min, max) => min + Math.floor(Math.random() * (max - min))
 const logBase =
@@ -103,5 +102,24 @@ const main = async () => {
 	}
 }
 
-main()
-setInterval(main, INTERVAL * 60 * 1000)
+// Run the main function in a loop with random intervals
+const runWithRandomInterval = async () => {
+	let iteration = 1
+	let previousWaitMinutes = null
+
+	while (true) {
+		await main()
+
+		let waitMinutes
+		do {
+			waitMinutes = random(4, 7)
+		} while (waitMinutes === previousWaitMinutes)
+
+		const waitMs = waitMinutes * 60 * 1000
+		logInfo('Waiting', 'minutes', waitMinutes)
+		await sleep(waitMs)
+		previousWaitMinutes = waitMinutes
+		iteration++
+	}
+}
+runWithRandomInterval()
