@@ -67,7 +67,8 @@ const renderResult = (villageList, troopsOverview) => {
                 <div style="min-width: 40px; max-width: 80px;">
                   <span style="${style1}">${value}</span>
                   <span style="${style2}">/ ${troopsOverview[villageName]?.[key]} </span>
-                  <span style="${style1}">${(ratio * 100).toFixed(1)}%</span> 
+                  <br/>
+                  <span style="${style1}">${(ratio * 100).toFixed(0)}%</span> 
                   <span style="${style2}">(${sumTroopsAll[key]})</span>
                 </div>
               </div>
