@@ -104,16 +104,13 @@ const main = async () => {
 
 // Run the main function in a loop with random intervals
 const runWithRandomInterval = async () => {
-	let iteration = 1
+	let iteration = 0
 	let previousWaitMinutes = null
 
 	while (true) {
 		await main()
-
-		let waitMinutes
-		do {
-			waitMinutes = random(4, 7)
-		} while (waitMinutes === previousWaitMinutes)
+		const waitArrs = [5, 5, 4, 6, 5, 5, 6, 4]
+		const waitMinutes = waitArrs[iteration % waitArrs.length]
 
 		const waitMs = waitMinutes * 60 * 1000
 		logInfo('Waiting', 'minutes', waitMinutes)
