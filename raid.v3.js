@@ -57,9 +57,9 @@ class Victim {
 	async activate() {
 		try {
 			this.victim.querySelector('td.openContextMenu a').click()
-			await sleep(500)
+			await sleep(random(500, 1_000))
 			this.victim.querySelector('td.openContextMenu button.activate').click()
-			await sleep(500)
+			await sleep(random(500, 1_000))
 		} catch (error) {
 			console.log('LOG ~ activate ~ error:', error)
 		}
@@ -68,9 +68,9 @@ class Victim {
 	async deactivate() {
 		try {
 			this.victim.querySelector('td.openContextMenu a').click()
-			await sleep(500)
+			await sleep(random(500, 1_000))
 			this.victim.querySelector('td.openContextMenu button.deactivate').click()
-			await sleep(500)
+			await sleep(random(500, 1_000))
 		} catch (error) {
 			console.log('LOG ~ deactivate ~ error:', error)
 		}
@@ -87,7 +87,7 @@ const checkVictims = async () => {
 		if (!isDisabled && !isAttackWithoutLosses) {
 			logWarning('Deactivating victim', 'index', i, 'reason', 'attack with losses')
 			await victim.deactivate()
-			await sleep(500)
+			await sleep(random(500, 1_000))
 		}
 	}
 }
