@@ -100,7 +100,7 @@ const checkVictims = async () => {
 		const isDisabled = await victim.isDisabled()
 		const isAttackWithoutLosses = await victim.isAttackWithoutLosses()
 		if (!isDisabled && !isAttackWithoutLosses) {
-			logWarning('Deactivating victim', 'index', i, 'reason', 'attack with losses', 'victim', victimElement)
+			logWarning('Deactivating victim', 'victim', await victim.getName(), 'reason', 'attack with losses')
 			await victim.deactivate()
 			await sleep(random(500, 1_000))
 		}
