@@ -54,6 +54,21 @@ class Victim {
 		return this.victim.getAttribute('class')?.includes('disabled')
 	}
 
+	async getName() {
+		try {
+			const victim = this.victim
+			this.name = victim?.querySelector('[class="target"] a span')?.innerHTML || 'Unknown'
+			if (this.name.includes('coordinate')) {
+				const coordX = victim.querySelector('[class="target"] [class="coordinateX"]').innerHTML
+				const coordY = victim.querySelector('[class="target"] [class="coordinateY"]').innerHTML
+				this.name = `Oasis ${coordX}|${coordY}`.replace(/\.|\,|\u202D|\u202C/g, '')
+			}
+			return this.name || 'Unknown'
+		} catch {
+			return 'Unknown'
+		}
+	}
+
 	async activate() {
 		try {
 			this.victim.querySelector('td.openContextMenu a').click()
@@ -85,7 +100,7 @@ const checkVictims = async () => {
 		const isDisabled = await victim.isDisabled()
 		const isAttackWithoutLosses = await victim.isAttackWithoutLosses()
 		if (!isDisabled && !isAttackWithoutLosses) {
-			logWarning('Deactivating victim', 'index', i, 'reason', 'attack with losses')
+			logWarning('Deactivating victim', 'index', i, 'reason', 'attack with losses', 'victim', victimElement)
 			await victim.deactivate()
 			await sleep(random(500, 1_000))
 		}
