@@ -57,7 +57,7 @@ const renderResult = (villageList, troopsOverview) => {
 							const backgroundPosition = backgrounPosition[key] || '0 0'
 							const ratio = Number(value) / Number(troopsOverview[villageName]?.[key] || 1)
 							let color = 'black'
-							if (ratio <= 1) color = 'red'
+							if (ratio > 0.95) color = 'red'
 							if (ratio <= 0.95) color = 'orange'
 							if (ratio <= 0.9) color = 'green'
 							const style1 = `color: ${color};`
