@@ -18,6 +18,7 @@ const renderResult = (villageList, troopsOverview) => {
 			t6: 0,
 			t7: 0,
 		}
+		console.log('LOG ~ renderResult ~ sumTroops:', sumTroops)
 		const sumTroopsAll = {
 			t1: 0,
 			t2: 0,
@@ -42,7 +43,8 @@ const renderResult = (villageList, troopsOverview) => {
                 <div class="farm-troops" style="display: flex; align-items: center; gap: 8px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
-							if (value === 0) return ''
+							if (key !== 't4' && key !== 't6') return ''
+							// if (value === 0) return ''
 							const backgrounPosition = {
 								t1: '0 0',
 								t2: '0 -16px',
@@ -53,7 +55,7 @@ const renderResult = (villageList, troopsOverview) => {
 								t7: '0 -96px',
 							}
 							const backgroundPosition = backgrounPosition[key] || '0 0'
-							const ratio = Number(value) / Number(troopsOverview[villageName]?.[key])
+							const ratio = Number(value) / Number(troopsOverview[villageName]?.[key] || 1)
 							let color = 'black'
 							if (ratio <= 1) color = 'red'
 							if (ratio <= 0.95) color = 'orange'
@@ -149,7 +151,6 @@ const getTroopNeeded = () => {
 							})
 						}
 
-						console.log('LOG ~ chrome.tabs.query ~ villageList:', villageList)
 						return villageList
 					},
 				},
