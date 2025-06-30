@@ -124,7 +124,7 @@ const runWithRandomInterval = async () => {
 
 	while (true) {
 		await main()
-		const waitArrs = [5, 5, 4, 6, 5, 5, 6, 4]
+		const waitArrs = [5, 5, 4.5, 5, 4.5, 5, 5, 4.5]
 		const waitMinutes = waitArrs[iteration % waitArrs.length]
 
 		const waitMs = waitMinutes * 60 * 1000
