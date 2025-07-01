@@ -118,7 +118,8 @@ const main = async () => {
 }
 
 // Run the main function in a loop with random intervals
-const runWithRandomInterval = async () => {
+const runWithRandomInterval = async (waiting) => {
+	await sleep(waiting * 60 * 1000)
 	let iteration = 0
 	let previousWaitMinutes = null
 
@@ -134,4 +135,4 @@ const runWithRandomInterval = async () => {
 		iteration++
 	}
 }
-runWithRandomInterval()
+runWithRandomInterval(5)
