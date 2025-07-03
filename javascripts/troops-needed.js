@@ -18,7 +18,6 @@ const renderResult = (villageList, troopsOverview) => {
 			t6: 0,
 			t7: 0,
 		}
-		console.log('LOG ~ renderResult ~ sumTroops:', sumTroops)
 		const sumTroopsAll = {
 			t1: 0,
 			t2: 0,
@@ -29,7 +28,6 @@ const renderResult = (villageList, troopsOverview) => {
 			t7: 0,
 		}
 		for (const farm of farmList) {
-			const farmName = farm.name
 			const victimList = farm.victimList
 			for (const victim of victimList) {
 				for (const [key, value] of Object.entries(victim.troops)) {
@@ -37,9 +35,10 @@ const renderResult = (villageList, troopsOverview) => {
 					if (!victim.isDisabled) sumTroops[key] += value
 				}
 			}
-			result.innerHTML += `
+		}
+		result.innerHTML += `
               <div class="farm-item">
-                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - ${farmName}</div>
+                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName}</div>
                 <div class="farm-troops" style="display: flex; align-items: center; gap: 8px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
@@ -79,7 +78,6 @@ const renderResult = (villageList, troopsOverview) => {
 						.join('')}
                 </div>
               </div>`
-		}
 	}
 }
 function saveToStorage(data) {
@@ -151,6 +149,7 @@ const getTroopNeeded = () => {
 							})
 						}
 
+						console.log('LOG ~ chrome.tabs.query ~ villageList:', villageList)
 						return villageList
 					},
 				},
