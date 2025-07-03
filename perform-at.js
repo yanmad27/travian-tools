@@ -1,13 +1,12 @@
-var time = '3:11:29'
-
-const performAt = async (selector, targetTime) => {
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const performAt = async (selector, targetTime, wait = 0) => {
 	const element = document.querySelector(selector)
 
 	// First, sync to the next second boundary
 	const syncToSecond = async () => {
 		const now = new Date()
 		const msToNextSecond = 1000 - now.getMilliseconds()
-		await new Promise((resolve) => setTimeout(resolve, msToNextSecond))
+		await sleep(msToNextSecond)
 	}
 
 	// Sync to second boundary first
@@ -18,6 +17,7 @@ const performAt = async (selector, targetTime) => {
 
 		// Check if we're at the target time
 		if (currentTime === targetTime) {
+			await sleep(wait)
 			element.click()
 			break
 		}
@@ -29,12 +29,12 @@ const performAt = async (selector, targetTime) => {
 
 		if (timeDiff > 0 && timeDiff <= 2000) {
 			// We're close, check more frequently (every 10ms)
-			await new Promise((resolve) => setTimeout(resolve, 10))
+			await sleep(10)
 		} else {
 			// Still far away, check at the start of each second
-			await new Promise((resolve) => setTimeout(resolve, 1000))
+			await sleep(1000)
 		}
 	}
 }
 
-performAt('#confirmSendTroops','20:07:30')
+performAt('#confirmSendTroops', '21:29:30', 0)
