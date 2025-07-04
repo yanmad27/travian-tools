@@ -45,15 +45,18 @@ class Victim {
 
 	async getLastRaidTime() {
 		const time = this.victim.querySelector('td.lastRaid .lastRaidWrapper .lastRaidReport .value')?.innerHTML
-		const regexTime = /(\d{2}):(\d{2}):(\d{2})/
-		const regexDate = /(\d{2})\.(\d{2})\.(\d{4})/
-		const regexYesterday = /yesterday/
-		const matchTime = time.match(regexTime)
-		const matchDate = time.match(regexDate)
-		const matchYesterday = time.match(regexYesterday)
-		if (matchYesterday) return new Date(Date.now() - 24 * 60 * 60 * 1000)
-		if (matchDate) return new Date(matchDate[3], matchDate[2] - 1, matchDate[1])
-		if (matchTime) return new Date(Date.now() - matchTime[1] * 60 * 60 * 1000 - matchTime[2] * 60 * 1000 - matchTime[3] * 1000)
+		if (time?.includes('yesterday')) return new Date(Date.now() - 24 * 60 * 60 * 1000)
+		if (time?.includes('.')) {
+			const [day, month, year] = time.split('.')
+			return new Date(year, month - 1, day)
+		}
+		if (time?.includes(':')) {
+			const nowYear = new Date().getFullYear()
+			const nowMonth = new Date().getMonth() + 1
+			const nowDay = new Date().getDate()
+			const [hours, minutes, seconds] = time.split(':')
+			return new Date(`${nowYear}-${nowMonth}-${nowDay} ${hours}:${minutes}:${seconds}`)
+		}
 		return new Date()
 	}
 
@@ -152,4 +155,4 @@ const runWithRandomInterval = async (waiting) => {
 		iteration++
 	}
 }
-runWithRandomInterval(1)
+runWithRandomInterval(4)
