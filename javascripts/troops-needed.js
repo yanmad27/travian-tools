@@ -8,6 +8,7 @@ const renderResult = (villageList, troopsOverview) => {
 	result.innerHTML = ''
 	for (const village of villageList) {
 		const villageName = village.name
+		const tsLevel = village.tsLevel
 		const farmList = village.farmList
 		const sumTroops = {
 			t1: 0,
@@ -38,7 +39,7 @@ const renderResult = (villageList, troopsOverview) => {
 		}
 		result.innerHTML += `
               <div class="farm-item">
-                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName}</div>
+                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
                 <div class="farm-troops" style="display: flex; align-items: center; gap: 8px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
@@ -97,6 +98,7 @@ const getTroopNeeded = () => {
 					function: () => {
 						const BASE_INTERVAL = 4.8125
 						const SLOWEST_SPEED = 28
+
 						const getTroops = (totalLoop, troopsElem) => {
 							const getTroops = (selector) => {
 								const cnt = Number(troopsElem.querySelector(selector)?.parentNode.querySelector('.value').innerHTML)
@@ -115,11 +117,18 @@ const getTroopNeeded = () => {
 						const villageListElems = document.querySelectorAll('.villageWrapper ')
 						const villageList = []
 						for (const villageListElem of villageListElems) {
-							const name = villageListElem.querySelector('.villageName').innerHTML
+							const villageName = villageListElem.querySelector('.villageName').innerHTML
+							const getTSLevel = (villageName) => {
+								const tsLevel = {
+									O1: 2,
+								}
+								return tsLevel[villageName] || 0
+							}
+							const tsLevel = getTSLevel(villageName)
 							const farmListElems = villageListElem.querySelectorAll('.farmListWrapper')
 							const farmList = []
 							for (const farmListElem of farmListElems) {
-								const name = farmListElem.querySelector('.farmListName .name').innerHTML
+								const farmListName = farmListElem.querySelector('.farmListName .name').innerHTML
 								const victimListElem = farmListElem.querySelectorAll('tr.slot')
 								const victimList = []
 								for (const victimElem of victimListElem) {
@@ -127,7 +136,10 @@ const getTroopNeeded = () => {
 									const id = victimElem.querySelector('[class="selection"] input').getAttribute('data-slot-id')
 									const distance = Number(victimElem.querySelector('.distance span').innerHTML)
 									// TODO: Add TS Level
-									const totalLoop = (60 * 2 * distance) / SLOWEST_SPEED / BASE_INTERVAL
+
+									const loopWithin20Field = (2 * 60 * Math.min(distance, 20)) / SLOWEST_SPEED
+									const loopOutside20Field = (2 * 60 * Math.max(distance - 20, 0)) / (SLOWEST_SPEED * (1 + tsLevel * 0.2))
+									const totalLoop = (loopWithin20Field + loopOutside20Field) / BASE_INTERVAL
 									const ceilTotalLoop = Math.ceil(totalLoop)
 									const troops = getTroops(ceilTotalLoop, victimElem.querySelector('td.troops div'))
 									const item = {
@@ -139,12 +151,13 @@ const getTroopNeeded = () => {
 									victimList.push(item)
 								}
 								farmList.push({
-									name,
+									name: farmListName,
 									victimList,
 								})
 							}
 							villageList.push({
-								name,
+								name: villageName,
+								tsLevel,
 								farmList,
 							})
 						}
