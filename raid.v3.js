@@ -43,6 +43,20 @@ class Victim {
 		this.victim = victim
 	}
 
+	async getLastRaidTime() {
+		const time = this.victim.querySelector('td.lastRaid .lastRaidWrapper .lastRaidReport .value')?.innerHTML
+		const regexTime = /(\d{2}):(\d{2}):(\d{2})/
+		const regexDate = /(\d{2})\.(\d{2})\.(\d{4})/
+		const regexYesterday = /yesterday/
+		const matchTime = time.match(regexTime)
+		const matchDate = time.match(regexDate)
+		const matchYesterday = time.match(regexYesterday)
+		if (matchYesterday) return new Date(Date.now() - 24 * 60 * 60 * 1000)
+		if (matchDate) return new Date(matchDate[3], matchDate[2] - 1, matchDate[1])
+		if (matchTime) return new Date(Date.now() - matchTime[1] * 60 * 60 * 1000 - matchTime[2] * 60 * 1000 - matchTime[3] * 1000)
+		return new Date()
+	}
+
 	async isAttackWithoutLosses() {
 		const lastRaidState = this.victim.querySelector('td.lastRaid i.lastRaidState')
 		if (!lastRaidState) return true
@@ -99,7 +113,10 @@ const checkVictims = async () => {
 		const victim = new Victim(victimElement)
 		const isDisabled = await victim.isDisabled()
 		const isAttackWithoutLosses = await victim.isAttackWithoutLosses()
-		if (!isDisabled && !isAttackWithoutLosses) {
+		const lastRaidTime = await victim.getLastRaidTime()
+		const now = new Date()
+		const isReActivateFromUser = now - lastRaidTime > 6 * 60 * 60 * 1000
+		if (!isDisabled && !isAttackWithoutLosses && !isReActivateFromUser) {
 			logWarning('Deactivating victim', 'victim', await victim.getName(), 'reason', 'attack with losses')
 			await victim.deactivate()
 			await sleep(random(500, 1_000))
