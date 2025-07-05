@@ -120,8 +120,8 @@ const getTroopNeeded = () => {
 							const villageName = villageListElem.querySelector('.villageName').innerHTML
 							const getTSLevel = (villageName) => {
 								const tsLevel = {
-									O1: 11,
-									F1: 1,
+									O1: 13,
+									F1: 5,
 								}
 								return tsLevel[villageName] || 0
 							}
