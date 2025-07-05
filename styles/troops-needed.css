@@ -92,3 +92,12 @@
 	background-color: #fee;
 	border: 1px solid #fcc;
 }
+
+#troops-needed-result .farm-item {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+}
+#troops-needed-result .farm-item:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
