@@ -122,6 +122,7 @@ const getTroopNeeded = () => {
 								const tsLevel = {
 									O1: 13,
 									F1: 5,
+									F2: 2,
 								}
 								return tsLevel[villageName] || 0
 							}
