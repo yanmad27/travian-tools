@@ -119,7 +119,7 @@ const checkVictims = async () => {
 		const lastRaidTime = await victim.getLastRaidTime()
 		const now = new Date()
 		const secondDiff = now - lastRaidTime
-		const isReActivateFromUser = secondDiff > 6 * 60 * 60 * 1000
+		const isReActivateFromUser = secondDiff > 1 * 60 * 60 * 1000
 		if (!isDisabled && !isAttackWithoutLosses && !isReActivateFromUser) {
 			logWarning('Deactivating victim', 'victim', await victim.getName(), 'reason', 'attack with losses')
 			await victim.deactivate()
@@ -156,4 +156,4 @@ const runWithRandomInterval = async (waiting) => {
 		iteration++
 	}
 }
-runWithRandomInterval(4)
+runWithRandomInterval(2)
