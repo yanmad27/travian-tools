@@ -117,12 +117,12 @@ const getTroopNeeded = () => {
 						const villageListElems = document.querySelectorAll('.villageWrapper ')
 						const villageList = []
 						for (const villageListElem of villageListElems) {
-							const villageName = villageListElem.querySelector('.villageName').innerHTML
+            const villageName = villageListElem.querySelector('.villageName').innerHTML
 							const getTSLevel = (villageName) => {
 								const tsLevel = {
 									O1: 15,
-									F1: 10,
-									F2: 7,
+									F1: 11,
+									F2: 9,
 								}
 								return tsLevel[villageName] || 0
 							}
