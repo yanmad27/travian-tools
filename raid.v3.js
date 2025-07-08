@@ -156,4 +156,4 @@ const runWithRandomInterval = async (waiting) => {
 		iteration++
 	}
 }
-runWithRandomInterval(4)
+runWithRandomInterval(2)

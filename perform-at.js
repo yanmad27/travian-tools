@@ -37,4 +37,4 @@ const performAt = async (selector, targetTime, wait = 0) => {
 	}
 }
 
-performAt('#confirmSendTroops', '21:29:30', 0)
+performAt('#confirmSendTroops', '0:51:00', 0)
