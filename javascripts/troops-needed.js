@@ -40,7 +40,7 @@ const renderResult = (villageList, troopsOverview) => {
 		result.innerHTML += `
               <div class="farm-item">
                 <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
-                <div class="farm-troops" style="display: flex; align-items: center; gap: 8px;">
+                <div class="farm-troops" style="display: flex; align-items: center; gap: 8px; padding-left: 12px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
 							if (key !== 't4' && key !== 't6') return ''
@@ -66,12 +66,10 @@ const renderResult = (villageList, troopsOverview) => {
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div style="min-width: 40px; max-width: 80px;">
+                <div style="min-width: 100px; max-width: 100px;">
+                  <span style="${style1}">${(ratio * 100).toFixed(0)}%: </span>
                   <span style="${style1}">${value}</span>
                   <span style="${style2}">/ ${troopsOverview[villageName]?.[key]} </span>
-                  <br/>
-                  <span style="${style1}">${(ratio * 100).toFixed(0)}%</span> 
-                  <span style="${style2}">(${sumTroopsAll[key]})</span>
                 </div>
               </div>
               `
@@ -96,7 +94,7 @@ const getTroopNeeded = () => {
 				{
 					target: { tabId: tabs[0].id },
 					function: () => {
-						const BASE_INTERVAL = 4.8125
+						const BASE_INTERVAL = 4.65
 						const SLOWEST_SPEED = 28
 
 						const getTroops = (totalLoop, troopsElem) => {
@@ -117,7 +115,7 @@ const getTroopNeeded = () => {
 						const villageListElems = document.querySelectorAll('.villageWrapper ')
 						const villageList = []
 						for (const villageListElem of villageListElems) {
-            const villageName = villageListElem.querySelector('.villageName').innerHTML
+							const villageName = villageListElem.querySelector('.villageName').innerHTML
 							const getTSLevel = (villageName) => {
 								const tsLevel = {
 									O1: 15,
