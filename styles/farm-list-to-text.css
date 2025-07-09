@@ -1,0 +1,100 @@
+.farm-list-container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 8px 0;
+}
+
+.farm-list-container .input-area,
+.farm-list-container .output-area {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.farm-list-container label {
+	font-weight: 600;
+	color: #2c3e50;
+	font-size: 14px;
+}
+
+.farm-list-container textarea {
+	width: 100%;
+	padding: 12px;
+	border: 2px solid #e1e8ed;
+	border-radius: 8px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+	resize: vertical;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	box-sizing: border-box;
+}
+
+.farm-list-container textarea:focus {
+	outline: none;
+	border-color: #3498db;
+	box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.farm-list-container textarea:read-only {
+	background-color: #f8f9fa;
+	cursor: default;
+}
+
+.farm-list-container textarea::placeholder {
+	color: #95a5a6;
+	font-style: italic;
+}
+
+#copyButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 10px 16px;
+	background: linear-gradient(135deg, #3498db, #2980b9);
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	align-self: flex-start;
+	min-width: 160px;
+}
+
+#copyButton:hover:not(:disabled) {
+	background: linear-gradient(135deg, #2980b9, #2471a3);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+#copyButton:active:not(:disabled) {
+	transform: translateY(0);
+	box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+}
+
+#copyButton:disabled {
+	background: #bdc3c7;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: none;
+}
+
+#copyButton span {
+	font-size: 16px;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+	.farm-list-container textarea {
+		font-size: 16px; /* Prevents zoom on iOS */
+	}
+
+	#copyButton {
+		width: 100%;
+		align-self: stretch;
+	}
+}

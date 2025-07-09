@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/sum-raid-bounty.css" />
     <link rel="stylesheet" href="styles/troops-needed.css" />
+    <link rel="stylesheet" href="styles/farm-list-to-text.css" />
     <link rel="stylesheet" href="styles/section-collapse.css" />
   </head>
   <body>
@@ -36,6 +37,37 @@
         </div>
         <div class="section-content">
           <div id="troops-needed-result"></div>
+        </div>
+      </div>
+      <!-- FarmListToText -->
+      <div class="feature-section farm-list-to-text">
+        <div class="section-header">
+          <h3>Farm List To Text</h3>
+          <button class="collapse-btn" aria-label="Collapse section">
+            <span class="collapse-icon">+</span>
+          </button>
+        </div>
+        <div class="section-content">
+          <div class="farm-list-container">
+            <div class="input-area">
+              <label for="farmListInput">Paste your farm list here:</label>
+              <textarea
+                id="farmListInput"
+                placeholder="Paste your farm list text here..."
+                rows="6"
+              ></textarea>
+            </div>
+            <div class="output-area">
+              <label for="farmListOutput">Cleaned text:</label>
+              <textarea
+                id="farmListOutput"
+                readonly
+                placeholder="Cleaned text will appear here..."
+                rows="4"
+              ></textarea>
+              <button id="copyButton" disabled>Copy to Clipboard</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -110,6 +142,7 @@
     <!-- <script src="javascripts/auto-raid.js"></script> -->
     <script src="javascripts/sync-farm-list.js"></script>
     <script src="javascripts/troops-needed.js"></script>
+    <script src="javascripts/farm-list-to-text.js"></script>
     <script src="javascripts/section-collapse.js"></script>
   </body>
 </html>
