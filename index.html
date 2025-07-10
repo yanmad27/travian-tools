@@ -27,30 +27,6 @@
           <span>Sync Farm List</span>
         </button>
       </div>
-      
-      <!-- Auto Reload Section -->
-      <div class="feature-section auto-reload">
-        <div class="section-header">
-          <h3>Auto Reload</h3>
-          <button class="collapse-btn" aria-label="Collapse section">
-            <span class="collapse-icon">+</span>
-          </button>
-        </div>
-        <div class="section-content">
-          <div class="auto-reload-controls">
-            <div class="input-group">
-              <label for="reloadInterval">Reload Interval (seconds):</label>
-              <input type="number" id="reloadInterval" value="30" min="1" max="3600">
-            </div>
-            <div class="input-group">
-              <label for="elementSelector">Element Selector (optional):</label>
-              <input type="text" id="elementSelector" placeholder="e.g., .some-class, #some-id">
-            </div>
-            <button id="autoReloadBtn">Start Auto Reload</button>
-            <div id="autoReloadStatus" class="status"></div>
-          </div>
-        </div>
-      </div>
       <!-- Troops Needed -->
       <div class="feature-section troops-needed">
         <div class="section-header">
@@ -168,6 +144,5 @@
     <script src="javascripts/troops-needed.js"></script>
     <script src="javascripts/farm-list-to-text.js"></script>
     <script src="javascripts/section-collapse.js"></script>
-    <script src="javascripts/auto-reload.js"></script>
   </body>
 </html>
