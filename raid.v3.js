@@ -146,8 +146,8 @@ const runWithRandomInterval = async (waiting) => {
 
 	while (true) {
 		await main()
-		const waitArrs = [4.7, 4.7, 4.5, 4.7, 4.7, 4.5, 4.7, 4.5]
-		// average 4.65
+		const waitArrs = [4.5, 4.5, 4.6, 4.7, 4.6, 4.5, 4.6, 4.5]
+		// average 4.55
 		const waitMinutes = waitArrs[iteration % waitArrs.length]
 
 		const waitMs = waitMinutes * 60 * 1000
@@ -157,4 +157,4 @@ const runWithRandomInterval = async (waiting) => {
 		iteration++
 	}
 }
-runWithRandomInterval(2)
+runWithRandomInterval(1)

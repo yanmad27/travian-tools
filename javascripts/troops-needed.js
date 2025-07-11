@@ -94,7 +94,7 @@ const getTroopNeeded = () => {
 				{
 					target: { tabId: tabs[0].id },
 					function: () => {
-						const BASE_INTERVAL = 4.65
+						const BASE_INTERVAL = 4.55
 						const SLOWEST_SPEED = 28
 
 						const getTroops = (totalLoop, troopsElem) => {
