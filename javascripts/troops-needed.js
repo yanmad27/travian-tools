@@ -136,9 +136,7 @@ const getTroopNeeded = () => {
 									const isDisabled = victimElem.getAttribute('class')?.includes('disabled')
 									const id = victimElem.querySelector('[class="selection"] input').getAttribute('data-slot-id')
 									const distance = Number(victimElem.querySelector('.distance span').innerHTML)
-									// TODO: Add TS Level
-
-									const loopWithin20Field = (2 * 60 * Math.min(distance, 20)) / SLOWEST_SPEED
+									const loopWithin20Field = (2 * 60 * Math.min(distance, 20)) / SLOWEST_SPEED // 85.7
 									const loopOutside20Field = (2 * 60 * Math.max(distance - 20, 0)) / (SLOWEST_SPEED * (1 + tsLevel * 0.2))
 									const totalLoop = (loopWithin20Field + loopOutside20Field) / BASE_INTERVAL
 									const ceilTotalLoop = Math.ceil(totalLoop)
@@ -163,7 +161,6 @@ const getTroopNeeded = () => {
 							})
 						}
 
-						console.log('LOG ~ chrome.tabs.query ~ villageList:', villageList)
 						return villageList
 					},
 				},
