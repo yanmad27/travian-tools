@@ -43,7 +43,7 @@ const renderResult = (villageList, troopsOverview) => {
                 <div class="farm-troops" style="display: flex; align-items: center; gap: 8px; padding-left: 12px;">
                   ${Object.entries(sumTroops)
 						.map(([key, value]) => {
-							if (key !== 't4' && key !== 't6') return ''
+							if (key !== 't4' && key !== 't5' && key !== 't6') return ''
 							// if (value === 0) return ''
 							const backgrounPosition = {
 								t1: '0 0',
@@ -66,10 +66,10 @@ const renderResult = (villageList, troopsOverview) => {
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div style="min-width: 100px; max-width: 100px;">
-                  <span style="${style1}">${(ratio * 100).toFixed(0)}%: </span>
+                <div style="min-width: 55px; max-width: 55px;">
+                  <div style="${style1}">${(ratio * 100).toFixed(0)}%</div>
                   <span style="${style1}">${value}</span>
-                  <span style="${style2}">/ ${troopsOverview[villageName]?.[key]} </span>
+                  <span style="${style2}">/${troopsOverview[villageName]?.[key]} </span>
                 </div>
               </div>
               `
@@ -94,7 +94,7 @@ const getTroopNeeded = () => {
 				{
 					target: { tabId: tabs[0].id },
 					function: () => {
-						const BASE_INTERVAL = 10
+						const BASE_INTERVAL = 5.6
 						const SLOWEST_SPEED = 28
 
 						const getTroops = (totalLoop, troopsElem) => {
