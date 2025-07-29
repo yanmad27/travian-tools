@@ -66,7 +66,7 @@ const renderResult = (villageList, troopsOverview) => {
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div style="min-width: 55px; max-width: 55px;">
+                <div style="min-width: 65px; max-width: 65px;">
                   <div style="${style1}">${(ratio * 100).toFixed(0)}%</div>
                   <span style="${style1}">${value}</span>
                   <span style="${style2}">/${troopsOverview[villageName]?.[key]} </span>
