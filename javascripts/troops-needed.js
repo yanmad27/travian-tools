@@ -2,7 +2,7 @@ const troopneededkey = 'troopsNeeded'
 const troopsOverviewkey = 'troopsOverview'
 
 const renderResult = (villageList, troopsOverview) => {
-	const troopsImgPath = 'https://cdn.legends.travian.com/gpack/155.5/img_ltr/global/units/hun/icon/hun_small.png'
+	const troopsImgPath = 'https://cdn.legends.travian.com/gpack/200.13/img_ltr/global/units/hun/icon/hun_small.png'
 	// const interval = Number(document.getElementById('interval').value)
 	const result = document.getElementById('troops-needed-result')
 	result.innerHTML = ''
@@ -42,8 +42,13 @@ const renderResult = (villageList, troopsOverview) => {
                 <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
                 <div class="farm-troops" style="display: flex; align-items: center; gap: 8px; padding-left: 12px;">
                   ${Object.entries(sumTroops)
-						.map(([key, value]) => {
-							if (key !== 't4' && key !== 't5' && key !== 't6') return ''
+					.sort(([key1], [key2]) => {
+						const order = [ 't2', 't3', 't4', 't5', 't6', 't7','t1',]
+						return order.indexOf(key1) - order.indexOf(key2)
+					})
+					.map(([key, value]) => {
+							if (value === 0|| value==='0') return ''
+							// if (key !== 't4' && key !== 't5' && key !== 't6') return ''
 							// if (value === 0) return ''
 							const backgrounPosition = {
 								t1: '0 0',
@@ -66,7 +71,7 @@ const renderResult = (villageList, troopsOverview) => {
 							return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div style="min-width: 65px; max-width: 65px;">
+                <div style="min-width: 75px; max-width: 75px;">
                   <div style="${style1}">${(ratio * 100).toFixed(0)}%</div>
                   <span style="${style1}">${value}</span>
                   <span style="${style2}">/${troopsOverview[villageName]?.[key]} </span>
@@ -94,7 +99,7 @@ const getTroopNeeded = () => {
 				{
 					target: { tabId: tabs[0].id },
 					function: () => {
-						const BASE_INTERVAL = 5.6
+						const BASE_INTERVAL = 4.9
 						const SLOWEST_SPEED = 28
 
 						const getTroops = (totalLoop, troopsElem) => {
@@ -118,10 +123,10 @@ const getTroopNeeded = () => {
 							const villageName = villageListElem.querySelector('.villageName').innerHTML
 							const getTSLevel = (villageName) => {
 								const tsLevel = {
-									O1: 10,
-									F1: 8,
-									F2: 5,
-									F3: 5,
+									N01: 18,
+									F01: 10,
+									F02: 10,
+									F03: 10,
 								}
 								return tsLevel[villageName] || 0
 							}
