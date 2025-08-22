@@ -2,7 +2,7 @@ const troopneededkey = 'troopsNeeded';
 const troopsOverviewkey = 'troopsOverview';
 
 const renderResult = (villageList, troopsOverview) => {
-	const troopsImgPath = 'https://cdn.legends.travian.com/gpack/200.13/img_ltr/global/units/hun/icon/hun_small.png';
+	const troopsImgPath = 'https://cdn.legends.travian.com/gpack/228.2/img_ltr/global/units/hun/icon/hun_small.png';
 	// const interval = Number(document.getElementById('interval').value)
 	const result = document.getElementById('troops-needed-result');
 	result.innerHTML = '';
@@ -37,49 +37,57 @@ const renderResult = (villageList, troopsOverview) => {
 				}
 			}
 		}
-		result.innerHTML += `
-              <div class="farm-item">
-                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
-                <div class="farm-troops" style="display: flex; align-items: center; gap: 8px; padding-left: 12px;">
-                  ${Object.entries(sumTroops)
-										.sort(([key1], [key2]) => {
-											const order = ['t2', 't3', 't4', 't5', 't6', 't7', 't1'];
-											return order.indexOf(key1) - order.indexOf(key2);
-										})
-										.map(([key, value]) => {
-											if (value === 0 || value === '0') return '';
-											// if (key !== 't4' && key !== 't5' && key !== 't6') return ''
-											// if (value === 0) return ''
-											const backgrounPosition = {
-												t1: '0 0',
-												t2: '0 -16px',
-												t3: '0 -32px',
-												t4: '0 -48px',
-												t5: '0 -64px',
-												t6: '0 -80px',
-												t7: '0 -96px',
-											};
-											const backgroundPosition = backgrounPosition[key] || '0 0';
-											const ratio = Number(value) / Number(troopsOverview[villageName]?.[key] || 1);
-											let color = 'black';
-											if (ratio > 0.95) color = 'red';
-											if (ratio <= 0.95) color = 'orange';
-											if (ratio <= 0.9) color = 'green';
-											const style1 = `color: ${color};`;
-											const style2 = `color: #999;`;
+		const render = ([key, value]) => {
+			if (value === 0 || value === '0') return '';
+			// if (key !== 't4' && key !== 't5' && key !== 't6') return ''
+			// if (value === 0) return ''
+			const backgrounPosition = {
+				t1: '0 0',
+				t2: '0 -16px',
+				t3: '0 -32px',
+				t4: '0 -48px',
+				t5: '0 -64px',
+				t6: '0 -80px',
+				t7: '0 -96px',
+			};
+			const backgroundPosition = backgrounPosition[key] || '0 0';
+			const ratio = Number(value) / Number(troopsOverview[villageName]?.[key] || 1);
+			let color = 'black';
+			if (ratio > 0.95) color = 'red';
+			if (ratio <= 0.95) color = 'orange';
+			if (ratio <= 0.9) color = 'green';
+			const style1 = `color: ${color};`;
+			const style2 = `color: #999;`;
 
-											return `
+			return `
               <div style="display: flex; align-items: center; gap: 4px;">
                 <div style="background-image: url(${troopsImgPath});width: 16px;height: 16px;display: inline-block;vertical-align: bottom;background-position: ${backgroundPosition};"></div>
-                <div style="min-width: 75px; max-width: 75px;">
-                  <div style="${style1}">${(ratio * 100).toFixed(0)}%</div>
+                <div style="min-width: 120px; max-width: 120px;">
+                  <span style="${style1}font-weight:bold;">${(ratio * 100).toFixed(0)}%</span>
+				  <span style="color:#999">-</span>
                   <span style="${style1}">${value}</span>
                   <span style="${style2}">/${troopsOverview[villageName]?.[key]} </span>
                 </div>
               </div>
               `;
-										})
-										.join('')}
+		};
+		result.innerHTML += `
+              <div class="farm-item">
+                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
+                <div class="farm-troops" style="display: flex; gap: 8px; padding-left: 12px; flex-direction: column">
+					<div>
+                 	 ${Object.entries(sumTroops)
+											.filter(([key]) => ['t1', 't2', 't3'].includes(key))
+											.map(([key, value]) => render([key, value]))
+											.join('')}
+					</div>
+					<div style="display: flex">
+					${Object.entries(sumTroops)
+						.filter(([key]) => ['t4', 't5', 't6'].includes(key))
+						.map(([key, value]) => render([key, value]))
+						.join('')}
+					</div>
+
                 </div>
               </div>`;
 	}
@@ -102,19 +110,19 @@ const getTroopNeeded = () => {
 						const BASE_INTERVAL = 5.45;
 						const SLOWEST_SPEED = 28;
 
-						const getTroops = (totalLoop, troopsElem) => {
-							const getTroops = (selector) => {
+						const getTroops = (troopsElem) => {
+							const getTroop = (selector) => {
 								const cnt = Number(troopsElem.querySelector(selector)?.parentNode.querySelector('.value').innerHTML);
 								return isNaN(cnt) ? 0 : cnt;
 							};
 							return {
-								t1: getTroops('i.t1') * totalLoop,
-								t2: getTroops('i.t2') * totalLoop,
-								t3: getTroops('i.t3') * totalLoop,
-								t4: getTroops('i.t4') * totalLoop,
-								t5: getTroops('i.t5') * totalLoop,
-								t6: getTroops('i.t6') * totalLoop,
-								t7: getTroops('i.t7') * totalLoop,
+								t1: getTroop('i.t1'),
+								t2: getTroop('i.t2'),
+								t3: getTroop('i.t3'),
+								t4: getTroop('i.t4'),
+								t5: getTroop('i.t5'),
+								t6: getTroop('i.t6'),
+								t7: getTroop('i.t7'),
 							};
 						};
 						const villageListElems = document.querySelectorAll('.villageWrapper ');
@@ -141,11 +149,32 @@ const getTroopNeeded = () => {
 									const isDisabled = victimElem.getAttribute('class')?.includes('disabled');
 									const id = victimElem.querySelector('[class="selection"] input').getAttribute('data-slot-id');
 									const distance = Number(victimElem.querySelector('.distance span').innerHTML);
-									const loopWithin20Field = (2 * 60 * Math.min(distance, 20)) / SLOWEST_SPEED; // 85.7
-									const loopOutside20Field = (2 * 60 * Math.max(distance - 20, 0)) / (SLOWEST_SPEED * (1 + tsLevel * 0.2));
+
+									const baseTroops = getTroops(victimElem.querySelector('td.troops div'));
+									console.log('baseTroops', baseTroops);
+									const speed = {
+										t1: 12,
+										t4: 32,
+										t5: 30,
+										t6: 28,
+									};
+									const minSpeed = Math.min(
+										baseTroops.t1 > 0 ? speed.t1 : Infinity,
+										baseTroops.t4 > 0 ? speed.t4 : Infinity,
+										baseTroops.t5 > 0 ? speed.t5 : Infinity,
+										baseTroops.t6 > 0 ? speed.t6 : Infinity
+									);
+									const loopWithin20Field = (2 * 60 * Math.min(distance, 20)) / minSpeed; // 85.7
+									const loopOutside20Field = (2 * 60 * Math.max(distance - 20, 0)) / (minSpeed * (1 + tsLevel * 0.2));
 									const totalLoop = (loopWithin20Field + loopOutside20Field) / BASE_INTERVAL;
 									const ceilTotalLoop = Math.ceil(totalLoop);
-									const troops = getTroops(ceilTotalLoop, victimElem.querySelector('td.troops div'));
+									const troops = {
+										t1: baseTroops.t1 * ceilTotalLoop,
+										t4: baseTroops.t4 * ceilTotalLoop,
+										t5: baseTroops.t5 * ceilTotalLoop,
+										t6: baseTroops.t6 * ceilTotalLoop,
+									};
+
 									const item = {
 										id,
 										distance,
@@ -165,13 +194,13 @@ const getTroopNeeded = () => {
 								farmList,
 							});
 						}
-
+						console.log(villageList);
 						return villageList;
 					},
 				},
 				(results) => {
 					const villageList = results[0].result;
-					if (villageList.length === 0) return;
+					if (!villageList?.length) return;
 					saveToStorage(villageList);
 				}
 			);
@@ -189,6 +218,7 @@ const getTroopsOverview = () => {
 				function: () => {
 					if (!document.location.href.includes('/village/statistics/troops')) return;
 					const table = document.querySelector('#troops');
+					console.log(table);
 					const tmps = table.querySelectorAll('td.villageName');
 					const troops = {};
 					for (const tmp of tmps) {
@@ -216,7 +246,7 @@ const getTroopsOverview = () => {
 			},
 			(results) => {
 				const troops = results[0].result;
-				if (troops.length === 0) return;
+				if (!troops?.length) return;
 				saveToStorage2(troops);
 			}
 		);
