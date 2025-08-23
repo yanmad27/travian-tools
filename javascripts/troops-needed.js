@@ -76,19 +76,18 @@ const renderResult = (villageList, troopsOverview) => {
               <div class="farm-item">
                 <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
                 <div class="farm-troops" style="display: flex; gap: 4px; padding-left: 12px; flex-direction: column">
-					<div>
-                 	 ${Object.entries(sumTroops)
-							.filter(([key]) => ['t1', 't2', 't3'].includes(key))
-							.map(([key, value]) => render([key, value]))
-							.join('')}
-					</div>
-					<div style="display: flex">
-					${Object.entries(sumTroops)
-						.filter(([key]) => ['t4', 't5', 't6'].includes(key))
-						.map(([key, value]) => render([key, value]))
-						.join('')}
-					</div>
-
+                  <div>
+                    ${Object.entries(sumTroops)
+											.filter(([key]) => ['t1', 't2', 't3'].includes(key))
+											.map(([key, value]) => render([key, value]))
+											.join('')}
+                  </div>
+                  <div style="display: flex">
+                    ${Object.entries(sumTroops)
+											.filter(([key]) => ['t4', 't5', 't6'].includes(key))
+											.map(([key, value]) => render([key, value]))
+											.join('')}
+                  </div>
                 </div>
               </div>`
 	}
@@ -158,7 +157,12 @@ const getTroopNeeded = () => {
 										t5: 30,
 										t6: 28,
 									}
-									const minSpeed = Math.min(baseTroops.t1 > 0 ? speed.t1 : Infinity, baseTroops.t4 > 0 ? speed.t4 : Infinity, baseTroops.t5 > 0 ? speed.t5 : Infinity, baseTroops.t6 > 0 ? speed.t6 : Infinity)
+									const minSpeed = Math.min(
+										baseTroops.t1 > 0 ? speed.t1 : Infinity,
+										baseTroops.t4 > 0 ? speed.t4 : Infinity,
+										baseTroops.t5 > 0 ? speed.t5 : Infinity,
+										baseTroops.t6 > 0 ? speed.t6 : Infinity,
+									)
 									const loopWithin20Field = (2 * 60 * Math.min(distance, 20)) / minSpeed // 85.7
 									const loopOutside20Field = (2 * 60 * Math.max(distance - 20, 0)) / (minSpeed * (1 + tsLevel * 0.2))
 									const totalLoop = (loopWithin20Field + loopOutside20Field) / BASE_INTERVAL
