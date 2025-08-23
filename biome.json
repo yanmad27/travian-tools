@@ -12,7 +12,7 @@
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-		"lineWidth": 320,
+		"lineWidth": 200,
 		"formatWithErrors": false,
 		"indentWidth": 2,
 		"attributePosition": "auto"
@@ -47,11 +47,11 @@
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
-			"lineWidth": 320,
+			"lineWidth": 200,
 			"arrowParentheses": "always",
 			"bracketSpacing": true,
 			"indentStyle": "tab",
-			"indentWidth": 4,
+			"indentWidth": 2,
 			"jsxQuoteStyle": "single",
 			"semicolons": "asNeeded",
 			"bracketSameLine": true
