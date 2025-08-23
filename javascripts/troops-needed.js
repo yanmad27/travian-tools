@@ -254,6 +254,7 @@ const getTroopsOverview = () => {
 // Entry point
 document.addEventListener('DOMContentLoaded', () => {
 	// Initial render without waiting
+	const baseLoop = 1000
 	getTroopNeeded()
 	getTroopsOverview()
 	chrome.storage.local.get([troopneededkey, troopsOverviewkey], (result) => {
@@ -262,22 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		renderResult(villageList, troopsOverview)
 	})
 
-	const inter1 = setInterval(() => getTroopNeeded(), 3000)
-	const inter2 = setInterval(() => getTroopsOverview(), 3000)
+	const inter1 = setInterval(() => getTroopNeeded(), baseLoop)
+	const inter2 = setInterval(() => getTroopsOverview(), baseLoop)
 	const inter3 = setInterval(() => {
 		chrome.storage.local.get([troopneededkey, troopsOverviewkey], (result) => {
 			const villageList = result[troopneededkey] || []
 			const troopsOverview = result[troopsOverviewkey] || {}
 			renderResult(villageList, troopsOverview)
 		})
-	}, 3000)
+	}, baseLoop)
 	const inter4 = setInterval(() => {
 		chrome.storage.local.get([troopneededkey, troopsOverviewkey], (result) => {
 			const villageList = result[troopneededkey] || []
 			const troopsOverview = result[troopsOverviewkey] || {}
 			renderResult(villageList, troopsOverview)
 		})
-	}, 3000)
+	}, baseLoop)
 
 	window.addEventListener('beforeunload', () => {
 		clearInterval(inter1)
