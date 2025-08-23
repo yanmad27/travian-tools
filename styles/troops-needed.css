@@ -1,103 +1,103 @@
 .troops-needed {
-	/* margin-top: 20px; */
+  /* margin-top: 20px; */
 }
 
 .troops-needed > div {
-	display: flex;
-	gap: 10px;
-	margin-bottom: 10px;
-	align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
 }
 
 .troops-needed input[type="number"] {
-	padding: 8px 12px;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	width: 120px;
-	font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 120px;
+  font-size: 14px;
 }
 
 .troops-calculation {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 .farm-list-total {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 10px 15px;
-	margin-bottom: 8px;
-	background-color: #f8f9fa;
-	border: 1px solid #e0e0e0;
-	border-radius: 6px;
-	font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 .farm-list-total .list-name {
-	font-weight: 600;
-	color: #333;
+  font-weight: 600;
+  color: #333;
 }
 
 .farm-list-total .victim-count {
-	color: #666;
-	font-size: 12px;
-	margin-left: 10px;
+  color: #666;
+  font-size: 12px;
+  margin-left: 10px;
 }
 
 .farm-list-total .total-troops {
-	font-weight: bold;
-	color: #2196f3;
-	margin-left: auto;
+  font-weight: bold;
+  color: #2196f3;
+  margin-left: auto;
 }
 
 .grand-total {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 15px 20px;
-	margin-top: 15px;
-	background-color: #e3f2fd;
-	border: 2px solid #2196f3;
-	border-radius: 8px;
-	font-size: 18px;
-	font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  margin-top: 15px;
+  background-color: #e3f2fd;
+  border: 2px solid #2196f3;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .grand-total .total-value {
-	color: #1976d2;
-	font-size: 24px;
+  color: #1976d2;
+  font-size: 24px;
 }
 
 .calculation-info {
-	margin-top: 10px;
-	font-size: 12px;
-	color: #666;
-	font-style: italic;
-	text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  text-align: center;
 }
 
 #troops-needed-result {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  align-items: flex-start;
 }
 #troops-needed-result p {
-	margin: 10px 0;
-	padding: 10px;
-	border-radius: 4px;
+  margin: 10px 0;
+  /* padding: 10px; */
+  border-radius: 4px;
 }
 
 #troops-needed-result p[style*="color: red"] {
-	background-color: #fee;
-	border: 1px solid #fcc;
+  background-color: #fee;
+  border: 1px solid #fcc;
 }
 
 #troops-needed-result .farm-item {
-	border-bottom: 1px solid #ccc;
-	padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  /* padding-bottom: 10px; */
 }
 #troops-needed-result .farm-item:last-child {
-	border-bottom: none;
-	padding-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }

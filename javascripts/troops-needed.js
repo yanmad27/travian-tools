@@ -74,8 +74,8 @@ const renderResult = (villageList, troopsOverview) => {
 		}
 		result.innerHTML += `
               <div class="farm-item">
-                <div class="farm-name" style="margin-bottom: 8px; font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
-                <div class="farm-troops" style="display: flex; gap: 4px; padding-left: 12px; flex-direction: column">
+                <div class="farm-name" style="font-weight: bold;">${villageName} - <span style="font-size: 12px; color: #999;">TS Lvl: ${tsLevel || 0}</span></div>
+                <div class="farm-troops" style="display: flex;farm-troops padding-left: 12px; flex-direction: column;">
                   <div>
                     ${Object.entries(sumTroops)
 											.filter(([key]) => ['t1', 't2', 't3'].includes(key))
@@ -254,7 +254,7 @@ const getTroopsOverview = () => {
 // Entry point
 document.addEventListener('DOMContentLoaded', () => {
 	// Initial render without waiting
-	const baseLoop = 1000
+	const baseLoop = 100000
 	getTroopNeeded()
 	getTroopsOverview()
 	chrome.storage.local.get([troopneededkey, troopsOverviewkey], (result) => {
